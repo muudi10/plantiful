@@ -9,21 +9,21 @@ const initialState = {
 }
 
 const RegisterForm = () => {
-    const [fields, setfields] = useState(initialState.fields)
+    const [fields, setFields] = useState(initialState.fields)
     const handleInputChange = (e) => {
       setFields({...fields, [e.target.id]:[e.target.value]})
     }
     const handleSubmit = (e) => {
         e.preventDefault()
         if(fields.password === fields.confirmPassword) {
-            
+
         }
     }
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="input_email">Email Address:</label>
+                    <label htmlFor="input_email">Email Address</label>
                     <input type="email"
                     className="form_control"
                     id="email"
@@ -32,7 +32,7 @@ const RegisterForm = () => {
                     placeholder="Enter email address" />
                 </div>
                 <div>
-                    <label htmlFor="input_password">Password:</label>
+                    <label htmlFor="input_password">Password</label>
                     <input type="password"
                     className="form_control"
                     id="password"
@@ -41,10 +41,10 @@ const RegisterForm = () => {
                     placeholder="password"></input>
                 </div>
                 <div>
-                    <label htmlFor="input_confirmpassword">Confirm Password:</label>
+                    <label htmlFor="input_confirmpassword">Confirm Password</label>
                     <input type="password"
                     className="form_control"
-                    id="confirm_password"
+                    id="confirmPassword"
                     value={fields.confirmPassword}
                     onChange={handleInputChange}
                     placeholder="Confirm Password"></input>
