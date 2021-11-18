@@ -1,6 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
+
+const initialState = {
+    fields: {
+        email: '',
+        password: '',
+        confirmPassword: ''
+    }
+}
 
 const RegisterForm = () => {
+    const [fields, setfields] = useState(initialState.fields)
+    const handleInputChange = (e) => {
+      setFields({...fields, [e.target.id]:[e.target.value]})
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if(fields.password === fields.confirmPassword) {
+            
+        }
+    }
     return (
         <div>
             <form>
@@ -9,6 +27,8 @@ const RegisterForm = () => {
                     <input type="email"
                     className="form_control"
                     id="email"
+                    value={fields.email}
+                    onChange={handleInputChange}
                     placeholder="Enter email address" />
                 </div>
                 <div>
@@ -16,6 +36,8 @@ const RegisterForm = () => {
                     <input type="password"
                     className="form_control"
                     id="password"
+                    value={fields.password}
+                    onChange={handleInputChange}
                     placeholder="password"></input>
                 </div>
                 <div>
@@ -23,6 +45,8 @@ const RegisterForm = () => {
                     <input type="password"
                     className="form_control"
                     id="confirm_password"
+                    value={fields.confirmPassword}
+                    onChange={handleInputChange}
                     placeholder="Confirm Password"></input>
                 </div>
                 <button 
