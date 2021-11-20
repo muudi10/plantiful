@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders App 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <div>
+      <div>
+        <h2>
+          Sign up
+        </h2>
+      </div>
+      <form>
+        <div>
+          <label
+            for="email"
+          >
+            Email Address
+          </label>
+          <input
+            class="form_control"
+            id="email"
+            name="email"
+            placeholder="Enter email address"
+            required=""
+            type="email"
+            value=""
+          />
+        </div>
+        <div>
+          <label
+            for="username"
+          >
+            Username
+          </label>
+          <input
+            class="form_control"
+            id="username"
+            name="username"
+            placeholder="Enter username"
+            required=""
+            type="textbox"
+            value=""
+          />
+        </div>
+        <div>
+          <label
+            for="password"
+          >
+            Password
+          </label>
+          <input
+            class="form_control"
+            id="password"
+            name="password"
+            placeholder="password"
+            required=""
+            type="password"
+            value=""
+          />
+        </div>
+        <div>
+          <label
+            for="confirmpassword"
+          >
+            Confirm Password
+          </label>
+          <input
+            class="form_control"
+            data-testid="confirmPassword"
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            required=""
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          class="button-primary"
+          data-testid="submitbutton"
+          type="submit"
+        >
+          Create account
+        </button>
+      </form>
+    </div>
+    <div>
+      <div>
+        <h2>
+          Sign in
+        </h2>
+      </div>
+      <form>
+        <div>
+          <label
+            for="username_input"
+          >
+            Username
+          </label>
+          <input
+            class="login_form"
+            id="loginUsername"
+            placeholder="Enter username"
+            required=""
+            type="text"
+            value=""
+          />
+        </div>
+        <div>
+          <label
+            for="password_input"
+          >
+            Password
+          </label>
+          <input
+            class="login_form"
+            id="loginPassword"
+            placeholder="password"
+            required=""
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          class="button-primary"
+          data-testid="loginbutton"
+          type="submit"
+        >
+          Log in
+        </button>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;
