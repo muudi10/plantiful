@@ -31,6 +31,7 @@ const RegisterForm = () => {
 						value={fields.email}
 						onChange={handleInputChange}
 						placeholder='Enter email address'
+						required
 					/>
 				</div>
 				<div>
@@ -43,6 +44,7 @@ const RegisterForm = () => {
 						value={fields.password}
 						onChange={handleInputChange}
 						placeholder='password'
+						required
 					></input>
 				</div>
 				<div>
@@ -56,6 +58,7 @@ const RegisterForm = () => {
 						value={fields.confirmPassword}
 						onChange={handleInputChange}
 						placeholder='Confirm Password'
+						required
 					></input>
 				</div>
 				<button
