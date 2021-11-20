@@ -5,18 +5,14 @@ import LoginForm from "../components/LoginForm";
 
 describe("LoginForm component", () => {
 	it("renders the basic fields", () => {
-		render(<LoginForm />);
-		expect(screen.getByRole("textbox", { type: "email" })).toBeInTheDocument();
-		expect(
-			screen.getByRole("textbox", { type: "password" })
-		).toBeInTheDocument();
-		expect(screen.getByRole("button", { type: "submit" })).toBeInTheDocument();
+		const { asFragment } = render(<LoginForm />);
+		expect(asFragment()).toMatchSnapshot();
 	});
-	it("validates email field", () => {
+	it("validates username field", () => {
 		render(<LoginForm />);
-		const email = screen.getByRole("textbox", { type: "email" });
-		userEvent.type(email, "welcome@plantiful.com");
-		expect(email).toHaveValue("welcome@plantiful.com");
+		const username = screen.getByRole("textbox", { type: "text" });
+		userEvent.type(username, "PlantUser");
+		expect(username).toHaveValue("PlantUser");
 	});
 	it("validates password field", () => {
 		render(<LoginForm />);

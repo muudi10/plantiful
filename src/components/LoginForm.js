@@ -1,25 +1,28 @@
 import React, { useState } from "react";
 
 const LoginForm = () => {
-	const [email, setEmail] = useState("");
+	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 
 	const handleSubmit = (e) => {
-		e.PreventDefault();
+		e.preventDefault();
 	};
 
 	return (
 		<div>
+			<div>
+				<h2>Sign in</h2>
+			</div>
 			<form onSubmit={handleSubmit}> 
 				<div>
-					<label htmlFor='email_input'>Email address</label>
+					<label htmlFor='username_input'>Username</label>
 					<input
-						type='email'
+						type='text'
 						className='login_form'
-						id='loginEmail'
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						placeholder='Enter email address'
+						id='loginUsername'
+						value={username}
+						onChange={(e) => setUsername(e.target.value)}
+						placeholder='Enter username'
                         required
 					/>
 				</div>

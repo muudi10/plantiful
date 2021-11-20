@@ -5,13 +5,8 @@ import RegisterForm from "../components/RegisterForm";
 
 describe("Register Form component", () => {
 	it("renders the basic fields", () => {
-		render(<RegisterForm />);
-		expect(screen.getByRole("textbox", { type: "email" })).toBeInTheDocument();
-		expect(
-			screen.getByRole("textbox", { type: "password" })
-		).toBeInTheDocument();
-		expect(screen.getByTestId(/confirmPassword/i)).toBeInTheDocument();
-		expect(screen.getByRole("button", { type: "submit" })).toBeInTheDocument();
+		const { asFragment } = render(<RegisterForm />);
+        expect(asFragment()).toMatchSnapshot();
 	});
 	it("should validate email field", () => {
 		render(<RegisterForm />);
@@ -19,9 +14,15 @@ describe("Register Form component", () => {
 		userEvent.type(email, "hello@plantiful.com");
 		expect(email).toHaveValue("hello@plantiful.com");
 	});
+    it("should validate username field", () => {
+        render(<RegisterForm />)
+        const username = screen.getByLabelText(/username/i);
+        userEvent.type(username, "PlantUser");
+        expect(username).toHaveValue("PlantUser");
+    })
     it("should validate password field", () => {
         render(<RegisterForm />);
-        const password = screen.getByRole("textbox", {type: "password"});
+        const password = screen.getByLabelText(/password/i);
         userEvent.type(password, "Il0veP!ant$!");
         expect(password).toHaveValue("Il0veP!ant$!");
     });

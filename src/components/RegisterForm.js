@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const initialState = {
 	fields: {
 		email: "",
+		username: "",
 		password: "",
 		confirmPassword: "",
 	},
@@ -20,6 +21,9 @@ const RegisterForm = () => {
 	};
 	return (
 		<div>
+			<div>
+				<h2>Sign up</h2>
+			</div>
 			<form onSubmit={handleSubmit}>
 				<div>
 					<label htmlFor='email'>Email Address</label>
@@ -31,6 +35,19 @@ const RegisterForm = () => {
 						value={fields.email}
 						onChange={handleInputChange}
 						placeholder='Enter email address'
+						required
+					/>
+				</div>
+				<div>
+					<label htmlFor='username'>Username</label>
+					<input
+						type='textbox'
+						className='form_control'
+						id='username'
+						name='username'
+						value={fields.username}
+						onChange={handleInputChange}
+						placeholder='Enter username'
 						required
 					/>
 				</div>
