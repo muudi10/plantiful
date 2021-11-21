@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert if message is empty, it does not render a message 1`] = `<DocumentFragment />`;
+
+exports[`Alert renders a successful message if action is successful 1`] = `
+<DocumentFragment>
+  <div
+    class="alert alert-true ? 'success' : 'error "
+  >
+    Success!
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Alert renders an error message if action is unsuccessful 1`] = `
+<DocumentFragment>
+  <div
+    class="alert alert-false ? 'success' : 'error "
+  >
+    Error!
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm component renders the basic fields 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      <h2>
+        Sign in
+      </h2>
+    </div>
+    <form>
+      <div>
+        <label
+          for="username_input"
+        >
+          Username
+        </label>
+        <input
+          class="login_form"
+          id="loginUsername"
+          placeholder="Enter username"
+          required=""
+          type="text"
+          value=""
+        />
+      </div>
+      <div>
+        <label
+          for="password_input"
+        >
+          Password
+        </label>
+        <input
+          class="login_form"
+          id="loginPassword"
+          placeholder="password"
+          required=""
+          type="password"
+          value=""
+        />
+      </div>
+      <button
+        class="button-primary"
+        data-testid="loginbutton"
+        type="submit"
+      >
+        Log in
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;
