@@ -24,18 +24,19 @@ const RegisterForm = () => {
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		setAlert({ message: '', isSuccess: false });
 		if (fields.password !== fields.confirmPassword) {
 			setAlert({
 				message: "Passwords do not match",
 				isSuccess: false,
 			})
 		} else {
-		setAlert({ message: '', sucess: false });
 			axios
 				.post("http://localhost:4000/auth/register", {
 					username: fields.username,
 					email: fields.email,
 					password: fields.password,
+					confirmPassword: fields.confirmPassword
 				})
 				.then(() => {
 					setAlert({
