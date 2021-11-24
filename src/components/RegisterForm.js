@@ -3,20 +3,19 @@ import axios from "axios";
 import Alert from "./Alert";
 
 const initialState = {
-	fields: {
-		username: "",
-		email: "",
-		password: "",
-		confirmPassword: "",
-	},
 	alert: {
 		message: "",
 		isSuccess: false,
-	},
+	}
 };
 
 const RegisterForm = () => {
-	const [fields, setFields] = useState(initialState.fields);
+	const [fields, setFields] = useState({
+		username: "Admin",
+		email: "User123@hotmail.com",
+		password: "User1234",
+		confirmPassword: "User1234"
+	});
 	const [alert, setAlert] = useState(initialState.alert);
 
 	const handleInputChange = (e) => {
@@ -26,6 +25,8 @@ const RegisterForm = () => {
 		e.preventDefault();
 		setAlert({ message: '', isSuccess: false });
 		if (fields.password !== fields.confirmPassword) {
+			console.log(fields.password)
+			console.log(fields.confirmPassword)
 			setAlert({
 				message: "Passwords do not match",
 				isSuccess: false,
@@ -35,16 +36,17 @@ const RegisterForm = () => {
 				.post("http://localhost:4000/auth/register", {
 					username: fields.username,
 					email: fields.email,
-					password: fields.password,
-					confirmPassword: fields.confirmPassword
+					password: fields.password
 				})
-				.then(() => {
+				.then((response) => {
+					console.log(response)
 					setAlert({
 						message: "Registration Successful",
 						isSuccess: true,
 					});
 				})
-				.catch(() => {
+				.catch((error) => {
+					console.log(error)
 					setAlert({
 						message: "Server error. Please try again later",
 						isSuccess: false,

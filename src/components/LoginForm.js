@@ -1,14 +1,45 @@
 import React, { useState } from "react";
 import axios from "axios";
+// import { useNavigate } from "react-router-dom";
+import Alert from "./Alert";
+
+const initialState = {
+	fields: {
+		username: "",
+		password: "",
+	},
+	alert: {
+		message: "",
+		isSuccess: false,
+	},
+}
 
 const LoginForm = () => {
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
+	const [alert, setAlert] = useState(initialState.alert)
+	const [loginFields, setLoginFields] = useState(initialState.fields);
+	const [user, setUser] = useState("")
+	const [loading, setLoading] = useState(false)
+
+// let navigate = useNavigate()
 
 	const handleLogin = (e) => {
-		e.preventDefault();
-		
-
+		e.preventDefault()
+		setLoading(true)
+		setAlert({message: "", isSuccess: false})
+			axios.post('http://localhost:4000/auth/login', {
+				username: loginFields.username,
+				password: loginFields.password
+			})
+			.then((response)=>{
+				console.log(response)
+					// navigate("/dashboard")
+			})
+			.catch((error)=> {
+				console.log(error)
+			})
+	};
+	const handleInputChange = (e) => {
+		setLoginFields({ ...loginFields, [e.target.name]: [e.target.value] });
 	};
 
 	return (
@@ -23,8 +54,9 @@ const LoginForm = () => {
 						type='text'
 						className='login_form'
 						id='loginUsername'
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
+						name="username"
+						value={loginFields.username}
+						onChange={handleInputChange}
 						placeholder='Enter username'
                         required
 					/>
@@ -35,19 +67,16 @@ const LoginForm = () => {
 						type='password'
 						className='login_form'
 						id='loginPassword'
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
+						name="password"
+						value={loginFields.password}
+						onChange={handleInputChange}
 						placeholder='password'
                         required
 					></input>
 				</div>
-				<button
-					type='submit'
-					className='button-primary'
-					data-testid='loginbutton'
-				>
-					Log in
-				</button>
+				<input type="button" value={loading ? "Loading..." : "Log in"}>
+				</input>
+				<Alert message={alert.message} success={alert.isSuccess} />
 			</form>
 		</div>
 	);
