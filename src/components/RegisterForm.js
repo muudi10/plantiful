@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const initialState = {
 	fields: {
@@ -80,7 +81,7 @@ const RegisterForm = () => {
 				</div>
 				<button
 					type='submit'
-					className='button-primary'
+					className='button-primary btn btn-primary'
 					data-testid='submitbutton'
 				>
 					Create account
