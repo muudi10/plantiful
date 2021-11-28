@@ -1,21 +1,25 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Alert from "./Alert";
+import { Form, FloatingLabel, Button } from "react-bootstrap";
+import { ArrowRight } from "phosphor-react";
+import "../styles/RegisterForm.css";
 
 const initialState = {
+	fields: {
+		username: "",
+		email: "",
+		password: "",
+		confirmPassword: "",
+	},
 	alert: {
 		message: "",
 		isSuccess: false,
-	}
+	},
 };
 
 const RegisterForm = () => {
-	const [fields, setFields] = useState({
-		username: "Admin",
-		email: "User123@hotmail.com",
-		password: "User1234",
-		confirmPassword: "User1234"
-	});
+	const [fields, setFields] = useState(initialState.fields);
 	const [alert, setAlert] = useState(initialState.alert);
 
 	const handleInputChange = (e) => {
@@ -23,104 +27,131 @@ const RegisterForm = () => {
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		setAlert({ message: '', isSuccess: false });
+		setAlert({ message: "", isSuccess: false });
 		if (fields.password !== fields.confirmPassword) {
-			console.log(fields.password)
-			console.log(fields.confirmPassword)
+			console.log(fields.password);
+			console.log(fields.confirmPassword);
 			setAlert({
 				message: "Passwords do not match",
 				isSuccess: false,
-			})
+			});
 		} else {
 			axios
 				.post("http://localhost:4000/auth/register", {
 					username: fields.username,
 					email: fields.email,
-					password: fields.password
+					password: fields.password,
 				})
 				.then((response) => {
-					console.log(response)
+					console.log(response);
 					setAlert({
 						message: "Registration Successful",
 						isSuccess: true,
 					});
 				})
 				.catch((error) => {
-					console.log(error)
+					console.log(error);
 					setAlert({
 						message: "Server error. Please try again later",
 						isSuccess: false,
 					});
 				});
-	}};
+		}
+	};
 	return (
-		<div>
+		<div className="form_wrapper">
 			<div>
-				<h2>Sign up</h2>
+				<h2 className='signup_header'>Sign up to Plantiful</h2>
 			</div>
-			<form onSubmit={handleSubmit}>
-				<div>
-					<label htmlFor='username'>Username</label>
-					<input
-						type='textbox'
-						className='form_control'
-						id='username'
-						name='username'
-						value={fields.username}
-						onChange={handleInputChange}
-						placeholder='Create username'
-						required
-					/>
+			<div className="form_container">
+				<Form onSubmit={handleSubmit}>
+					<Form.Group className='mb-3' controlId='formBasicUsername'>
+						<FloatingLabel
+							controlId='floatingInput'
+							label='Create Username'
+							className='mb-3'
+						>
+							<Form.Control
+							    className="w-50"
+								type='textbox'
+								placeholder='Create Username'
+								name='username'
+								value={fields.username}
+								onChange={handleInputChange}
+								required
+							/>
+						</FloatingLabel>
+					</Form.Group>
+
+					<Form.Group className='mb-3' controlId='formBasicEmail'>
+						<FloatingLabel
+							controlId='floatingInput'
+							label='Enter your email address'
+							className='mb-3'
+						>
+							<Form.Control
+								type='email'
+								placeholder='Enter email'
+								name='email'
+								value={fields.email}
+								onChange={handleInputChange}
+								className="w-50"
+								required
+							/>
+						</FloatingLabel>
+						<Form.Text className='text-muted'>
+							We'll never share your email with anyone else.
+						</Form.Text>
+					</Form.Group>
+					<Form.Group className='mb-3' controlId='formBasicPassword'>
+						<FloatingLabel
+							controlId='floatingInput'
+							label='Create password'
+							className='mb-3'
+						>
+							<Form.Control
+								type='password'
+								placeholder='Password'
+								className="w-50"
+								data-testid='passwordinput'
+								name='password'
+								value={fields.password}
+								onChange={handleInputChange}
+								required
+							/>
+						</FloatingLabel>
+					</Form.Group>
+					<Form.Group className='mb-3' controlId='formBasicConfirmPassword'>
+						<FloatingLabel
+							controlId='floatingInput'
+							label='Confirm password'
+							className='mb-3'
+						>
+							<Form.Control
+								type='password'
+								placeholder='Confirm Password'
+								className="w-50"
+								data-testid='confirmPassword'
+								name='confirmPassword'
+								value={fields.confirmPassword}
+								onChange={handleInputChange}
+								required
+							/>
+						</FloatingLabel>
+					</Form.Group>
+					<Button
+						type='submit'
+						id="submit"
+						className='button-primary'
+						data-testid='submitbutton'
+						style={{ backgroundColor: "#55A356", border: "#013606"}}
+					>
+						Create account <ArrowRight size={20} />
+					</Button>
+					<p className="member_text">Already a member?<a href="/loginform" className="signin_link"> Sign in </a></p>
+					<Alert message={alert.message} success={alert.isSuccess} />
+				</Form>
 				</div>
-				<div>
-					<label htmlFor='email'>Email Address</label>
-					<input
-						type='email'
-						className='form_control'
-						id='email'
-						name='email'
-						value={fields.email}
-						onChange={handleInputChange}
-						placeholder='Enter email address'
-						required
-					/>
-				</div>
-				<div>
-					<label htmlFor='password'>Password</label>
-					<input
-						type='password'
-						className='form_control'
-						id='password'
-						name='password'
-						value={fields.password}
-						onChange={handleInputChange}
-						placeholder='Create Password'
-						required
-					></input>
-				</div>
-				<div>
-					<label htmlFor='confirmpassword'>Confirm Password</label>
-					<input
-						type='password'
-						className='form_control'
-						id='confirmPassword'
-						data-testid='confirmPassword'
-						name='confirmPassword'
-						value={fields.confirmPassword}
-						onChange={handleInputChange}
-						placeholder='Confirm Password'
-						required
-					></input>
-				</div>
-				<button
-					type='submit'
-					className='button-primary'
-					data-testid='submitbutton'
-				>
-					Create account
-				</button>
-				<Alert message={alert.message} success={alert.isSuccess} />
-			</form>
 		</div>
 	);
 };
