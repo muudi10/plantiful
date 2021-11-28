@@ -17,7 +17,7 @@ const initialState = {
 const LoginForm = () => {
 	const [alert, setAlert] = useState(initialState.alert)
 	const [loginFields, setLoginFields] = useState(initialState.fields);
-	const [user, setUser] = useState("")
+	// const [user, setUser] = useState("")
 	const [loading, setLoading] = useState(false)
 
 // let navigate = useNavigate()

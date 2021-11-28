@@ -1,59 +1,94 @@
 import React from "react";
-import { FlowerLotus } from "phosphor-react";
+import { FlowerLotus, ArrowDown } from "phosphor-react";
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import '../styles/Home.css'
 
 const Home = () => {
 	return (
-		<div className='landingpage'>
-			<div className='landingpage_partone'>
-			<p><FlowerLotus size={48} />Plantiful</p>
-				<h1>Have Plantiful Plants <FlowerLotus size={16} /> </h1>
-				<p>
-					We help you keep your plants alive by sending helpful reminders
-					straight to your inbox.
-				</p>
-				<button>Find out more</button>
-			</div>
-			<div className='landingpage_parttwo'>
-				<h2>We can help you be the perfect plant parent</h2>
-				<p>Just follow these simple steps!</p>
-				<div className='box_one'>
-					<p className='box_title'>SEARCH</p>
-					<p>Search our inventory and find the plants you own</p>
-				</div>
-				<div className='box_two'>
-					<p className='box_title'>ADD</p>
-					<p>Add your plant collection to your customisable dashboard</p>
-				</div>
-				<div className='box_three'>
-					<p className='box_title'>SCHEDULE</p>
-					<p>
-						Schedule reminders for each plant and we will send you a
-						notification when it is thirsty
-					</p>
-				</div>
-				<div className='box_four'>
-					<p className='box_title'>LEARN</p>
-					<p>Learn handy tips and tricks to help best care for your plants. </p>
-				</div>
-			</div>
-            <footer>
-                <div className="footer_partone">
-                <p>Get in touch</p>
-                <a href="mailto:hello@plantiful.com">Email Us</a>  
+        <><Container fluid={true} className="p-0, Container">
+            <Row noGutters={true}>
+                <Col>
+                    <div className='landingpage_partone'>
+                        <h1 className="hero_header">Have <span className="brandname">Plantiful</span> Plants <FlowerLotus size={38} /> </h1>
+                        <p className="hero_description">
+                            We help you keep your plants alive by sending helpful reminders
+                            straight to your inbox.
+                        </p>
+                        <Button href="#findoutmore" style={{ backgroundColor: "#55A356", border: "none" }}>Find out more <ArrowDown size={20} /></Button>
+                    </div>
+                </Col>
+            </Row>
+        </Container>
+        <div className="landingpage_parttwo_start">
+                <h2 className="landingpage_parttwo_header" id="findoutmore">We can help you be the perfect plant parent!</h2>
+                <p className="landingpage_parttwo_description">Just follow these simple steps!</p></div>
+                <div className='landingpage_parttwo'> 
+                <Container className="boxes">
+                    <Row>
+                        <Col md={4}>
+                            <div className='box_one'>
+                                <p className='box_title'>SEARCH</p>
+                                <p>Search our inventory and find the plants you own</p>
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={{ span: 3, offset: 3 }}><div className='box_two'>
+                            <p className='box_title'>ADD</p>
+                            <p>Add your plant collection to your customisable dashboard</p>
+                        </div></Col>
+                    </Row>
+                    <Row>
+                        <Col md={4}><div className='box_three'>
+                            <p className='box_title'>SCHEDULE</p>
+                            <p>
+                                Schedule reminders for each plant and we will send you a
+                                notification when it is thirsty
+                            </p>
+                        </div></Col>
+                    </Row>
+                    <Row>
+                        <Col md={{ span: 3, offset: 3 }}>
+                            <div className='box_four'>
+                                <p className='box_title'>LEARN</p>
+                                <p>Learn handy tips and tricks to help best care for your plants.</p>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
                 </div>
-                <div className="footer_parttwo">
-                <p>@plantiful_plants</p>
-                <p>Insta: Plantiful</p>
-                <p>Facebook: Plantiful_Plants</p>
+                <div className="landingpage_footer">
+                <Container>
+                <footer >
+                        <Row>
+                            <Col>
+                    <div className="footer_partone">
+                        <p className="footer_title">Get in touch:</p>
+                        <a href="mailto:hello@plantiful.com">Email Us</a>
+                    </div>
+                    </Col>
+                    <Col>
+                    <div className="footer_parttwo">
+                        <p className="footer_title">Follow along:</p>
+                        <p>@plantiful_plants</p>
+                        <p>Insta: Plantiful</p>
+                        <p>Facebook: Plantiful_Plants</p>
+                    </div>
+                    </Col>
+                    <Col>
+                    <div className="footer_partthree">
+                        <p className="footer_title">Explore:</p>
+                        <p>Log in (link)</p>
+                        <p>Plants (link)</p>
+                        <p>About (link)</p>
+                    </div>
+                    </Col>
+                    </Row>
+                </footer>
+                </Container>
                 </div>
-                <div className="footer_partthree">
-                <p>Log in (link)</p>
-                <p>Plants (link)</p>
-                <p>About (link)</p>
-                </div>
-            </footer>
-		</div>
-	);
-};
+                </>                );
+                };
 
-export default Home;
+                export default Home;
+
