@@ -3,9 +3,11 @@ import LoginForm from "./components/LoginForm";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigationbar from "./components/Navbar";
 import Home from "./components/Home";
+import Footer from "./components/Footer";
 import "bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container} from 'react-bootstrap'
+import {Container} from 'react-bootstrap';
+import "./App.css";
 
 function App() {
 	return (
@@ -22,6 +24,11 @@ function App() {
 					</Route>
 				</Routes>
 			</Router>
+			<div className="page_container">
+				<div classname="content_wrap">
+			<Footer />
+			</div>
+			</div>
 			</Container>
 		</div>
 	);

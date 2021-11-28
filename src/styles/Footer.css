@@ -1,0 +1,36 @@
+.landingpage_footer {
+    padding: 110px 50px;
+    width: 1470px;
+    background-color: #55A356;
+    color: #FFFFFF;
+}
+
+.footer_title{
+    font-weight: 600;
+}
+
+.footer_partone {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ justify-content: flex-end;
+}
+
+.footer_parttwo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.footer_partthree {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.footer_copyright {
+    padding: 40px 20px;
+}

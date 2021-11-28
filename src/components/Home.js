@@ -57,36 +57,7 @@ const Home = () => {
                     </Row>
                 </Container>
                 </div>
-                <div className="landingpage_footer">
-                <Container>
-                <footer >
-                        <Row>
-                            <Col>
-                    <div className="footer_partone">
-                        <p className="footer_title">Get in touch:</p>
-                        <a href="mailto:hello@plantiful.com">Email Us</a>
-                    </div>
-                    </Col>
-                    <Col>
-                    <div className="footer_parttwo">
-                        <p className="footer_title">Follow along:</p>
-                        <p>@plantiful_plants</p>
-                        <p>Insta: Plantiful</p>
-                        <p>Facebook: Plantiful_Plants</p>
-                    </div>
-                    </Col>
-                    <Col>
-                    <div className="footer_partthree">
-                        <p className="footer_title">Explore:</p>
-                        <p>Log in (link)</p>
-                        <p>Plants (link)</p>
-                        <p>About (link)</p>
-                    </div>
-                    </Col>
-                    </Row>
-                </footer>
-                </Container>
-                </div>
+                
                 </>                );
                 };
 
