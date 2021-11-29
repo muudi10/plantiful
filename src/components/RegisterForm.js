@@ -74,8 +74,8 @@ const RegisterForm = () => {
 							<Form.Control
 							    className="w-50"
 								type='textbox'
-								placeholder='Create Username'
 								name='username'
+								placeholder="Create Username"
 								value={fields.username}
 								onChange={handleInputChange}
 								required
@@ -91,8 +91,8 @@ const RegisterForm = () => {
 						>
 							<Form.Control
 								type='email'
-								placeholder='Enter email'
 								name='email'
+								placeholder='Enter your email address'
 								value={fields.email}
 								onChange={handleInputChange}
 								className="w-50"
@@ -106,13 +106,13 @@ const RegisterForm = () => {
 					<Form.Group className='mb-3' controlId='formBasicPassword'>
 						<FloatingLabel
 							controlId='floatingInput'
-							label='Create password'
+							label='Create Password'
 							className='mb-3'
 						>
 							<Form.Control
 								type='password'
-								placeholder='Password'
 								className="w-50"
+								placeholder='Create Password'
 								data-testid='passwordinput'
 								name='password'
 								value={fields.password}
@@ -124,13 +124,13 @@ const RegisterForm = () => {
 					<Form.Group className='mb-3' controlId='formBasicConfirmPassword'>
 						<FloatingLabel
 							controlId='floatingInput'
-							label='Confirm password'
+							label='Confirm Password'
 							className='mb-3'
 						>
 							<Form.Control
 								type='password'
-								placeholder='Confirm Password'
 								className="w-50"
+								placeholder="Confirm Password"
 								data-testid='confirmPassword'
 								name='confirmPassword'
 								value={fields.confirmPassword}

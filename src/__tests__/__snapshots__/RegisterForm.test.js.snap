@@ -2,118 +2,171 @@
 
 exports[`Register Form component renders the basic fields 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class="form_wrapper"
+  >
     <div>
       <h2
         class="signup_header"
       >
-        Sign up
+        Sign up to Plantiful
       </h2>
     </div>
-    <form>
-      <div
-        class="mb-3"
+    <div
+      class="form_container"
+    >
+      <form
+        class=""
       >
         <div
-          class="mb-3 form-floating"
+          class="mb-3"
         >
-          <input
-            class="form_control form-control"
-            id="floatingInput"
-            name="username"
-            placeholder="Create Username"
-            required=""
-            type="textbox"
-            value=""
-          />
-          <label
-            for="floatingInput"
+          <div
+            class="mb-3 form-floating"
           >
-            Create Username
-          </label>
+            <input
+              class="w-50 form-control"
+              id="floatingInput"
+              name="username"
+              placeholder="Create Username"
+              required=""
+              type="textbox"
+              value=""
+            />
+            <label
+              for="floatingInput"
+            >
+              Create Username
+            </label>
+          </div>
         </div>
-      </div>
-      <div
-        class="mb-3"
-      >
         <div
-          class="mb-3 form-floating"
+          class="mb-3"
         >
-          <input
-            class="form_control form-control"
-            id="floatingInput"
-            name="email"
-            placeholder="Enter email"
-            required=""
-            type="email"
-            value=""
-          />
-          <label
-            for="floatingInput"
+          <div
+            class="mb-3 form-floating"
           >
-            Enter your email address
-          </label>
+            <input
+              class="w-50 form-control"
+              id="floatingInput"
+              name="email"
+              placeholder="Enter email"
+              required=""
+              type="email"
+              value=""
+            />
+            <label
+              for="floatingInput"
+            >
+              Enter your email address
+            </label>
+          </div>
+          <small
+            class="text-muted form-text"
+          >
+            We'll never share your email with anyone else.
+          </small>
         </div>
-        <small
-          class="text-muted form-text"
-        >
-          We'll never share your email with anyone else.
-        </small>
-      </div>
-      <div
-        class="mb-3"
-      >
         <div
-          class="mb-3 form-floating"
+          class="mb-3"
         >
-          <input
-            class="form_control form-control"
-            data-testid="passwordinput"
-            id="floatingInput"
-            name="password"
-            placeholder="Password"
-            required=""
-            type="password"
-            value=""
-          />
-          <label
-            for="floatingInput"
+          <div
+            class="mb-3 form-floating"
           >
-            Create password
-          </label>
+            <input
+              class="w-50 form-control"
+              data-testid="passwordinput"
+              id="floatingInput"
+              name="password"
+              placeholder="Password"
+              required=""
+              type="password"
+              value=""
+            />
+            <label
+              for="floatingInput"
+            >
+              Create password
+            </label>
+          </div>
         </div>
-      </div>
-      <div
-        class="mb-3"
-      >
         <div
-          class="mb-3 form-floating"
+          class="mb-3"
         >
-          <input
-            class="form_control form-control"
-            data-testid="confirmPassword"
-            id="floatingInput"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            required=""
-            type="password"
-            value=""
-          />
-          <label
-            for="floatingInput"
+          <div
+            class="mb-3 form-floating"
           >
-            Confirm password
-          </label>
+            <input
+              class="w-50 form-control"
+              data-testid="confirmPassword"
+              id="floatingInput"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              required=""
+              type="password"
+              value=""
+            />
+            <label
+              for="floatingInput"
+            >
+              Confirm password
+            </label>
+          </div>
         </div>
-      </div>
-      <button
-        class="button-primary"
-        data-testid="submitbutton"
-        type="submit"
-      >
-        Create account
-      </button>
-    </form>
+        <button
+          class="button-primary btn btn-primary"
+          data-testid="submitbutton"
+          id="submit"
+          style="background-color: rgb(85, 163, 86); border: #013606;"
+          type="submit"
+        >
+          Create account 
+          <svg
+            fill="currentColor"
+            height="20"
+            viewBox="0 0 256 256"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              fill="none"
+              height="256"
+              width="256"
+            />
+            <line
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="16"
+              x1="40"
+              x2="216"
+              y1="128"
+              y2="128"
+            />
+            <polyline
+              fill="none"
+              points="144 56 216 128 144 200"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="16"
+            />
+          </svg>
+        </button>
+        <p
+          class="member_text"
+        >
+          Already a member?
+          <a
+            class="signin_link"
+            href="/loginform"
+          >
+             Sign in 
+          </a>
+        </p>
+      </form>
+    </div>
   </div>
 </DocumentFragment>
 `;
