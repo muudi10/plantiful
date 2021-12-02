@@ -18,6 +18,8 @@ export const DataContextProvider = (props) => {
     };
     const [fields, setFields] = useState(initialState.fields);
     const [plants, setPlants] = useState({})
+    const [searchTerm, setSearchTerm] = useState()
+
     const handleFieldChange = (event) => {
       event.preventDefault();
       setFields((prev) => ({
@@ -25,10 +27,25 @@ export const DataContextProvider = (props) => {
         [event.target.name]: event.target.value,
       }));
     };
+
     const handleSubmit =(e)=>{
         e.preventDefault()
         return registerUSer(fields, setMessage)
       }
+
+      const handleEnter = (event) => {
+        if (event.key === "Enter") {
+          // return handlePlantSearch();
+        }
+      };
+       console.log(searchTerm)
+      const handleInputChange = (event) => setSearchTerm(event.target.value);
+ 
+  // const handlePlantSearch = () => {
+  //   getForecast(searchText, setSelectedDate, setForecasts, setLocation);
+  //   setSearchText("");
+  // };
+
 useEffect(()=>{
   getPlant(setPlants)
 },[])
@@ -41,7 +58,12 @@ console.log(plants)
         setMessage,
         handleFieldChange,
         handleSubmit,
-        plants
+        plants,
+        searchTerm,
+        setSearchTerm,
+        handleEnter,
+        handleInputChange,
+        // handlePlantSearch
       };
       console.log(fields)
 
