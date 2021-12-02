@@ -114,7 +114,7 @@ const RegisterForm = () => {
 				</div>
 				<button
 					type='submit'
-					className='button-primary'
+					className='button-primary btn btn-primary'
 					data-testid='submitbutton'
 				>
 					Create account
