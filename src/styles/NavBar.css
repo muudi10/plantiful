@@ -1,0 +1,17 @@
+.navigation {
+    background-color: #FCDC87;
+    width: 1470px;
+}
+
+.logo {
+    padding: 5px 5px;
+}
+
+.nav_link:hover {
+text-decoration: underline;
+color: #FFFFFF;
+}
+
+.ml-auto {
+    padding: 5px;
+}
