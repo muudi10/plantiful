@@ -8,7 +8,7 @@ const searchPlant = async(searchTerm)=>{
     }
     const response = await axios.get(endpoint)
     const data = await response.data
-    (data)
+    
 }
 
 

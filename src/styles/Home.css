@@ -1,14 +1,14 @@
 .landingpage_partone {
     padding: 250px 200px;
     background-color: #FCDC87;
-    width: 1470px;
+    width: 100%;
 
 }
 
 .hero_image {
     background-image: url("../assets/hero_image_2.png");
     background-repeat: no-repeat;
-    width: 1470px;
+    width: 100%;
     padding: 250px 200px;
 
 }
@@ -39,13 +39,13 @@
 
    .landingpage_parttwo {
     padding: 250px 200px;
-    width: 1470px;
+    width: 100%;
     background-color: #F9F5F1;
 
    }
    .landingpage_parttwo_start {
     background-color: #F9F5F1;
-    width: 1470px;
+    width: 100%;
 
    }
    .landingpage_parttwo_header {
@@ -54,7 +54,7 @@
        justify-content: center;
        padding: 25px;
        color: #013606;
-       width: 1470px;
+       width: 100%;
   
 
    }
@@ -83,7 +83,7 @@
 
    .landingpage_footer {
        padding: 110px 50px;
-       width: 1470px;
+       width: 100%;
        background-color: #55A356;
        color: #FFFFFF;
    }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 const urlEndPoint = process.env.REACT_APP_APIENDPOINT
 console.log(urlEndPoint)
-const hanldeAddProperty = async(fields,setMessage ) => {
+const handleUserRegister = async(fields,setMessage ) => {
  
 console.log(fields.name);
 
@@ -26,4 +26,4 @@ try {
 
   };
 
-  export default hanldeAddProperty
+  export default handleUserRegister
