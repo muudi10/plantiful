@@ -72,15 +72,15 @@ function List() {
                         <a href="plant-page">{plant.familyName}</a>
                         <br />
                     </td>
-                    <td className="p-name">
+                    <td className="">
                         <a href="plant-page">{plant.familyName}</a>
                         <br />
                     </td>
-                    <td className="p-team">
+                    <td className="">
                         <small>{plant.origin}</small>
                     </td>
 
-                    <td className="p-progress">
+                    <td className="">
                      <small>{plant.watering}</small>
                     </td>
                     <td>
