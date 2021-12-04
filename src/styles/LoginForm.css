@@ -9,9 +9,9 @@
 
 .form_wrapper {
     height: 85vh;
+    width: 100%;
     padding: 20px;
     background-color: #F9F5F1;
-    width: 1470px;
 }
 
 .form_container {
