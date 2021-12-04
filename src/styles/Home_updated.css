@@ -1,30 +1,45 @@
+
 .landingpage_partone {
 	padding: 250px 200px;
 	background-color: #fcdc87;
-    width: 100%;
+    max-width: 100%;
+	position: relative;
+	height:126vh;
 }
 
+.landingpage_partone_text {
+	position: absolute;
+	bottom: 720px;
+}
 .hero_image {
-	background-image: url("../assets/hero_image_2.png");
-	background-repeat: no-repeat;
-	width: 1470px;
-	padding: 250px 200px;
+	position: absolute;
+	max-width: 100%;
+	right: 140px;
+	top: 507px;
+
 }
 .hero_header {
-	font-weight: 100;
 	font-size: 88px;
 	color: #ffffff;
+	letter-spacing: -0.02em;
+	font-style: normal;
+    font-weight: bold;
+    line-height: 110px;
 }
 .hero_description {
 	color: #ffffff;
-	font-size: 30px;
+	font-style: normal;
+font-weight: 400;
+font-size: 36px;
+line-height: 45px;
+letter-spacing: -0.02em;
 }
 .brandname {
 	font-style: oblique;
 }
 
 .Container {
-    width: 100%;
+    max-width: 100%;
 	margin-right: 0 !important;
 	margin-left: 0 !important;
 	padding-right: 0 !important;
@@ -36,13 +51,13 @@
 }
 
 .landingpage_parttwo {
-	width: 100%;
+	max-width: 100%;
 	background-color: #f9f5f1;
 	height: 170vh;
 }
 .landingpage_parttwo_start {
 	background-color: #f9f5f1;
-	width: 100%;
+	max-width: 100%;
 	height: 20vh;
 }
 .landingpage_parttwo_header {
@@ -51,7 +66,7 @@
 	justify-content: center;
 	padding: 25px;
 	color: #013606;
-	width: 100%;
+	max-width: 100%;
 }
 .landingpage_parttwo_description {
 	display: flex;

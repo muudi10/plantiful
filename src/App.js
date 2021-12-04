@@ -9,7 +9,6 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import { DataContextProvider } from "./dataContext/DataContext";
-import Register from "./components/RegisterForm/Reg"
 
 function App() {
   return (
@@ -20,7 +19,7 @@ function App() {
             <Navigationbar />
             <Routes>
               <Route path="/" element={<Home />}></Route>{" "}
-              <Route path="/registerform" element={<Register />}></Route>{" "}
+              <Route path="/registerform" element={<RegisterForm />}></Route>{" "}
               <Route path="/loginform" element={<LoginForm />}></Route>{" "}
               <Route path="/plants" element={<PlantsList />}></Route>{" "}
             </Routes>{" "}

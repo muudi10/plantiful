@@ -152,14 +152,6 @@ const RegisterForm = () => {
 					<Alert message={alert.message} success={alert.isSuccess} />
 				</Form>
 				</div>
-				<button
-					type='submit'
-					className='button-primary btn btn-primary'
-					data-testid='submitbutton'
-				>
-					Create account
-				</button>
-				<Alert message={alert.message} success={alert.isSuccess} />
 		</div>
 	);
 };
