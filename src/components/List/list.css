@@ -13,14 +13,7 @@ body{margin-top:20px;}
     border-radius: 4px;
 }
 
-.p-progress .progress {
-    margin-bottom: 5px;
-}
 
-.p-name a {
-    font-size:14px;
-    /*font-weight:bold;*/
-}
 
 .bold {
     font-weight: bold;
@@ -38,13 +31,8 @@ body{margin-top:20px;}
     display: inline-block;
 }
 
-.project-heading {
-    font-size: 20px;
-}
 
-.mtop20 {
-    margin-top: 20px;
-}
+
 
 .p-files li a {
     margin-bottom: 10px;
@@ -57,10 +45,6 @@ body{margin-top:20px;}
     width: 20px;
 }
 
-.p-tag-list li {
-    display: inline-block;
-    margin:0 5px 7px 0;
-}
 
 .p-tag-list li a {
     display: inline-block;
@@ -92,8 +76,8 @@ body{margin-top:20px;}
 }
 
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
-    background-color: #b0b5b9;
-    border-color: #b0b5b9;
+    background-color: #01325a;
+    border-color: #1d77c0;
     color: #fff;
 }
 
@@ -112,9 +96,9 @@ body{margin-top:20px;}
 .btn-primary[disabled],
 .btn-primary.disabled.active,
 .btn-primary.active[disabled]{
-    background-color: #39b2a9;
-    border-color: #39b2a9;
-    color: #FFFFFF;
+    background-color: #010303;
+    border-color: #030707;
+    color: #000000;
 }
 
 .btn-success {

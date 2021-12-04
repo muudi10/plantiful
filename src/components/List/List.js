@@ -1,10 +1,12 @@
 import {Plus, Heart } from "phosphor-react";
-import React,{useEffect, useState} from "react";
+import React,{useEffect, useState, useContext} from "react";
 import './list.css'
 // import {DataContext} from "../../dataContext/DataContext"
 import axios from "axios";
-
+import Pagination from '../Pagination/Pagination'
 function List() {
+    // const {plants} = useContext(DataContext)
+
 
     const getPlant = async(setPlants)=>{
         let endpoint = '/plants';
@@ -34,14 +36,14 @@ function List() {
           <div className="panel-body">
             <div className="row p-3">
               <div className="col-12">
-                <div className="input-group">
+                <div className="input-group ">
                   <input
                     type="text"
                     placeholder="Search Here"
-                    className="input-sm form-control"
+                    className="input-lg form-control"
                   />{" "}
                   <span className="input-group-btn">
-                    <button type="button" className="btn btn-lg btn-success">
+                    <button type="button" className="btn btn-sm btn-success">
                       {" "}
                       Go!
                     </button>{" "}
@@ -101,6 +103,7 @@ function List() {
           </table>
         </section>
       </div>
+      <Pagination/>
     </>
   );
 }
