@@ -22,7 +22,7 @@ describe("Register Form component", () => {
     })
     it("should validate password field", () => {
         render(<RegisterForm />);
-        const password = screen.getByLabelText(/password/i);
+        const password = screen.getByTestId(/passwordinput/i);
         userEvent.type(password, "Il0veP!ant$!");
         expect(password).toHaveValue("Il0veP!ant$!");
     });

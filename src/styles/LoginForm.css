@@ -1,0 +1,27 @@
+.signin_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #013606;
+    padding: 15px 10px;
+    font-weight: 700;
+}
+
+.form_wrapper {
+    height: 85vh;
+    padding: 20px;
+    background-color: #F9F5F1;
+    width: 1470px;
+}
+
+.form_container {
+    padding: 20px;
+}
+
+.member_text {
+    padding: 12px 7px;
+}
+
+.signup_link {
+    color: #013606;
+}
