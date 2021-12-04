@@ -9,7 +9,7 @@ import {
 	NumberFour,
 } from "phosphor-react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import "../styles/Home.css";
+// import "../styles/Home.css";
 import MagnifyingGlass from "../assets/magnifying_glass.png"
 import PlantShelf from "../assets/plant_shelf.png"
 import PlantBook from "../assets/plant_book.png"

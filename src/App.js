@@ -1,37 +1,40 @@
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
+import PlantsList from "./components/List/List";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigationbar from "./components/Navbar";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import "bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container} from 'react-bootstrap';
-import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container } from "react-bootstrap";
+import { DataContextProvider } from "./dataContext/DataContext";
+import Register from "./components/RegisterForm/Reg"
 
 function App() {
-	return (
-		<div className='App'>
-			<Container fluid>
-			<Router>
-		<Navigationbar />
-				<Routes>
-					<Route path='/' element={<Home />}>
-					</Route>
-					<Route path='/registerform' element={<RegisterForm />}>
-					</Route>
-					<Route path='/loginform' element={<LoginForm />}>
-					</Route>
-				</Routes>
-			</Router>
-			<div className="page_container">
+  return (
+    <DataContextProvider>
+      <div className="App">
+        <Container>
+          <Router>
+            <Navigationbar />
+            <Routes>
+              <Route path="/" element={<Home />}></Route>{" "}
+              <Route path="/registerform" element={<Register />}></Route>{" "}
+              <Route path="/loginform" element={<LoginForm />}></Route>{" "}
+              <Route path="/plants" element={<PlantsList />}></Route>{" "}
+            </Routes>{" "}
+          </Router>{" "}
+		  <div className="page_container">
 				<div classname="content_wrap">
 			<Footer />
 			</div>
 			</div>
-			</Container>
-		</div>
-	);
+	
+        </Container>{" "}
+      </div>{" "}
+    </DataContextProvider>
+  );
 }
 
 export default App;
