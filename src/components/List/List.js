@@ -1,30 +1,11 @@
 import {Plus, Heart } from "phosphor-react";
 import React,{useEffect, useState, useContext} from "react";
 import './list.css'
-// import {DataContext} from "../../dataContext/DataContext"
+import {DataContext} from "../../dataContext/DataContext"
 import axios from "axios";
 import Pagination from '../Pagination/Pagination'
 function List() {
-    // const {plants} = useContext(DataContext)
-
-
-    const getPlant = async(setPlants)=>{
-        let endpoint = '/plants';
-        const response = await axios.get(endpoint)
-        console.log(response)
-        const data = await response.data
-        console.log( typeof (data[0]._id))
-        setPlants(data)
-    }
-    const [plants , setPlants] = useState()
-    
-
-    useEffect(()=>{
-        getPlant(setPlants)
-        
-
-    },[])
-
+  const {plants} = useContext(DataContext)
     console.log(plants)
   return (
     <>
