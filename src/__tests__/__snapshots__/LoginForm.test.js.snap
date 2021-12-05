@@ -18,6 +18,7 @@ exports[`LoginForm component renders the basic fields 1`] = `
         <input
           class="login_form"
           id="loginUsername"
+          name="username"
           placeholder="Enter username"
           required=""
           type="text"
@@ -33,19 +34,17 @@ exports[`LoginForm component renders the basic fields 1`] = `
         <input
           class="login_form"
           id="loginPassword"
+          name="password"
           placeholder="password"
           required=""
           type="password"
           value=""
         />
       </div>
-      <button
-        class="button-primary"
-        data-testid="loginbutton"
-        type="submit"
-      >
-        Log in
-      </button>
+      <input
+        type="button"
+        value="Log in"
+      />
     </form>
   </div>
 </DocumentFragment>
