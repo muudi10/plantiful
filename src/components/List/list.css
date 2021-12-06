@@ -13,7 +13,9 @@ body{margin-top:20px;}
     border-radius: 4px;
 }
 
-
+.p_titles {
+    color: #013606;
+}
 
 .bold {
     font-weight: bold;
@@ -31,6 +33,8 @@ body{margin-top:20px;}
     display: inline-block;
 }
 
+.search_input {
+}
 
 
 
@@ -101,13 +105,8 @@ body{margin-top:20px;}
     color: #000000;
 }
 
-.btn-success {
-    background-color: #78CD51;
-    border-color: #78CD51;
-    color: #FFFFFF;
-}
 
-.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
+ .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
     background-color: #6dbb4a;
     border-color: #6dbb4a;
     color: #FFFFFF;

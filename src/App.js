@@ -14,7 +14,7 @@ function App() {
   return (
     <DataContextProvider>
       <div className="App">
-        <Container>
+        <Container fluid className={"no-gutters mx-0 px-0"}>
           <Router>
             <Navigationbar />
             <Routes>
