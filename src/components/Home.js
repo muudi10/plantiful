@@ -41,7 +41,7 @@ const Home = () => {
 							</Button>
 							</div>
 							<div className="hero_image">
-								<img src={HeroImage} alt="" style={{width: "112.5%"}}/>
+								<img src={HeroImage} alt="" style={{width: "111%"}}/>
 							</div>
 								
 						</div>

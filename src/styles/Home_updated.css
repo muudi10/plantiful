@@ -15,7 +15,7 @@
 	position: absolute;
 	max-width: 100%;
 	right: 140px;
-	top: 452px;
+	top: 405px;
 
 }
 .hero_header {
@@ -53,7 +53,7 @@ letter-spacing: -0.02em;
 .landingpage_parttwo {
 	max-width: 100%;
 	background-color: #f9f5f1;
-	height: 170vh;
+	height: 180vh;
 }
 .landingpage_parttwo_start {
 	background-color: #f9f5f1;

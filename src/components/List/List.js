@@ -1,28 +1,30 @@
 import { Plus, Heart, ArrowRight } from "phosphor-react";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import "./list.css";
 // import {DataContext} from "../../dataContext/DataContext"
 import axios from "axios";
+import {  Link } from "react-router-dom";
 import Pagination from "../Pagination/Pagination";
 function List() {
 	// const {plants} = useContext(DataContext)
-
+  const [plants, setPlants] = useState();
+  
 	const getPlant = async (setPlants) => {
 		let endpoint = "/plants";
 		const response = await axios.get(endpoint);
-		console.log(response);
+		// console.log(response);
 		const data = await response.data;
-		console.log(typeof data[0]._id);
+		console.log(data[0]);
 		setPlants(data);
 	};
-	const [plants, setPlants] = useState();
+	
 
 	useEffect(() => {
 		getPlant(setPlants);
 	}, []);
 
-	console.log(plants);
+	// console.log(plants);
 	return (
 		<>
 			<div className='container'>
@@ -68,17 +70,20 @@ function List() {
 							</tr>
 						</thead>
 						<tbody>
+							
 							{plants &&
 								plants.map((plant) => (
 									<>
 										<div className='user'></div>
 										<tr>
 											<td className='p-name'>
-												<a href='plant-page'>{plant.familyName}</a>
-												<br />
+                        
+											<Link to={`plantname/${plant.latinName}`}>	{plant.familyName} </Link>
+                        
+                      	<br />
 											</td>
 											<td className=''>
-												<a href='plant-page'>{plant.familyName}</a>
+												<a href="plant">{plant.familyName}</a>
 												<br />
 											</td>
 											<td className=''>
@@ -100,6 +105,7 @@ function List() {
 												<Plus size={20} weight='bold' />
 											</td>
 										</tr>
+										
 									</>
 								))}
 						</tbody>

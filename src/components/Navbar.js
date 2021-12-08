@@ -5,8 +5,8 @@ import '../styles/NavBar.css';
 
 const Navigationbar = () => {
 	return (
-		<Navbar className="navigation">
-			<Container>
+		<Navbar className="navigation" fluid >
+			<Container fluid className={"no-gutters mx-0 px-0"}>
 				<Navbar.Brand href='/' style={{color: "#013606", fontWeight: "700"}}>
 					<FlowerLotus size={48} className="logo" style={{color: "#013606" }} />
 					 Plantiful
