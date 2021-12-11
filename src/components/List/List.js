@@ -1,6 +1,6 @@
 import { Plus, Heart, ArrowRight } from "phosphor-react";
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import "./list.css";
 // import {DataContext} from "../../dataContext/DataContext"
 import axios from "axios";
@@ -27,7 +27,7 @@ function List() {
 	// console.log(plants);
 	return (
 		<>
-			<div className='container'>
+			<Container fluid style={{backgroundColor: "#F9F5F1"}}>
 				<section className='panel'>
 					<header className='panel-heading'></header>
 					<div className='panel-body'>
@@ -36,23 +36,23 @@ function List() {
 								<div className='input-group '>
 									<input
 										type='text'
-										placeholder='Search Here'
+										placeholder='Search for a plant..'
 										className='w-50 search_input'
 									/>
 
-									<span className='input-group-btn'>
 										<Button
+										
 											type='submit'
 											id='submit'
 											style={{
 												backgroundColor: "#55A356",
 												border: "#013606",
 												margin: "8px",
+												overflow: "hidden"
 											}}
 										>
 											Go! <ArrowRight size={20} />
 										</Button>
-									</span>
 								</div>
 							</div>
 						</div>
@@ -82,20 +82,20 @@ function List() {
                         
                       	<br />
 											</td>
-											<td className=''>
+											<td className='p-name'>
 												<a href="plant">{plant.familyName}</a>
 												<br />
 											</td>
-											<td className=''>
+											<td className='p-name'>
 												<small>{plant.origin}</small>
 											</td>
 
-											<td className=''>
+											<td className='p-name'>
 												<small>{plant.watering}</small>
 											</td>
 											<td>
 												<span className='label label-danger'>
-													{plant.temperature}
+													{plant.temperature}&deg;<sup>c</sup>
 												</span>
 											</td>
 											<td>
@@ -111,9 +111,10 @@ function List() {
 						</tbody>
 					</table>
 				</section>
-			</div>
+			</Container>
+			
 			<Pagination />
-		</>
+			</>
 	);
 }
 

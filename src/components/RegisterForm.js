@@ -3,6 +3,7 @@ import axios from "axios";
 import Alert from "./Alert";
 import { Form, FloatingLabel, Button } from "react-bootstrap";
 import { ArrowRight } from "phosphor-react";
+
 import "../styles/RegisterForm.css";
 
 const initialState = {

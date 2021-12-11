@@ -15,7 +15,7 @@ import PlantShelf from "../assets/plant_shelf.png"
 import PlantBook from "../assets/plant_book.png"
 import PlantLightbulb from "../assets/plant_lightbulb.png"
 import RedArrow from "../assets/red_arrow.png"
-import HeroImage from "../assets/hero_image_2.png"
+import HeroImageActual from "../assets/HeroImageActual.png"
 
 const Home = () => {
 	return (
@@ -41,7 +41,7 @@ const Home = () => {
 							</Button>
 							</div>
 							<div className="hero_image">
-								<img src={HeroImage} alt="" style={{width: "111%"}}/>
+								<img src={HeroImageActual} alt="" style={{width: "111%"}}/>
 							</div>
 								
 						</div>

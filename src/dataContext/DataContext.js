@@ -1,11 +1,15 @@
 import { useState, useEffect, createContext } from "react";
 import registerUSer from '../dataContext/register'
+import { useParams } from "react-router-dom";
 import getPlant from '../dataContext/API'
+import getPlantByName from './plantbyname'
 export const DataContext = createContext();
 
 
 export const DataContextProvider = (props) => {
     // user registeration
+    const plantiful = "plantiful"
+    const [path, setPath] = useState()
     const [message, setMessage] = useState(false);
     const initialState = {
       fields: {
@@ -18,6 +22,7 @@ export const DataContextProvider = (props) => {
     };
     const [fields, setFields] = useState(initialState.fields);
     const [plants, setPlants] = useState({})
+    const [plantByName, setPlantByName] = useState([]);
     const [searchTerm, setSearchTerm] = useState()
 
     const handleFieldChange = (event) => {
@@ -45,11 +50,14 @@ export const DataContextProvider = (props) => {
   //   getForecast(searchText, setSelectedDate, setForecasts, setLocation);
   //   setSearchText("");
   // };
+ const { latinname } = useParams();
 
 useEffect(()=>{
   getPlant(setPlants)
+  getPlantByName(setPlantByName, path)
 },[])
 console.log(plants)
+console.log(path)
 
       const value = {
         fields,
@@ -59,9 +67,14 @@ console.log(plants)
         handleFieldChange,
         handleSubmit,
         plants,
+        plantByName,
+        setPlantByName,
         searchTerm,
         setSearchTerm,
+        setPath,
         handleEnter,
+        getPlantByName,
+        plantiful,
         handleInputChange,
         // handlePlantSearch
       };
