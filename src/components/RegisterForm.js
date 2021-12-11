@@ -3,6 +3,7 @@ import axios from "axios";
 import Alert from "./Alert";
 import { Form, FloatingLabel, Button } from "react-bootstrap";
 import { ArrowRight } from "phosphor-react";
+
 import "../styles/RegisterForm.css";
 
 const initialState = {
@@ -152,14 +153,6 @@ const RegisterForm = () => {
 					<Alert message={alert.message} success={alert.isSuccess} />
 				</Form>
 				</div>
-				<button
-					type='submit'
-					className='button-primary btn btn-primary'
-					data-testid='submitbutton'
-				>
-					Create account
-				</button>
-				<Alert message={alert.message} success={alert.isSuccess} />
 		</div>
 	);
 };
