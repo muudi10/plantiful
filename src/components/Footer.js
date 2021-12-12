@@ -13,7 +13,7 @@ const Footer = () => {
             <div className="footer_partone">
                 <h5 className="footer_title">Get in touch:</h5>
                 <ul className="list_styles">
-                <li><a href="mailto:hello@plantiful.com"> <At size={24} />Email Us</a></li>
+                <li><a href="mailto:hello@plantiful.com" className="footer_links"> <At size={24} />Email Us</a></li>
                 <li><PhoneCall size={24} />Contact Centre: 0200 476 9403</li>
                 <li><EnvelopeSimple size={24} />Plants at Plantiful, 123 North, Manchester, M12 9XX</li>
                 </ul>
@@ -36,9 +36,13 @@ const Footer = () => {
             <div className="footer_partthree">
                 <h5 className="footer_title">Explore:</h5>
                 <ul className="list_styles">
-                <li>Log in (link)</li>
-                <li>Plants (link)</li>
-                <li>About (link)</li>
+                <li>
+                <a href="/loginform" className="footer_links"> Log in </a></li>
+                <li>
+                 <a href="/registerform" className="footer_links"> Sign up </a></li>
+                 <li>
+                  <a href="/plants" className="footer_links"> Plant directory </a></li>
+           
                 </ul>
             </div>
             </Col>

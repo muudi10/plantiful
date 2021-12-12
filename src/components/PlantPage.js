@@ -42,8 +42,10 @@ const [plantByName, setPlantByName] = useState([]);
 		<>
 		<div className='wrapper'>
 
-			<Container>
+			<Container >
+			<div className="title_border">
 				<h2 className='plant_title'> {plantByName.familyName} </h2>
+				</div>
 				<Slider {...settings}>
 					<div>
 						<img src={dummyPlant} alt='' width='40%' />
@@ -60,6 +62,9 @@ const [plantByName, setPlantByName] = useState([]);
 				</Slider>
 
 				<div className='plant_info'>
+						<p className='plant_information_latinname'>
+                    <span className="plant_info_title">Latin name:</span> {plantByName.latinName}
+					</p>
 					<p className='plant_information_origin'>
 						<span className="plant_info_title">Origin:</span> {plantByName.origin}
 

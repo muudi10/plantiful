@@ -27,7 +27,7 @@ const Home = () => {
 							<div className="landingpage_partone_text">
 							<h1 className='hero_header'>
 								Have <span className='brandname'>Plantiful</span> Plants{" "}
-								<FlowerLotus size={38} style={{color: "#013606" }}/>{" "}
+								<FlowerLotus size={38} style={{color: "#3F7740" }}/>
 							</h1>
 							<p className='hero_description'>
 								We help you keep your plants alive by sending helpful reminders
@@ -69,10 +69,11 @@ const Home = () => {
 										<NumberOne size={48} />
 										SEARCH
 									</p>
-									<p>
+									<p className="box_description">
 										Search our inventory and find the plants you own
 									</p>
                                    </div>
+								 
 							</div>
 						</Col>
 					</Row>
@@ -91,7 +92,7 @@ const Home = () => {
 										<NumberTwo size={48} />
 										ADD
 									</p>
-									<p>
+									<p className="box_description">
 										Add your plant collection to your customisable dashboard
 									</p>
 									</div>
@@ -112,9 +113,8 @@ const Home = () => {
 										<NumberThree size={48} />
 										SCHEDULE
 									</p>
-									<p>
-										Schedule reminders for each plant and we will send you
-										notifications to water it.
+									<p className="box_description">
+										Schedule notification reminders to water your plants
 									</p>
 								</div>
 							</div>
@@ -134,7 +134,7 @@ const Home = () => {
 										<NumberFour size={48} />
 										LEARN
 									</p>
-									<p>
+									<p className="box_description">
 										Learn handy tips and tricks to help best care for your
 										plants.
 									</p>
