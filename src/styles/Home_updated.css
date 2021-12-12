@@ -191,3 +191,9 @@ top: 1246px;
 .box_description {
 	font-size: 20px;
 }
+
+.numbers {
+	font-weight: 700;
+	font-size: 32px;
+	padding: 10px 10px;
+}

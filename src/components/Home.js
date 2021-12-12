@@ -2,11 +2,7 @@ import React from "react";
 import {
 	FlowerLotus,
 	ArrowDown,
-	ArrowRight,
-	NumberOne,
-	NumberTwo,
-	NumberThree,
-	NumberFour,
+	ArrowRight
 } from "phosphor-react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "../styles/Home_updated.css";
@@ -66,11 +62,11 @@ const Home = () => {
                                  </div>
 								 <div className="box_all_text">
 									<p className='box_title'>
-										<NumberOne size={48} />
+										<span className="numbers">1</span>
 										SEARCH
 									</p>
 									<p className="box_description">
-										Search our inventory and find the plants you own
+										Search our inventory and find the plants you own.
 									</p>
                                    </div>
 								 
@@ -89,11 +85,11 @@ const Home = () => {
                                  </div>
 								 <div className="box_all_text">
 									<p className='box_title'>
-										<NumberTwo size={48} />
+										<span className="numbers">2</span>
 										ADD
 									</p>
 									<p className="box_description">
-										Add your plant collection to your customisable dashboard
+										Add your plant collection to your customisable dashboard.
 									</p>
 									</div>
 							</div>
@@ -110,11 +106,11 @@ const Home = () => {
                                  </div>
 								<div className='box_all_text'>
 									<p className='box_title'>
-										<NumberThree size={48} />
+										<span className="numbers">3</span>
 										SCHEDULE
 									</p>
 									<p className="box_description">
-										Schedule notification reminders to water your plants
+										Schedule email reminders to water your plants.
 									</p>
 								</div>
 							</div>
@@ -131,7 +127,7 @@ const Home = () => {
                                  </div>
 								<div className='box_all_text'>
 									<p className='box_title'>
-										<NumberFour size={48} />
+										<span className="numbers">4</span>
 										LEARN
 									</p>
 									<p className="box_description">
