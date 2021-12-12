@@ -13,7 +13,6 @@ export const DataContextProvider = (props) => {
     const [message, setMessage] = useState(false);
     const initialState = {
       fields: {
-        username:"",
         name: "",
         email: "",
         password: "",
