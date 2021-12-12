@@ -1,14 +1,23 @@
 .wrapper {
     background-color: #F9F5F1;
-    height: 100vh;
+    height: 110vh;
 }
 .plant_title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: #013606;
     font-size: 50px;
     padding: 20px;
+    background-color: #F9F5F1;
+}
+
+.title_border {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-color: #013606;
+    border-style: solid;
+    border-width: 2px 16px 16px 2px;
+    background-color: #F9F5F1;
 }
 
 .plant_info {
@@ -22,7 +31,13 @@
     font-weight: 550;
     letter-spacing: 0.1rem;
 }
-
+.plant_information_latinname {
+    position: absolute;
+    bottom: 335px;
+    left: 800px;
+    padding: 20px 10px;
+    line-height: 30px;
+}
 .plant_information_origin {
     position: absolute;
     bottom: 300px;
@@ -45,9 +60,6 @@
     line-height: 30px;
 }
 
-.degree {
-
-}
 
 .slick-prev {
     color: #013606;

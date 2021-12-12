@@ -9,9 +9,8 @@ console.log(fields.name);
 try {
      const response = await axios.post("/auth/register",{
       name: fields.name,
-      username: fields.username,
-      password: fields.password,
       email: fields.email,
+      password: fields.password,
 
     })
     const data = await response
@@ -21,7 +20,7 @@ try {
 
   setMessage(`Failed to submit form`)
 } 
-    console.log(`function trigered`, fields)
+    console.log(`function triggered`, fields)
     
 
   };

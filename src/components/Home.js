@@ -2,11 +2,7 @@ import React from "react";
 import {
 	FlowerLotus,
 	ArrowDown,
-	ArrowRight,
-	NumberOne,
-	NumberTwo,
-	NumberThree,
-	NumberFour,
+	ArrowRight
 } from "phosphor-react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "../styles/Home_updated.css";
@@ -27,7 +23,7 @@ const Home = () => {
 							<div className="landingpage_partone_text">
 							<h1 className='hero_header'>
 								Have <span className='brandname'>Plantiful</span> Plants{" "}
-								<FlowerLotus size={38} style={{color: "#013606" }}/>{" "}
+								<FlowerLotus size={38} style={{color: "#3F7740" }}/>
 							</h1>
 							<p className='hero_description'>
 								We help you keep your plants alive by sending helpful reminders
@@ -66,13 +62,14 @@ const Home = () => {
                                  </div>
 								 <div className="box_all_text">
 									<p className='box_title'>
-										<NumberOne size={48} />
+										<span className="numbers">1</span>
 										SEARCH
 									</p>
-									<p>
-										Search our inventory and find the plants you own
+									<p className="box_description">
+										Search our inventory and find the plants you own.
 									</p>
                                    </div>
+								 
 							</div>
 						</Col>
 					</Row>
@@ -88,11 +85,11 @@ const Home = () => {
                                  </div>
 								 <div className="box_all_text">
 									<p className='box_title'>
-										<NumberTwo size={48} />
+										<span className="numbers">2</span>
 										ADD
 									</p>
-									<p>
-										Add your plant collection to your customisable dashboard
+									<p className="box_description">
+										Add your plant collection to your customisable dashboard.
 									</p>
 									</div>
 							</div>
@@ -109,12 +106,11 @@ const Home = () => {
                                  </div>
 								<div className='box_all_text'>
 									<p className='box_title'>
-										<NumberThree size={48} />
+										<span className="numbers">3</span>
 										SCHEDULE
 									</p>
-									<p>
-										Schedule reminders for each plant and we will send you
-										notifications to water it.
+									<p className="box_description">
+										Schedule email reminders to water your plants.
 									</p>
 								</div>
 							</div>
@@ -131,10 +127,10 @@ const Home = () => {
                                  </div>
 								<div className='box_all_text'>
 									<p className='box_title'>
-										<NumberFour size={48} />
+										<span className="numbers">4</span>
 										LEARN
 									</p>
-									<p>
+									<p className="box_description">
 										Learn handy tips and tricks to help best care for your
 										plants.
 									</p>

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #013606;
+    color: black;
     padding: 15px 10px;
     font-weight: 700;
 }
@@ -23,5 +23,5 @@
 }
 
 .signup_link {
-    color: #013606;
+    color: #3F7740;
 }
