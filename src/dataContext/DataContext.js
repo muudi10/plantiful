@@ -20,12 +20,8 @@ export const DataContextProvider = (props) => {
       },
     };
     const [fields, setFields] = useState(initialState.fields);
-<<<<<<< HEAD
-    const [plants, setPlants] = useState([])
-=======
     const [plants, setPlants] = useState({})
     const [plantByName, setPlantByName] = useState([]);
->>>>>>> 8c8b4a41f4f1097164a3b32dae003a772bacb929
     const [searchTerm, setSearchTerm] = useState()
 
     const handleFieldChange = (event) => {
