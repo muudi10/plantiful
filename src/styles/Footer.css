@@ -1,7 +1,7 @@
 .landingpage_footer {
     padding: 80px 50px;
     width: 100%;
-    background-color: #55A356;
+    background-color: #3F7740;
     color: #FFFFFF;
 }
 
@@ -11,6 +11,7 @@
 
 .list_styles {
     list-style-type: none;
+    color: #FFFFFF
 }
 
 .footer_partone {
@@ -33,6 +34,9 @@
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-end;
+}
+.footer_links {
+    color: #FFFFFF;
 }
 
 .footer_copyright {

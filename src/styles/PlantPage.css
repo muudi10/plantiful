@@ -1,0 +1,80 @@
+.wrapper {
+    background-color: #F9F5F1;
+    height: 110vh;
+}
+.plant_title {
+    color: #013606;
+    font-size: 50px;
+    padding: 20px;
+    background-color: #F9F5F1;
+}
+
+.title_border {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-color: #013606;
+    border-style: solid;
+    border-width: 2px 16px 16px 2px;
+    background-color: #F9F5F1;
+}
+
+.plant_info {
+    position: relative;
+    font-size: 20px;
+    
+}
+.plant_info_title {
+    color: #013606;
+    text-transform: uppercase;
+    font-weight: 550;
+    letter-spacing: 0.1rem;
+}
+.plant_information_latinname {
+    position: absolute;
+    bottom: 335px;
+    left: 800px;
+    padding: 20px 10px;
+    line-height: 30px;
+}
+.plant_information_origin {
+    position: absolute;
+    bottom: 300px;
+    left: 800px;
+    padding: 20px 10px;
+    line-height: 30px;
+}
+.plant_information_wateringneeds {
+    position: absolute;
+    bottom: 265px;
+    left: 800px;
+    padding: 20px 10px;
+    line-height: 30px;
+}
+.plant_information_temperature {
+    position: absolute;
+    bottom: 230px;
+    left:804px;
+    padding: 20px 10px;
+    line-height: 30px;
+}
+
+
+.slick-prev {
+    color: #013606;
+  }
+
+.slick-dots li.slick-active button:before {
+    color: #013606;
+  }
+  .slick-prev:before, .slick-next:before {
+    color: #013606; 
+  }
+ 
+.add_button {
+    position: absolute;
+    bottom: 150px;
+    left: 890px;
+    padding: 10px 10px;
+}

@@ -2,11 +2,7 @@ import React from "react";
 import {
 	FlowerLotus,
 	ArrowDown,
-	ArrowRight,
-	NumberOne,
-	NumberTwo,
-	NumberThree,
-	NumberFour,
+	ArrowRight
 } from "phosphor-react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "../styles/Home_updated.css";
@@ -15,17 +11,19 @@ import PlantShelf from "../assets/plant_shelf.png"
 import PlantBook from "../assets/plant_book.png"
 import PlantLightbulb from "../assets/plant_lightbulb.png"
 import RedArrow from "../assets/red_arrow.png"
+import HeroImageActual from "../assets/HeroImageActual.png"
 
 const Home = () => {
 	return (
 		<>
-			<Container fluid={true} className='p-0, Container'>
+			<Container fluid className={"no-gutters mx-0 px-0"}>
 				<Row noGutters={true}>
 					<Col>
 						<div className='landingpage_partone'>
+							<div className="landingpage_partone_text">
 							<h1 className='hero_header'>
 								Have <span className='brandname'>Plantiful</span> Plants{" "}
-								<FlowerLotus size={38} />{" "}
+								<FlowerLotus size={38} style={{color: "#3F7740" }}/>
 							</h1>
 							<p className='hero_description'>
 								We help you keep your plants alive by sending helpful reminders
@@ -37,6 +35,11 @@ const Home = () => {
 							>
 								Find out more <ArrowDown size={20} />
 							</Button>
+							</div>
+							<div className="hero_image">
+								<img src={HeroImageActual} alt="" style={{width: "111%"}}/>
+							</div>
+								
 						</div>
 					</Col>
 				</Row>
@@ -52,20 +55,21 @@ const Home = () => {
 			<div className='landingpage_parttwo'>
 				<Container className='boxes'>
 					<Row>
-						<Col md={4}>
+						<Col>
 							<div className="box_one">
 								 <div className='box_one_image'>
                                  <img src={MagnifyingGlass} alt=""/>
                                  </div>
 								 <div className="box_all_text">
 									<p className='box_title'>
-										<NumberOne size={48} />
+										<span className="numbers">1</span>
 										SEARCH
 									</p>
-									<p>
-										Search our inventory and find the plants you own
+									<p className="box_description">
+										Search our inventory and find the plants you own.
 									</p>
                                    </div>
+								 
 							</div>
 						</Col>
 					</Row>
@@ -74,18 +78,18 @@ const Home = () => {
 					</div>
 					
 					<Row>
-						<Col md={{ span: 3, offset: 3 }}>
+						<Col>
 							<div className='box_two'>
 							<div className='box_two_image'>
                                  <img src={PlantShelf} alt=""/>
                                  </div>
 								 <div className="box_all_text">
 									<p className='box_title'>
-										<NumberTwo size={48} />
+										<span className="numbers">2</span>
 										ADD
 									</p>
-									<p>
-										Add your plant collection to your customisable dashboard
+									<p className="box_description">
+										Add your plant collection to your customisable dashboard.
 									</p>
 									</div>
 							</div>
@@ -95,19 +99,18 @@ const Home = () => {
 						<img src={RedArrow} alt=""/>
 					</div>
 					<Row>
-						<Col md={4}>
+						<Col>
 							<div className='box_three'>
 							<div className='box_three_image'>
                                  <img src={PlantBook} alt=""/>
                                  </div>
 								<div className='box_all_text'>
 									<p className='box_title'>
-										<NumberThree size={48} />
+										<span className="numbers">3</span>
 										SCHEDULE
 									</p>
-									<p>
-										Schedule reminders for each plant and we will send you
-										notifications to water it
+									<p className="box_description">
+										Schedule email reminders to water your plants.
 									</p>
 								</div>
 							</div>
@@ -117,17 +120,17 @@ const Home = () => {
 						<img src={RedArrow} alt=""/>
 					</div>
 					<Row>
-						<Col md={{ span: 3, offset: 3 }}>
+						<Col>
 							<div className='box_four'>
 							<div className='box_four_image'>
                                  <img src={PlantLightbulb} alt=""/>
                                  </div>
 								<div className='box_all_text'>
 									<p className='box_title'>
-										<NumberFour size={48} />
+										<span className="numbers">4</span>
 										LEARN
 									</p>
-									<p>
+									<p className="box_description">
 										Learn handy tips and tricks to help best care for your
 										plants.
 									</p>

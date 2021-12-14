@@ -1,63 +1,13 @@
-import React, { useState } from "react";
-import axios from "axios";
-import Alert from "./Alert";
+import React, { useContext } from "react";
 import { Form, FloatingLabel, Button } from "react-bootstrap";
 import { ArrowRight } from "phosphor-react";
+import {DataContext} from '../dataContext/DataContext'
 import "../styles/RegisterForm.css";
 
-const initialState = {
-	fields: {
-		username: "",
-		email: "",
-		password: "",
-		confirmPassword: "",
-	},
-	alert: {
-		message: "",
-		isSuccess: false,
-	},
-};
 
 const RegisterForm = () => {
-	const [fields, setFields] = useState(initialState.fields);
-	const [alert, setAlert] = useState(initialState.alert);
+	const {handleFieldChange, message, fields, handleSubmit} = useContext(DataContext)
 
-	const handleInputChange = (e) => {
-		setFields({ ...fields, [e.target.name]: [e.target.value] });
-	};
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		setAlert({ message: "", isSuccess: false });
-		if (fields.password !== fields.confirmPassword) {
-			console.log(fields.password);
-			console.log(fields.confirmPassword);
-			setAlert({
-				message: "Passwords do not match",
-				isSuccess: false,
-			});
-		} else {
-			axios
-				.post("http://localhost:4000/auth/register", {
-					username: fields.username,
-					email: fields.email,
-					password: fields.password,
-				})
-				.then((response) => {
-					console.log(response);
-					setAlert({
-						message: "Registration Successful",
-						isSuccess: true,
-					});
-				})
-				.catch((error) => {
-					console.log(error);
-					setAlert({
-						message: "Server error. Please try again later",
-						isSuccess: false,
-					});
-				});
-		}
-	};
 	return (
 		<div className="form_wrapper">
 			<div>
@@ -68,16 +18,16 @@ const RegisterForm = () => {
 					<Form.Group className='mb-3' controlId='formBasicUsername'>
 						<FloatingLabel
 							controlId='floatingInput'
-							label='Create Username'
+							label='Enter your name'
 							className='mb-3'
 						>
 							<Form.Control
 							    className="w-50"
 								type='textbox'
-								name='username'
-								placeholder="Create Username"
-								value={fields.username}
-								onChange={handleInputChange}
+								name='name'
+								placeholder="Enter your name"
+								value={fields.name}
+								onChange={handleFieldChange}
 								required
 							/>
 						</FloatingLabel>
@@ -94,7 +44,7 @@ const RegisterForm = () => {
 								name='email'
 								placeholder='Enter your email address'
 								value={fields.email}
-								onChange={handleInputChange}
+								onChange={handleFieldChange}
 								className="w-50"
 								required
 							/>
@@ -116,7 +66,7 @@ const RegisterForm = () => {
 								data-testid='passwordinput'
 								name='password'
 								value={fields.password}
-								onChange={handleInputChange}
+								onChange={handleFieldChange}
 								required
 							/>
 						</FloatingLabel>
@@ -134,7 +84,7 @@ const RegisterForm = () => {
 								data-testid='confirmPassword'
 								name='confirmPassword'
 								value={fields.confirmPassword}
-								onChange={handleInputChange}
+								onChange={handleFieldChange}
 								required
 							/>
 						</FloatingLabel>
@@ -149,17 +99,9 @@ const RegisterForm = () => {
 						Create account <ArrowRight size={20} />
 					</Button>
 					<p className="member_text">Already a member?<a href="/loginform" className="signin_link"> Sign in </a></p>
-					<Alert message={alert.message} success={alert.isSuccess} />
+				  <p> {message && message} </p>
 				</Form>
 				</div>
-				<button
-					type='submit'
-					className='button-primary btn btn-primary'
-					data-testid='submitbutton'
-				>
-					Create account
-				</button>
-				<Alert message={alert.message} success={alert.isSuccess} />
 		</div>
 	);
 };
