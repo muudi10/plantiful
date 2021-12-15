@@ -1,3 +1,4 @@
+
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
 import PlantsList from "./components/List/List";
@@ -11,10 +12,14 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import { DataContextProvider } from "./dataContext/DataContext";
-
+import { UserRegContextProvider } from "./dataContext/userRegistration";
+import { UserContextProvider } from "./dataContext/UserContext";
 function App() {
   return (
+
     <DataContextProvider>
+      <UserRegContextProvider>
+        <UserContextProvider>
       <div className="App">
         <Container fluid="true" className={"no-gutters mx-0 px-0"}>
           <Router>
@@ -36,6 +41,8 @@ function App() {
 	
         </Container>{" "}
       </div>{" "}
+      </UserContextProvider>
+      </UserRegContextProvider>
     </DataContextProvider>
   );
 }

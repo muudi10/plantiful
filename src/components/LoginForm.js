@@ -1,68 +1,35 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useContext } from "react";
 import { Form, FloatingLabel, Button } from "react-bootstrap";
 import { ArrowRight } from "phosphor-react";
 // import { useNavigate } from "react-router-dom";
 import Alert from "./Alert";
 import "../styles/LoginForm.css"
+import {UserContext} from '../dataContext/UserContext'
 
-const initialState = {
-	fields: {
-		username: "",
-		password: "",
-	},
-	alert: {
-		message: "",
-		isSuccess: false,
-	},
-}
 
 const LoginForm = () => {
-	const [alert, setAlert] = useState(initialState.alert)
-	const [loginFields, setLoginFields] = useState(initialState.fields);
-	// const [user, setUser] = useState("")
-	const [loading, setLoading] = useState(false)
-
-// let navigate = useNavigate()
-
-	const handleLogin = (e) => {
-		e.preventDefault()
-		setLoading(true)
-		setAlert({message: "", isSuccess: false})
-			axios.post('http://localhost:4000/auth/login', {
-				username: loginFields.username,
-				password: loginFields.password
-			})
-			.then((response)=>{
-				console.log(response)
-					// navigate("/dashboard")
-			})
-			.catch((error)=> {
-				console.log(error)
-			})
-	};
-	const handleInputChange = (e) => {
-		setLoginFields({ ...loginFields, [e.target.name]: [e.target.value] });
-	};
-
+ const { loginField, handleLogin, handleLoginInputChange,alert, loading, user, isLoggedIn } = useContext(UserContext)
+	// let navigate = useNavigate()
+	console.log(user)
+	console.log(isLoggedIn)
 	return (
 		<div className="form_wrapper">
 				<h2 className="signin_header">Sign in to Plantiful</h2>
 				<div className="form_container">
-			<Form onSubmit={handleLogin}> 
+			<Form onSubmit={handleLogin} > 
 				<Form.Group className='mb-3' controlId='formBasicUsername'>
 						<FloatingLabel
 							controlId='floatingInput'
-							label='Username'
+							label='email'
 							className='mb-3'
 						>
 							<Form.Control
 							    className="w-50"
 								type='textbox'
-								placeholder="Username"
-								name='username'
-								value={loginFields.username}
-								onChange={handleInputChange}
+								placeholder="email"
+								name='email'
+								value={loginField.email}
+								onChange={handleLoginInputChange}
 								required
 							/>
 						</FloatingLabel>
@@ -79,8 +46,8 @@ const LoginForm = () => {
 								placeholder="Password"
 								data-testid='passwordlogin'
 								name='password'
-								value={loginFields.password}
-								onChange={handleInputChange}
+								value={loginField.password}
+								onChange={handleLoginInputChange}
 								required
 							/>
 						</FloatingLabel>

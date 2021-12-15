@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { Form, FloatingLabel, Button } from "react-bootstrap";
 import { ArrowRight } from "phosphor-react";
-import {DataContext} from '../dataContext/DataContext'
+import {UserRegistration} from '../dataContext/userRegistration'
 import "../styles/RegisterForm.css";
 
 
 const RegisterForm = () => {
-	const {handleFieldChange, message, fields, handleSubmit} = useContext(DataContext)
+	const {handleFieldChange, message, fields, handleSubmit} = useContext(UserRegistration)
 
 	return (
 		<div className="form_wrapper">
