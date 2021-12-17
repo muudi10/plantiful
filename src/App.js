@@ -1,3 +1,4 @@
+import { useState } from "react"
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
 import PlantsList from "./components/List/List";
@@ -5,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigationbar from "./components/Navbar";
 import PlantPage from "./components/PlantPage";
 import Dashboard from "./components/Dashboard";
+import ErrorPage from "./components/ErrorPage";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import "bootstrap";
@@ -13,6 +15,7 @@ import { Container } from "react-bootstrap";
 import { DataContextProvider } from "./dataContext/DataContext";
 
 function App() {
+const [plantList, setPlantList] = useState([])
   return (
     <DataContextProvider>
       <div className="App">
@@ -24,8 +27,10 @@ function App() {
               <Route path="/registerform" element={<RegisterForm />}></Route>{" "}
               <Route path="/loginform" element={<LoginForm />}></Route>{" "}
               <Route path="/plants" element={<PlantsList />}></Route>
-              <Route path="/plants/plantname/:latinname" element={<PlantPage/>}></Route>{" "}
-              <Route path="/dashboard" element={<Dashboard/>}></Route>
+              <Route path="/plants/plantname/:latinname" element={<PlantPage plantList={plantList} setPlantList={setPlantList}/>}></Route>{" "}
+              <Route path="/userplants/:user" element={<Dashboard plantList={plantList} setPlantList={setPlantList}/>}></Route>
+              <Route path="/dashboard" element={<Dashboard plantList={plantList} setPlantList={setPlantList}/>}> </Route>
+              <Route path="*" element={<ErrorPage/>}></Route>
             </Routes>{" "}
           </Router>{" "}
 		  <div className="page_container">

@@ -31,7 +31,6 @@ export const DataContextProvider = (props) => {
         [event.target.name]: event.target.value,
       }));
     };
-
     const handleSubmit =(e)=>{
         e.preventDefault()
         return registerUSer(fields, setMessage)
