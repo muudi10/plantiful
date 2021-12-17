@@ -28,15 +28,10 @@ export const DataContextProvider = (props) => {
       },
 
     };
-
-    const LocalToken = localStorage.getItem('token')
-   
-    // const [isLoggeIn, setIsLoggeIn] = useState(false)
-    const [fields, setFields] = useState(initialState.fields);
-    // const [loginField, setLoginField] = useState(initialState.loginFields);
-    // const [user, setUser] = useState("");
+      const [fields, setFields] = useState(initialState.fields);
+  
  
-    const [plants, setPlants] = useState({})
+    const [plants, setPlants] = useState([])
     const [plantByName, setPlantByName] = useState([]);
     const [searchTerm, setSearchTerm] = useState()
     
@@ -69,7 +64,7 @@ export const DataContextProvider = (props) => {
  const { latinname } = useParams();
 
 useEffect(()=>{
-  ApiServices.getAllPlants(setPlants)
+  // ApiServices.getAllPlants(setPlants)
   getPlantByName(setPlantByName, path)
 },[])
 
@@ -84,6 +79,7 @@ useEffect(()=>{
         handleFieldChange,
         handleSubmit,
         plants,
+        setPlants,
         plantByName,
         setPlantByName,
         searchTerm,

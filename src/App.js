@@ -14,7 +14,24 @@ import { Container } from "react-bootstrap";
 import { DataContextProvider } from "./dataContext/DataContext";
 import { UserRegContextProvider } from "./dataContext/userRegistration";
 import { UserContextProvider } from "./dataContext/UserContext";
+import {UserContext} from './dataContext/UserContext'
+import { useContext, useEffect } from 'react';
+
 function App() {
+
+  const {   userGloblaState,   setUserGlobalState}= useContext(UserContext)
+console.log(userGloblaState)
+  useEffect (()=>{
+    const token= JSON.parse(window.localStorage.getItem("token"))
+    if(token) {
+      setUserGlobalState ({
+        ...userGloblaState,
+        token:token
+      })
+
+    }
+  },[])
+
   return (
 
     <DataContextProvider>

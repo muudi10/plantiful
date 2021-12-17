@@ -13,25 +13,39 @@ export const UserContextProvider = (props) => {
       isSuccess: false,
     },
   };
-  const LocalToken = localStorage.getItem("token")
+  const LocalToken = localStorage.getItem("token");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState("");
-  const [alert, setAlert] = useState(initialState.alert)
+  const [alert, setAlert] = useState(initialState.alert);
   const [loginField, setLoginField] = useState(initialState.loginFields);
-  const [token, setToken] = useState(LocalToken)
+  const [token, setToken] = useState(LocalToken);
+  const [userGloblaState, setUserGlobalState] = useState({
+    userDetails:null,
+    token:null,
+    userId: null,
+    userPlants:null
+  });
 
 
-  const handleLogin = (e) => {
-    e.preventDefault()
+    const handleLogin = (e) => {
+    e.preventDefault();
 
-    setLoading(true)
-    setAlert({message: "", isSuccess: false})
-        ApiServices.userLogin(loginField, setUser, setIsLoggedIn )
-
+    setLoading(true);
+    setAlert({ message: "", isSuccess: false });
+    ApiServices.userLogin(
+      loginField,
+      setUser,
+      setIsLoggedIn,
+      userGloblaState,
+      setUserGlobalState
+    );
   };
-  const handleLoginInputChange = (e) => {
-    e.preventDefault()
+
+
+  
+  const handleLoginInputChange = (event) => {
+    event.preventDefault();
 
     setLoginField((prev) => ({
       ...prev,
@@ -40,7 +54,6 @@ export const UserContextProvider = (props) => {
     }));
   };
 
-  
   const values = {
     token,
     isLoggedIn,
@@ -50,11 +63,15 @@ export const UserContextProvider = (props) => {
     handleLoginInputChange,
     alert,
     setIsLoggedIn,
-    setUser
-    
+    setUser,
+    userGloblaState,
+    setUserGlobalState
   };
 
   return (
-    <UserContext.Provider value={values}>  {props.children}   </UserContext.Provider>
+    <UserContext.Provider value={values}>
+      {" "}
+      {props.children}{" "}
+    </UserContext.Provider>
   );
 };

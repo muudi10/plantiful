@@ -3,6 +3,8 @@ import axios from "axios";
 
 const ApiCalls = {
 
+    
+
     getAllPlants: async (setPlants) => {
         let endpoint = '/plants';
         const response = await axios.get(endpoint)
@@ -53,17 +55,33 @@ const ApiCalls = {
 
 
     },
-    userLogin: async (loginField, setUser, setIsLoggedIn ) => {
-        console.log(loginField)
+    userLogin: async (loginField, setUser, setIsLoggedIn, userGloblaState,
+        setUserGlobalState) => {
         try {
 
             const response = await axios.post('/auth/login', {
                 email: loginField.email,
                 password: loginField.password
+            },
+            )
+            
+
+
+
+            console.log(response.data.others._id)
+            response && localStorage.setItem("token", JSON.stringify(response.data.token))
+            response && localStorage.setItem("userDetails", JSON.stringify(response.data.others))
+            response && localStorage.setItem("userPlants", JSON.stringify(response.data.others.userPlants))
+            response && setIsLoggedIn(true)
+            await setUserGlobalState({
+                ...userGloblaState,
+                userDetails:response.data.others,
+                token:response.data.token,
+                userId: response.data.others,
+                userPlants:response.data.userPlants
+
             })
-             response && localStorage.setItem("token", response.data.token)
-              response && setIsLoggedIn(true)
-              response && setUser(response.data.others.email)
+            response && setUser(response.data.userPlants)
             // response && window.location.replace("/dashboard")
         } catch (error) {
             console.log(error)
