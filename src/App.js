@@ -1,4 +1,3 @@
-import { useState } from "react"
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
 import PlantsList from "./components/List/List";
@@ -13,11 +12,32 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import { DataContextProvider } from "./dataContext/DataContext";
+import { UserRegContextProvider } from "./dataContext/userRegistration";
+import { UserContextProvider } from "./dataContext/UserContext";
+import {UserContext} from './dataContext/UserContext'
+import { useContext, useEffect } from 'react';
 
 function App() {
-const [plantList, setPlantList] = useState([])
+
+  const {   userGloblaState,   setUserGlobalState}= useContext(UserContext)
+console.log(userGloblaState)
+  useEffect (()=>{
+    const token= JSON.parse(window.localStorage.getItem("token"))
+    if(token) {
+      setUserGlobalState ({
+        ...userGloblaState,
+        token:token
+      })
+
+    }
+  },[])
+
+>>>>>>> 3f4eabfe4a5ef69a26eee66b6513d9f24063c95b
   return (
+
     <DataContextProvider>
+      <UserRegContextProvider>
+        <UserContextProvider>
       <div className="App">
         <Container fluid="true" className={"no-gutters mx-0 px-0"}>
           <Router>
@@ -41,6 +61,8 @@ const [plantList, setPlantList] = useState([])
 	
         </Container>{" "}
       </div>{" "}
+      </UserContextProvider>
+      </UserRegContextProvider>
     </DataContextProvider>
   );
 }

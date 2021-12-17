@@ -1,10 +1,10 @@
 import { useState, useEffect, createContext } from "react";
 import registerUSer from '../dataContext/register'
 import { useParams } from "react-router-dom";
-import getPlant from '../dataContext/API'
 import getPlantByName from './plantbyname'
-export const DataContext = createContext();
+import   ApiServices from './ApiServices';
 
+export const DataContext = createContext();
 
 export const DataContextProvider = (props) => {
     // user registeration
@@ -18,12 +18,23 @@ export const DataContextProvider = (props) => {
         password: "",
         confirmPassword: ""
       },
+      loginFields: {
+        email: "",
+        password: "",
+      },
+      alert: {
+        message: "",
+        isSuccess: false,
+      },
+
     };
-    const [fields, setFields] = useState(initialState.fields);
-    const [plants, setPlants] = useState({})
+      const [fields, setFields] = useState(initialState.fields);
+  
+ 
+    const [plants, setPlants] = useState([])
     const [plantByName, setPlantByName] = useState([]);
     const [searchTerm, setSearchTerm] = useState()
-
+    
     const handleFieldChange = (event) => {
       event.preventDefault();
       setFields((prev) => ({
@@ -31,17 +42,22 @@ export const DataContextProvider = (props) => {
         [event.target.name]: event.target.value,
       }));
     };
+<<<<<<< HEAD
+=======
+    
+  
+  
+>>>>>>> 3f4eabfe4a5ef69a26eee66b6513d9f24063c95b
     const handleSubmit =(e)=>{
         e.preventDefault()
-        return registerUSer(fields, setMessage)
-      }
+         ApiServices.userRegister(fields, setMessage)
+        }
 
       const handleEnter = (event) => {
         if (event.key === "Enter") {
           // return handlePlantSearch();
         }
       };
-       console.log(searchTerm)
       const handleInputChange = (event) => setSearchTerm(event.target.value);
  
   // const handlePlantSearch = () => {
@@ -51,20 +67,22 @@ export const DataContextProvider = (props) => {
  const { latinname } = useParams();
 
 useEffect(()=>{
-  getPlant(setPlants)
+  // ApiServices.getAllPlants(setPlants)
   getPlantByName(setPlantByName, path)
 },[])
-console.log(plants)
-console.log(path)
+
 
       const value = {
         fields,
+
         setFields,
+
         message,
         setMessage,
         handleFieldChange,
         handleSubmit,
         plants,
+        setPlants,
         plantByName,
         setPlantByName,
         searchTerm,
@@ -74,9 +92,14 @@ console.log(path)
         getPlantByName,
         plantiful,
         handleInputChange,
+        ApiServices,
+        // loginField, 
+        // setLoginField,
+
+        alert
         // handlePlantSearch
       };
-      console.log(fields)
+   
 
   return (
     <DataContext.Provider value={value}>{props.children}</DataContext.Provider>
