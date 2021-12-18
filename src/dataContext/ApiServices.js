@@ -63,15 +63,13 @@ const ApiCalls = {
             }, )
             console.log(response.data.others._id)
             response && localStorage.setItem("token", JSON.stringify(response.data.token))
-            response && localStorage.setItem("userDetails", JSON.stringify(response.data.others))
-            response && localStorage.setItem("userPlants", JSON.stringify(response.data.others.userPlants))
             response && setIsLoggedIn(true)
             await setUserGlobalState({
                 ...userGloblaState,
                token: response.data.token,
             })
             response && setUser(response.data.userPlants)
-            // response && window.location.replace("/dashboard")
+            response && window.location.replace("/dashboard")
         } catch (error) {
             console.log(error)
 
