@@ -42,20 +42,6 @@ function App() {
     }
   }, []);
 
-
-  const {   userGlobalState,   setUserGlobalState}= useContext(UserContext)
-console.log(userGlobalState)
-  useEffect (()=>{
-    const token= JSON.parse(window.localStorage.getItem("token"))
-    if(token) {
-      setUserGlobalState ({
-        ...userGlobalState,
-        token:token
-      })
-
-    }
-  },[])
-
   
   console.log(userGloblaState);
 
