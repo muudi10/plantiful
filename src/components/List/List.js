@@ -11,7 +11,7 @@ function List() {
   const { plants, PlantMatch, setPlantMatch } =
     useContext(UserContext);
   const [search, setSearch] = useState("");
-
+const [user, setUser] = useState("")
   const handleLoginInputChange = (event) => {
     event.preventDefault();
     setSearch(event.target.value);
@@ -26,6 +26,8 @@ function List() {
     setPlantMatch(matchedPlant)
    
   };
+
+
 
 const rendering =  (PlantMatch.length > 0 )? PlantMatch:plants
 

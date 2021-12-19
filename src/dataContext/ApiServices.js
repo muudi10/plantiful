@@ -70,10 +70,10 @@ const ApiCalls = {
                 userDetails:response.data.others,
                 token:response.data.token,
                 userId: response.data.others,
-                userPlants:response.data.userPlants
+                userPlants:response.data.userPlants,
 
 
-                ...userGloblaState,
+                ...userGlobalState,
                token: response.data.token,
 
             })

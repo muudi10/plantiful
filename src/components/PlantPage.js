@@ -8,14 +8,21 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/PlantPage.css";
+import Alert from "./Alert";
 import getPlantByName from '../dataContext/plantbyname'
 const { DataContext } = require("../dataContext/DataContext")
 
 
 const PlantPage = () => {
+const initialState = {
+	alert: {
+		message: "",
+		isSuccess: false,
+	}
+}
 const [plantByName, setPlantByName] = useState([]);
 const [user, setUser] = useState("")
-  
+  const [alert, setAlert] = useState(initialState.alert)
 // useEffect(()=> {
 
 // setUser(localStorage.getItem("userDetails"))
@@ -57,7 +64,11 @@ function addPlant (plant) {
 	// 		)
 existingPlantsActual.push(familyName)
 setUser(localStorage.setItem(
-	"userPlants", JSON.stringify(existingPlantsActual)
+	"userPlants", JSON.stringify(existingPlantsActual),
+	setAlert({
+          message: 'Plant added to dashboard!',
+          isSuccess: true,
+        })
 ))}
 
 // else {
@@ -120,6 +131,7 @@ setUser(localStorage.setItem(
 Add to dashboard
 
 					</Button>
+					 <Alert message={alert.message} success={alert.isSuccess} />
 				</div>
 			</Container>
 		</div>

@@ -20,7 +20,7 @@ import jwt from "jsonwebtoken";
 import { DataContext } from "./dataContext/DataContext";
 import ApiCalls from "./dataContext/ApiServices";
 function App() {
-  const { userGloblaState,setPlantMatch, plants, setPlants, setUserGlobalState } = useContext(UserContext);
+  const { userGlobalState,setPlantMatch, plants, setPlants, setUserGlobalState } = useContext(UserContext);
   console.log(plants)
   useEffect(() => {
     setPlantMatch(plants)
@@ -35,7 +35,7 @@ function App() {
   }, []);
 
 
-  const {   userGlobalState,   setUserGlobalState}= useContext(UserContext)
+  // const {   userGlobalState,   setUserGlobalState}= useContext(UserContext)
 console.log(userGlobalState)
   useEffect (()=>{
     const token= JSON.parse(window.localStorage.getItem("token"))
@@ -49,7 +49,7 @@ console.log(userGlobalState)
   },[])
 
   
-  console.log(userGloblaState);
+  console.log(userGlobalState);
 
   console.log(plants)
   return (
