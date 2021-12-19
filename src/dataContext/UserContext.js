@@ -13,6 +13,7 @@ export const UserContextProvider = (props) => {
       isSuccess: false,
     },
   };
+  const [plants, setPlants] = useState()
   const LocalToken = localStorage.getItem("token");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -43,7 +44,8 @@ export const UserContextProvider = (props) => {
   };
 
 
-  
+
+  const [PlantMatch, setPlantMatch] = useState([])
   const handleLoginInputChange = (event) => {
     event.preventDefault();
 
@@ -53,7 +55,9 @@ export const UserContextProvider = (props) => {
       [event.target.name]: event.target.value,
     }));
   };
-
+  useEffect(()=>{
+    ApiServices.getAllPlants(setPlants)
+},[])
   const values = {
     token,
     isLoggedIn,
@@ -64,8 +68,15 @@ export const UserContextProvider = (props) => {
     alert,
     setIsLoggedIn,
     setUser,
+
     userGlobalState,
-    setUserGlobalState
+
+    userGloblaState,
+    setUserGlobalState,
+    plants,
+    setPlants,
+    PlantMatch,
+    setPlantMatch
   };
 
   return (

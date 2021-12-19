@@ -14,10 +14,26 @@ import { Container } from "react-bootstrap";
 import { DataContextProvider } from "./dataContext/DataContext";
 import { UserRegContextProvider } from "./dataContext/userRegistration";
 import { UserContextProvider } from "./dataContext/UserContext";
-import {UserContext} from './dataContext/UserContext'
-import { useContext, useEffect } from 'react';
-
+import { UserContext } from "./dataContext/UserContext";
+import { useContext, useEffect } from "react";
+import jwt from "jsonwebtoken";
+import { DataContext } from "./dataContext/DataContext";
+import ApiCalls from "./dataContext/ApiServices";
 function App() {
+  const { userGloblaState,setPlantMatch, plants, setPlants, setUserGlobalState } = useContext(UserContext);
+  console.log(plants)
+  useEffect(() => {
+    setPlantMatch(plants)
+   const token = JSON.parse(window.localStorage.getItem("token"));
+    const decodedUser = jwt.verify(token, "SECRETKEY");
+      if (token) {
+      setUserGlobalState({
+        ...decodedUser,
+        token: token,
+      });
+    };
+  }, []);
+
 
   const {   userGlobalState,   setUserGlobalState}= useContext(UserContext)
 console.log(userGlobalState)
@@ -31,8 +47,12 @@ console.log(userGlobalState)
 
     }
   },[])
-  return (
 
+  
+  console.log(userGloblaState);
+
+  console.log(plants)
+  return (
     <DataContextProvider>
       <UserRegContextProvider>
         <UserContextProvider>
@@ -55,7 +75,6 @@ console.log(userGlobalState)
 			<Footer />
 			</div>
 			</div>
-	
         </Container>{" "}
       </div>{" "}
       </UserContextProvider>

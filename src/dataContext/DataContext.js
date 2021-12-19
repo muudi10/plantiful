@@ -3,7 +3,6 @@ import registerUSer from '../dataContext/register'
 import { useParams } from "react-router-dom";
 import getPlantByName from './plantbyname'
 import   ApiServices from './ApiServices';
-
 export const DataContext = createContext();
 
 export const DataContextProvider = (props) => {
@@ -29,9 +28,9 @@ export const DataContextProvider = (props) => {
 
     };
       const [fields, setFields] = useState(initialState.fields);
-  
+    const somevalue = `15`
  
-    const [plants, setPlants] = useState([])
+    // const [plants, setPlants] = useState()
     const [plantByName, setPlantByName] = useState([]);
     const [searchTerm, setSearchTerm] = useState()
     
@@ -62,7 +61,7 @@ export const DataContextProvider = (props) => {
  const { latinname } = useParams();
 
 useEffect(()=>{
-  // ApiServices.getAllPlants(setPlants)
+
   getPlantByName(setPlantByName, path)
 },[])
 
@@ -76,8 +75,8 @@ useEffect(()=>{
         setMessage,
         handleFieldChange,
         handleSubmit,
-        plants,
-        setPlants,
+        // plants,
+        // setPlants,
         plantByName,
         setPlantByName,
         searchTerm,
@@ -90,7 +89,7 @@ useEffect(()=>{
         ApiServices,
         // loginField, 
         // setLoginField,
-
+somevalue,
         alert
         // handlePlantSearch
       };
