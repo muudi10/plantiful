@@ -50,6 +50,7 @@ letter-spacing: -0.02em;
 	color: #55a356;
 }
 
+
 .landingpage_parttwo {
 	max-width: 100%;
 	background-color: #f9f5f1;
@@ -64,9 +65,10 @@ letter-spacing: -0.02em;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 25px;
+	padding: 20px;
 	color: #013606;
 	max-width: 100%;
+	font-size: 40px;
 }
 .landingpage_parttwo_description {
 	display: flex;

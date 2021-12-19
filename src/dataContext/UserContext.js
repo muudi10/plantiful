@@ -21,13 +21,13 @@ export const UserContextProvider = (props) => {
   const [alert, setAlert] = useState(initialState.alert);
   const [loginField, setLoginField] = useState(initialState.loginFields);
   const [token, setToken] = useState(LocalToken);
-  const [userGloblaState, setUserGlobalState] = useState({
+  const [userGlobalState, setUserGlobalState] = useState({
     userDetails:null,
     token:null,
     userId: null,
     userPlants:null
-  });
 
+  });
 
     const handleLogin = (e) => {
     e.preventDefault();
@@ -38,7 +38,7 @@ export const UserContextProvider = (props) => {
       loginField,
       setUser,
       setIsLoggedIn,
-      userGloblaState,
+      userGlobalState,
       setUserGlobalState
     );
   };
@@ -68,6 +68,9 @@ export const UserContextProvider = (props) => {
     alert,
     setIsLoggedIn,
     setUser,
+
+    userGlobalState,
+
     userGloblaState,
     setUserGlobalState,
     plants,

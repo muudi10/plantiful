@@ -1,8 +1,10 @@
 import axios from 'axios';
+import { Navigate } from "react-router-dom";
 const urlEndPoint = process.env.REACT_APP_APIENDPOINT
 console.log(urlEndPoint)
+
+
 const handleUserRegister = async(fields,setMessage ) => {
- 
 console.log(fields.name);
 
 
@@ -15,12 +17,14 @@ try {
     })
     const data = await response
     console.log(data.data)
-    await setMessage(`Form has been submited sucessfully`)
+    await setMessage(`Successfully created your account. Welcome to Plantiful!`)
+
+
 } catch (error) {
 
-  setMessage(`Failed to submit form`)
+  setMessage(`Sorry, there has been an error. Please try again.`)
 } 
-    console.log(`function triggered`, fields)
+    console.log(`Function triggered`, fields)
     
 
   };

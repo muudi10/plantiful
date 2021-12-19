@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Container, Button } from "react-bootstrap";
 import axios from "axios";
-import { ArrowRight } from "phosphor-react";
+import { Plus } from "phosphor-react";
 import { useParams } from "react-router-dom";
 import dummyPlant from "../assets/dummyPlant.png";
 import Slider from "react-slick";
@@ -13,8 +13,15 @@ const { DataContext } = require("../dataContext/DataContext")
 
 
 const PlantPage = () => {
-// const { plants, plantByName, setPlantByName } = useContext(DataContext)
 const [plantByName, setPlantByName] = useState([]);
+const [user, setUser] = useState("")
+  
+// useEffect(()=> {
+
+// setUser(localStorage.getItem("userDetails"))
+
+// })
+
 	const settings = {
 		dots: true,
 		lazyLoad: true,
@@ -27,6 +34,8 @@ const [plantByName, setPlantByName] = useState([]);
 
 	const { latinname } = useParams();
 
+const familyName = plantByName.familyName
+const watering = plantByName.watering
 	useEffect(() => {
 		axios
 			.get(`/plants/plantname/${latinname}`)
@@ -37,6 +46,26 @@ const [plantByName, setPlantByName] = useState([]);
 			.catch((error) => console.log(error));
 	}, [latinname]);
 
+function addPlant (plant) {
+
+	let existingPlants = localStorage.getItem("userPlants");
+	let existingPlantsActual = existingPlants ? JSON.parse(existingPlants) : [];
+	// const currentPlantSaved = existingPlants.find((x) => x.id === plant.id)
+	// 	if (currentPlantSaved) {
+	// 		const filteredPlantList = existingPlants.filter(
+	// 			(x) => x.id !== plant.id
+	// 		)
+existingPlantsActual.push(familyName)
+setUser(localStorage.setItem(
+	"userPlants", JSON.stringify(existingPlantsActual)
+))}
+
+// else {
+
+// existingPlants.push(familyName)
+// setUser(localStorage.setItem(
+// 	"userPlants", JSON.stringify(existingPlants)))
+// }}
 
 	return (
 		<>
@@ -80,6 +109,7 @@ const [plantByName, setPlantByName] = useState([]);
 						type='submit'
 						id='submit'
                         className="add_button"
+						onClick={addPlant}
 						style={{
 							backgroundColor: "#55A356",
 							border: "#013606",
@@ -87,7 +117,7 @@ const [plantByName, setPlantByName] = useState([]);
 							padding: "10px"
 						}}
 					>
-Add to dashboard <ArrowRight size={20} />
+Add to dashboard
 
 					</Button>
 				</div>
@@ -98,3 +128,39 @@ Add to dashboard <ArrowRight size={20} />
 };
 
 export default PlantPage;
+
+
+
+// //function to add plant
+// // function addPlant(plant) {
+// // 		const currentPlantSaved = plantList.find((x) => x.id === plant.id)
+// // 		if (currentPlantSaved) {
+// // 			const filteredPlantList = plantList.filter(
+// // 				(x) => x.id !== plant.id
+// // 			)
+// // 			setPlantList([
+// // 				...filteredPlantList,
+// // 				{ plantFamilyName: familyName, plantWatering: watering}
+// // 			])
+// // 		} else {
+// // 			setPlantList([...plantList, { plantFamilyName: familyName, plantWatering: watering }])
+// // 		}
+// // 	}
+// //function to add plant using API
+//   const addPlantTest = async (plant) => {
+// 	  const currentPlantSaved = plantList.find((x) => x.id === plant.id)
+// 		if (currentPlantSaved) {
+// 			const filteredPlantList = plantList.filter(
+// 				(x) => x.id !== plant.id
+// 			)
+// 			const res = await axios.post(`userplants/${user}`) 
+// 			setPlantList([
+// 				...filteredPlantList,
+// 				{ plantFamilyName: familyName, plantWatering: watering}
+// 			])
+// 		} else {
+// 			setPlantList([...plantList, { plantFamilyName: familyName, plantWatering: watering }])
+// 		}
+  
+//   };
+// console.log(plantList)
