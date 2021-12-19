@@ -4,8 +4,10 @@ import axios from "axios";
 const ApiCalls = {
 
     getAllPlants: async (setPlants) => {
+        const baseURL = `https://api.eastberry.io`
+
         let endpoint = '/plants';
-        const response = await axios.get(endpoint)
+        const response = await axios.get(baseURL+endpoint)
         const data = await response.data
         setPlants(data)
 

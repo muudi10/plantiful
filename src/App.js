@@ -20,11 +20,16 @@ import jwt from "jsonwebtoken";
 import { DataContext } from "./dataContext/DataContext";
 import ApiCalls from "./dataContext/ApiServices";
 function App() {
+
+  const Secret = process.env.REACT_APP_JWT_SECRET
+  console.log(Secret)
   const { userGlobalState,setPlantMatch, plants, setPlants, setUserGlobalState } = useContext(UserContext);
+
   console.log(plants)
   useEffect(() => {
     setPlantMatch(plants)
    const token = JSON.parse(window.localStorage.getItem("token"));
+
     const decodedUser = jwt.verify(token, "SECRETKEY");
       if (token) {
       setUserGlobalState({
@@ -43,10 +48,22 @@ console.log(userGlobalState)
       setUserGlobalState ({
         ...userGlobalState,
         token:token
-      })
 
+    
+      if (!token) {
+   setUserGlobalState({
+        ...userGloblaState
+
+      })
+    }else{
+    const decodedUser = jwt.verify(token, "secret");
+    setUserGlobalState({
+      ...decodedUser
+    })
+
+      
     }
-  },[])
+  }, []);
 
   
   console.log(userGlobalState);
