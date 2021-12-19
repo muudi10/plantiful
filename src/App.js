@@ -19,20 +19,18 @@ import { useContext, useEffect } from 'react';
 
 function App() {
 
-  const {   userGloblaState,   setUserGlobalState}= useContext(UserContext)
-console.log(userGloblaState)
+  const {   userGlobalState,   setUserGlobalState}= useContext(UserContext)
+console.log(userGlobalState)
   useEffect (()=>{
     const token= JSON.parse(window.localStorage.getItem("token"))
     if(token) {
       setUserGlobalState ({
-        ...userGloblaState,
+        ...userGlobalState,
         token:token
       })
 
     }
   },[])
-
->>>>>>> 3f4eabfe4a5ef69a26eee66b6513d9f24063c95b
   return (
 
     <DataContextProvider>
@@ -47,9 +45,8 @@ console.log(userGloblaState)
               <Route path="/registerform" element={<RegisterForm />}></Route>{" "}
               <Route path="/loginform" element={<LoginForm />}></Route>{" "}
               <Route path="/plants" element={<PlantsList />}></Route>
-              <Route path="/plants/plantname/:latinname" element={<PlantPage plantList={plantList} setPlantList={setPlantList}/>}></Route>{" "}
-              <Route path="/userplants/:user" element={<Dashboard plantList={plantList} setPlantList={setPlantList}/>}></Route>
-              <Route path="/dashboard" element={<Dashboard plantList={plantList} setPlantList={setPlantList}/>}> </Route>
+              <Route path="/plants/plantname/:latinname" element={<PlantPage />}></Route>{" "}
+              <Route path="/dashboard" element={<Dashboard/>}></Route>
               <Route path="*" element={<ErrorPage/>}></Route>
             </Routes>{" "}
           </Router>{" "}

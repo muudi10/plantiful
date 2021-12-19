@@ -82,7 +82,7 @@ function List() {
                       <td>
                         <span className="label label-danger">
                           {" "}
-                          {plant.temperature} & deg; <sup> c </sup>{" "}
+                          {plant.temperature} &deg; <sup> c </sup>{" "}
                         </span>{" "}
                       </td>{" "}
                       <td>

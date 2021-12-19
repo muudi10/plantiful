@@ -55,7 +55,7 @@ const ApiCalls = {
 
 
     },
-    userLogin: async (loginField, setUser, setIsLoggedIn, userGloblaState,
+    userLogin: async (loginField, setUser, setIsLoggedIn, userGlobalState,
         setUserGlobalState) => {
         try {
 
@@ -74,7 +74,7 @@ const ApiCalls = {
             response && localStorage.setItem("userPlants", JSON.stringify(response.data.others.userPlants))
             response && setIsLoggedIn(true)
             await setUserGlobalState({
-                ...userGloblaState,
+                ...userGlobalState,
                 userDetails:response.data.others,
                 token:response.data.token,
                 userId: response.data.others,
@@ -82,7 +82,7 @@ const ApiCalls = {
 
             })
             response && setUser(response.data.userPlants)
-            // response && window.location.replace("/dashboard")
+            response && window.location.replace("/dashboard")
         } catch (error) {
             console.log(error)
 
