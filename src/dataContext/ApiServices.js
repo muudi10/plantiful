@@ -3,11 +3,11 @@ import axios from "axios";
 
 const ApiCalls = {
 
-    
-
     getAllPlants: async (setPlants) => {
+        const baseURL = `https://api.eastberry.io`
+
         let endpoint = '/plants';
-        const response = await axios.get(endpoint)
+        const response = await axios.get(baseURL+endpoint)
         const data = await response.data
         setPlants(data)
 
@@ -55,34 +55,32 @@ const ApiCalls = {
 
 
     },
-    userLogin: async (loginField, setUser, setIsLoggedIn, userGloblaState,
+    userLogin: async (loginField, setUser, setIsLoggedIn, userGlobalState,
         setUserGlobalState) => {
         try {
 
             const response = await axios.post('/auth/login', {
                 email: loginField.email,
                 password: loginField.password
-            },
-            )
-            
-
-
-
+            }, )
             console.log(response.data.others._id)
             response && localStorage.setItem("token", JSON.stringify(response.data.token))
-            response && localStorage.setItem("userDetails", JSON.stringify(response.data.others))
-            response && localStorage.setItem("userPlants", JSON.stringify(response.data.others.userPlants))
             response && setIsLoggedIn(true)
             await setUserGlobalState({
-                ...userGloblaState,
+
+                ...userGlobalState,
                 userDetails:response.data.others,
                 token:response.data.token,
                 userId: response.data.others,
-                userPlants:response.data.userPlants
+                userPlants:response.data.userPlants,
+
+
+                ...userGlobalState,
+               token: response.data.token,
 
             })
             response && setUser(response.data.userPlants)
-            // response && window.location.replace("/dashboard")
+            response && window.location.replace("/dashboard")
         } catch (error) {
             console.log(error)
 

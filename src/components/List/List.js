@@ -1,17 +1,35 @@
 import { Plus, Heart, ArrowRight } from "phosphor-react";
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import "./list.css";
-import { DataContext } from "../../dataContext/DataContext";
+import { UserContext } from "../../dataContext/UserContext";
 import { Link } from "react-router-dom";
 import Pagination from "../Pagination/Pagination";
 import ApiCalls from "../../dataContext/ApiServices";
 
 function List() {
-  const { plants, setPlants } = useContext(DataContext);
-  useEffect(() => {
-    ApiCalls.getAllPlants(setPlants);
-  }, []);
+  const { plants, PlantMatch, setPlantMatch } =
+    useContext(UserContext);
+  const [search, setSearch] = useState("");
+const [user, setUser] = useState("")
+  const handleLoginInputChange = (event) => {
+    event.preventDefault();
+    setSearch(event.target.value);
+    plantSearch(search);
+  };
+
+  const plantSearch = (search) => {
+    let matchedPlant = plants.filter((plant) => {
+      const regex = new RegExp(`${search}`, "gi");
+      return plant.latinName.match(regex) || plant.familyName.match(regex);
+    });
+    setPlantMatch(matchedPlant)
+   
+  };
+
+
+
+const rendering =  (PlantMatch.length > 0 )? PlantMatch:plants
 
   return (
     <>
@@ -31,6 +49,8 @@ function List() {
                     type="text"
                     placeholder="Search for a plant.."
                     className="w-50 search_input"
+                    value={search}
+                    onChange={handleLoginInputChange}
                   />
                   <Button
                     type="submit"
@@ -57,8 +77,8 @@ function List() {
               </tr>{" "}
             </thead>{" "}
             <tbody>
-              {plants &&
-                plants.map((plant) => (
+              {rendering &&
+                rendering.map((plant, index) => (
                   <>
                     <div className="user"> </div>{" "}
                     <tr>
@@ -82,7 +102,7 @@ function List() {
                       <td>
                         <span className="label label-danger">
                           {" "}
-                          {plant.temperature} & deg; <sup> c </sup>{" "}
+                          {plant.temperature} &deg; <sup> c </sup>{" "}
                         </span>{" "}
                       </td>{" "}
                       <td>

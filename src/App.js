@@ -14,26 +14,66 @@ import { Container } from "react-bootstrap";
 import { DataContextProvider } from "./dataContext/DataContext";
 import { UserRegContextProvider } from "./dataContext/userRegistration";
 import { UserContextProvider } from "./dataContext/UserContext";
-import {UserContext} from './dataContext/UserContext'
-import { useContext, useEffect } from 'react';
-
+import { UserContext } from "./dataContext/UserContext";
+import { useContext, useEffect } from "react";
+import jwt from "jsonwebtoken";
+import { DataContext } from "./dataContext/DataContext";
+import ApiCalls from "./dataContext/ApiServices";
 function App() {
 
-  const {   userGloblaState,   setUserGlobalState}= useContext(UserContext)
-console.log(userGloblaState)
+  const Secret = process.env.REACT_APP_JWT_SECRET
+  console.log(Secret)
+  const { userGlobalState,setPlantMatch, plants, setPlants, setUserGlobalState } = useContext(UserContext);
+
+  console.log(plants)
+  useEffect(() => {
+    setPlantMatch(plants)
+   const token = JSON.parse(window.localStorage.getItem("token"));
+
+    const decodedUser = jwt.verify(token, "SECRETKEY");
+      if (token) {
+      setUserGlobalState({
+        ...decodedUser,
+        token: token,
+      });
+    };
+  }, []);
+
+
+  // const {   userGlobalState,   setUserGlobalState}= useContext(UserContext)
+console.log(userGlobalState)
   useEffect (()=>{
     const token= JSON.parse(window.localStorage.getItem("token"))
     if(token) {
       setUserGlobalState ({
-        ...userGloblaState,
+        ...userGlobalState,
         token:token
-      })
 
+    
+      if (!token) {
+   setUserGlobalState({
+        ...userGloblaState
+
+      })
+    }else{
+    const decodedUser = jwt.verify(token, "secret");
+    setUserGlobalState({
+      ...decodedUser
+    })
+
+      
     }
-  },[])
+  }, []);
+
 
   return (
 
+  
+  console.log(userGlobalState);
+
+
+  console.log(plants)
+  return (
     <DataContextProvider>
       <UserRegContextProvider>
         <UserContextProvider>
@@ -47,7 +87,8 @@ console.log(userGloblaState)
               <Route path="/loginform" element={<LoginForm />}></Route>{" "}
               <Route path="/plants" element={<PlantsList />}></Route>
               <Route path="/plants/plantname/:latinname" element={<PlantPage />}></Route>{" "}
-              <Route path="/dashboard" element={<Dashboard />}> </Route>
+
+              <Route path="/dashboard" element={<Dashboard/>}></Route>
               <Route path="*" element={<ErrorPage/>}></Route>
             </Routes>{" "}
           </Router>{" "}
@@ -56,7 +97,6 @@ console.log(userGloblaState)
 			<Footer />
 			</div>
 			</div>
-	
         </Container>{" "}
       </div>{" "}
       </UserContextProvider>

@@ -8,14 +8,27 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/PlantPage.css";
+import Alert from "./Alert";
 import getPlantByName from '../dataContext/plantbyname'
 const { DataContext } = require("../dataContext/DataContext")
 
 
-const PlantPage = (props) => {
-// const { plants, plantByName, setPlantByName } = useContext(DataContext)
+const PlantPage = () => {
+const initialState = {
+	alert: {
+		message: "",
+		isSuccess: false,
+	}
+}
 const [plantByName, setPlantByName] = useState([]);
-const { plantList, setPlantList } = props;
+const [user, setUser] = useState("")
+  const [alert, setAlert] = useState(initialState.alert)
+// useEffect(()=> {
+
+// setUser(localStorage.getItem("userDetails"))
+
+// })
+
 	const settings = {
 		dots: true,
 		lazyLoad: true,
@@ -27,7 +40,7 @@ const { plantList, setPlantList } = props;
 	};
 
 	const { latinname } = useParams();
-	const { user } = useParams();
+
 const familyName = plantByName.familyName
 const watering = plantByName.watering
 	useEffect(() => {
@@ -40,40 +53,31 @@ const watering = plantByName.watering
 			.catch((error) => console.log(error));
 	}, [latinname]);
 
+function addPlant (plant) {
 
-//function to add plant
-// function addPlant(plant) {
-// 		const currentPlantSaved = plantList.find((x) => x.id === plant.id)
-// 		if (currentPlantSaved) {
-// 			const filteredPlantList = plantList.filter(
-// 				(x) => x.id !== plant.id
-// 			)
-// 			setPlantList([
-// 				...filteredPlantList,
-// 				{ plantFamilyName: familyName, plantWatering: watering}
-// 			])
-// 		} else {
-// 			setPlantList([...plantList, { plantFamilyName: familyName, plantWatering: watering }])
-// 		}
-// 	}
-//function to add plant using API
-  const addPlantTest = async (plant) => {
-	  const currentPlantSaved = plantList.find((x) => x.id === plant.id)
-		if (currentPlantSaved) {
-			const filteredPlantList = plantList.filter(
-				(x) => x.id !== plant.id
-			)
-			const res = await axios.post(`userplants/${user}`) 
-			setPlantList([
-				...filteredPlantList,
-				{ plantFamilyName: familyName, plantWatering: watering}
-			])
-		} else {
-			setPlantList([...plantList, { plantFamilyName: familyName, plantWatering: watering }])
-		}
-  
-  };
-console.log(plantList)
+	let existingPlants = localStorage.getItem("userPlants");
+	let existingPlantsActual = existingPlants ? JSON.parse(existingPlants) : [];
+	// const currentPlantSaved = existingPlants.find((x) => x.id === plant.id)
+	// 	if (currentPlantSaved) {
+	// 		const filteredPlantList = existingPlants.filter(
+	// 			(x) => x.id !== plant.id
+	// 		)
+existingPlantsActual.push(familyName)
+setUser(localStorage.setItem(
+	"userPlants", JSON.stringify(existingPlantsActual),
+	setAlert({
+          message: 'Plant added to dashboard!',
+          isSuccess: true,
+        })
+))}
+
+// else {
+
+// existingPlants.push(familyName)
+// setUser(localStorage.setItem(
+// 	"userPlants", JSON.stringify(existingPlants)))
+// }}
+
 	return (
 		<>
 		<div className='wrapper'>
@@ -116,7 +120,7 @@ console.log(plantList)
 						type='submit'
 						id='submit'
                         className="add_button"
-						onClick={addPlantTest}
+						onClick={addPlant}
 						style={{
 							backgroundColor: "#55A356",
 							border: "#013606",
@@ -127,6 +131,7 @@ console.log(plantList)
 Add to dashboard
 
 					</Button>
+					 <Alert message={alert.message} success={alert.isSuccess} />
 				</div>
 			</Container>
 		</div>
@@ -135,3 +140,39 @@ Add to dashboard
 };
 
 export default PlantPage;
+
+
+
+// //function to add plant
+// // function addPlant(plant) {
+// // 		const currentPlantSaved = plantList.find((x) => x.id === plant.id)
+// // 		if (currentPlantSaved) {
+// // 			const filteredPlantList = plantList.filter(
+// // 				(x) => x.id !== plant.id
+// // 			)
+// // 			setPlantList([
+// // 				...filteredPlantList,
+// // 				{ plantFamilyName: familyName, plantWatering: watering}
+// // 			])
+// // 		} else {
+// // 			setPlantList([...plantList, { plantFamilyName: familyName, plantWatering: watering }])
+// // 		}
+// // 	}
+// //function to add plant using API
+//   const addPlantTest = async (plant) => {
+// 	  const currentPlantSaved = plantList.find((x) => x.id === plant.id)
+// 		if (currentPlantSaved) {
+// 			const filteredPlantList = plantList.filter(
+// 				(x) => x.id !== plant.id
+// 			)
+// 			const res = await axios.post(`userplants/${user}`) 
+// 			setPlantList([
+// 				...filteredPlantList,
+// 				{ plantFamilyName: familyName, plantWatering: watering}
+// 			])
+// 		} else {
+// 			setPlantList([...plantList, { plantFamilyName: familyName, plantWatering: watering }])
+// 		}
+  
+//   };
+// console.log(plantList)

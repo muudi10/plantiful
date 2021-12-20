@@ -20,7 +20,7 @@ const LoginForm = () => {
 				<Form.Group className='mb-3' controlId='formBasicUsername'>
 						<FloatingLabel
 							controlId='floatingInput'
-							label='email'
+							label='Email address'
 							className='mb-3'
 						>
 							<Form.Control
