@@ -42,12 +42,8 @@ export const DataContextProvider = (props) => {
         [event.target.name]: event.target.value,
       }));
     };
-<<<<<<< HEAD
-=======
+
     
-  
-  
->>>>>>> 3f4eabfe4a5ef69a26eee66b6513d9f24063c95b
     const handleSubmit =(e)=>{
         e.preventDefault()
          ApiServices.userRegister(fields, setMessage)
