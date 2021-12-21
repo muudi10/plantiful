@@ -44,18 +44,19 @@ function App() {
 console.log(userGlobalState)
   useEffect (()=>{
     const token= JSON.parse(window.localStorage.getItem("token"))
-    if(token) {
+    if (token) {
       setUserGlobalState ({
         ...userGlobalState,
-        token:token
-
+        token:token,
+      })}
     
-      if (!token) {
-   setUserGlobalState({
-        ...userGloblaState
+  //     if (!token) {
+  //  setUserGlobalState({
+  //       ...userGlobalState
 
-      })
-    }else{
+  //     })
+    
+    else {
     const decodedUser = jwt.verify(token, "secret");
     setUserGlobalState({
       ...decodedUser
@@ -66,13 +67,6 @@ console.log(userGlobalState)
   }, []);
 
 
-  return (
-
-  
-  console.log(userGlobalState);
-
-
-  console.log(plants)
   return (
     <DataContextProvider>
       <UserRegContextProvider>
