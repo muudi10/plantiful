@@ -44,18 +44,19 @@ function App() {
 console.log(userGlobalState)
   useEffect (()=>{
     const token= JSON.parse(window.localStorage.getItem("token"))
-    if(token) {
+    if (token) {
       setUserGlobalState ({
         ...userGlobalState,
-        token:token
-
+        token:token,
+      })}
     
-      if (!token) {
-   setUserGlobalState({
-        ...userGloblaState
+  //     if (!token) {
+  //  setUserGlobalState({
+  //       ...userGlobalState
 
-      })
-    }else{
+  //     })
+    
+    else {
     const decodedUser = jwt.verify(token, "secret");
     setUserGlobalState({
       ...decodedUser
@@ -65,10 +66,7 @@ console.log(userGlobalState)
     }
   }, []);
 
-  
-  console.log(userGlobalState);
 
-  console.log(plants)
   return (
     <DataContextProvider>
       <UserRegContextProvider>
@@ -83,6 +81,7 @@ console.log(userGlobalState)
               <Route path="/loginform" element={<LoginForm />}></Route>{" "}
               <Route path="/plants" element={<PlantsList />}></Route>
               <Route path="/plants/plantname/:latinname" element={<PlantPage />}></Route>{" "}
+
               <Route path="/dashboard" element={<Dashboard/>}></Route>
               <Route path="*" element={<ErrorPage/>}></Route>
             </Routes>{" "}

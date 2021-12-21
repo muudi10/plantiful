@@ -4,6 +4,12 @@
     padding: 20px;
     background-color: #F9F5F1;
 }
+.dashboard_wrapper {
+    box-sizing: border-box;
+    background-color: #F9F5F1;
+   
+
+}
 
 .dashboard_text {
     color: #013606;
@@ -14,8 +20,7 @@
 
 .dashboard_section {
     display: flex;
-    justify-content: center;
-    align-items: center;
+
 }
 .dashboard_btn {
    border-radius: 5px;
@@ -59,4 +64,35 @@
 font-weight: 700;
 font-size: 16px;
 }
+
+.plantcard_title {
+    color: #013606;
+    font-weight: 700;
+    text-align: center;
+    font-size: 30px;
+}
+
+.plantcard_text {
+    text-align: center;
+}
+
+.plantcard_notification {
+    text-align: center;
+    font-weight: 700;
+}
+
+.plantcard_watering {
+    font-weight: 700;
+    font-style: oblique;
+    color: #013606;
+}
+
+.plantcard_button {
+    color: #FFFFFF;
+}
+
+
+
+
+
 
