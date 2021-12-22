@@ -16,6 +16,7 @@ import { UserContext } from "../dataContext/UserContext";
 import { useParams } from "react-router-dom";
 import "../styles/Dashboard.css";
 import { Link } from "react-router-dom";
+import ApiCalls from '../dataContext/ApiServices';
 
 const Dashboard = () => {
   const [plantData, setPlantData] = useState(
@@ -28,7 +29,6 @@ const Dashboard = () => {
     setPlants,
     setUserGlobalState,
   } = useContext(UserContext);
-  console.log(plantData);
   const [notificationInfo, setNotificationInfo] = useState({
     plantName: null,
     plantId: null,
@@ -38,14 +38,13 @@ const Dashboard = () => {
   const handleFrequecny = (e) => {
     setFrequency(e.target.value);
   };
-
-  console.log(notificationInfo);
+console.log(userGlobalState)
 
   const hanldePlantInfo = (e) => {
     setFrequency(e.target.value);
   };
-  console.log(frequncey);
-
+const user =JSON.parse(localStorage.getItem("userId"))
+console.log(user)
   const pureData = plantData.map((plant) => {
     return {
       plantId: plant._id,
@@ -53,16 +52,10 @@ const Dashboard = () => {
       watering: plant.watering,
     };
   });
-  console.log(pureData);
 
-  // const submit=(e)=>{
-  //   e.preveventDefault()
-  //   console.log(plant.plantId)
-
-  // }
-  const handleSubmit = (event) => {
+    const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(notificationInfo)
+    ApiCalls.CreateNotification(notificationInfo, user)
 
   };
 

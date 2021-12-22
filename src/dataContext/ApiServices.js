@@ -66,6 +66,7 @@ const ApiCalls = {
             console.log(response.data.others)
             response && localStorage.setItem("token", JSON.stringify(response.data.token))
             response && localStorage.setItem("plants", JSON.stringify(response.data.others.userPlants))
+            response && localStorage.setItem("userId", JSON.stringify(response.data.others._id))
             console.log(response.data.others.email)
             response && setIsLoggedIn(true)
             await setUserGlobalState({
@@ -83,10 +84,17 @@ const ApiCalls = {
 
         }
     },
-    CreateNotification: async(plantId, userId, userEmail, plantName)=> {
+    CreateNotification: async(notificationInfo, user)=> {
+
 
         try {
-          const response = await  axios.post('/notification')
+          const response = await  axios.post('/notification',{
+            userId:user, 
+            plantId:notificationInfo.plantId,
+            frequency:notificationInfo.frequency,
+            plantName:notificationInfo.plantName,
+            useEmail:"jeilani@gmail.com"
+          })
           console.log(response)
             
         } catch (error) {
