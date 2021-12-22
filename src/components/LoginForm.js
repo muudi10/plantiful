@@ -9,6 +9,7 @@ import {UserContext} from '../dataContext/UserContext'
 
 const LoginForm = () => {
  const { loginField, handleLogin, handleLoginInputChange,alert, loading, user, isLoggedIn } = useContext(UserContext)
+ console.log(loginField)
 	// let navigate = useNavigate()
 	console.log(user)
 	console.log(isLoggedIn)
