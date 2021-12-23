@@ -63,20 +63,18 @@ const ApiCalls = {
                 email: loginField.email,
                 password: loginField.password
             }, )
-            console.log(response.data.others._id)
+            console.log(response.data.others)
             response && localStorage.setItem("token", JSON.stringify(response.data.token))
+            response && localStorage.setItem("plants", JSON.stringify(response.data.others.userPlants))
+            response && localStorage.setItem("userId", JSON.stringify(response.data.others._id))
+            console.log(response.data.others.email)
             response && setIsLoggedIn(true)
             await setUserGlobalState({
-
                 ...userGlobalState,
                 userDetails:response.data.others,
                 token:response.data.token,
                 userId: response.data.others,
                 userPlants:response.data.userPlants,
-
-
-                ...userGlobalState,
-               token: response.data.token,
 
             })
             response && setUser(response.data.userPlants)
@@ -85,8 +83,26 @@ const ApiCalls = {
             console.log(error)
 
         }
-    }
+    },
+    CreateNotification: async(notificationInfo, user)=> {
 
+
+        try {
+          const response = await  axios.post('/notification',{
+            userId:user, 
+            plantId:notificationInfo.plantId,
+            frequency:notificationInfo.frequency,
+            plantName:notificationInfo.plantName,
+            useEmail:"jeilani@gmail.com"
+          })
+          console.log(response)
+            
+        } catch (error) {
+            console.log(error)
+            
+        }
+
+    }
 
 
 

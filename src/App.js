@@ -25,46 +25,48 @@ function App() {
   console.log(Secret)
   const { userGlobalState,setPlantMatch, plants, setPlants, setUserGlobalState } = useContext(UserContext);
 
-  console.log(plants)
-  useEffect(() => {
-    setPlantMatch(plants)
-   const token = JSON.parse(window.localStorage.getItem("token"));
+  // console.log(plants)
+//   useEffect(() => {
+//     setPlantMatch(plants)
+//    const token = JSON.parse(window.localStorage.getItem("token"));
 
-    const decodedUser = jwt.verify(token, "SECRETKEY");
-      if (token) {
-      setUserGlobalState({
-        ...decodedUser,
-        token: token,
-      });
-    };
-  }, []);
+//     const decodedUser = jwt.verify(token, "secret");
+//       if (token) {
+//       setUserGlobalState({
+//         ...decodedUser,
+     
+        
+//       });
+//     };
+//      console.log(userGlobalState)
+//   }, []);
+ 
 
-
-  // const {   userGlobalState,   setUserGlobalState}= useContext(UserContext)
-console.log(userGlobalState)
-  useEffect (()=>{
-    const token= JSON.parse(window.localStorage.getItem("token"))
-    if (token) {
-      setUserGlobalState ({
-        ...userGlobalState,
-        token:token,
-      })}
+//   // const {   userGlobalState,   setUserGlobalState}= useContext(UserContext)
+// console.log(userGlobalState)
+//   // useEffect (()=>{
+  //   const token= JSON.parse(window.localStorage.getItem("token"))
+  //   if (token) {
+  //     setUserGlobalState ({
+  //       ...userGlobalState,
+  //       token:token,
+  //     })}
     
-  //     if (!token) {
-  //  setUserGlobalState({
-  //       ...userGlobalState
+  // //     if (!token) {
+  // //  setUserGlobalState({
+  // //       ...userGlobalState
 
-  //     })
+  // //     })
     
-    else {
-    const decodedUser = jwt.verify(token, "secret");
-    setUserGlobalState({
-      ...decodedUser
-    })
+  //   else {
+  //   const decodedUser = jwt.verify(token, "secret");
+  //   setUserGlobalState({
+  //     ...decodedUser
+  //   })
 
       
-    }
-  }, []);
+  //   }
+  // }, []);
 
 
   return (
