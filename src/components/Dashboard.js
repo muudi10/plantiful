@@ -32,15 +32,15 @@ const Dashboard = () => {
   const [notificationInfo, setNotificationInfo] = useState({
     plantName: null,
     plantId: null,
-    frequncey: null,
+    frequency: null,
   });
-  const [frequncey, setFrequency] = useState();
-  const handleFrequecny = (e) => {
+  const [frequency, setFrequency] = useState();
+  const handleFrequency = (e) => {
     setFrequency(e.target.value);
   };
 console.log(userGlobalState)
 
-  const hanldePlantInfo = (e) => {
+  const handlePlantInfo = (e) => {
     setFrequency(e.target.value);
   };
 const user =JSON.parse(localStorage.getItem("userId"))
@@ -108,8 +108,8 @@ console.log(user)
                         Schedule notification:{" "}
                       </ListGroupItem>{" "}
                       <Form.Select
-                        value={frequncey}
-                        onChange={handleFrequecny}
+                        value={frequency}
+                        onChange={handleFrequency}
                         size="sm"
                       >
                         <option> Weekly </option>{" "}
@@ -123,7 +123,7 @@ console.log(user)
                           setNotificationInfo({
                             plantName: plant.plantName,
                             plantId: plant.plantId,
-                            frequncey: frequncey,
+                            frequency: frequency,
                           })
                         }
                         type="submit"
