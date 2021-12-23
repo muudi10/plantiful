@@ -43,6 +43,12 @@ console.log(userGlobalState)
   const handlePlantInfo = (e) => {
     setFrequency(e.target.value);
   };
+  function removePlant() {
+    let entries = JSON.parse(localStorage.getItem('userPlants'))
+    entries.splice(1,1)
+    localStorage.setItem('userPlants',JSON.stringify(entries))
+    setPlantData(entries)
+    }
 const user =JSON.parse(localStorage.getItem("userId"))
 console.log(user)
   const pureData = plantData.map((plant) => {
@@ -79,7 +85,7 @@ console.log(user)
             <Row xs={2} md={4} className="g-4">
               <Col>
                 {" "}
-                {pureData.map((plant) => (
+                {pureData !== null ? pureData.map((plant) => (
                   <Card
                     key={plant.plantId}
                     Card
@@ -140,7 +146,7 @@ console.log(user)
                       <Card.Link href="#"> Remove Plant </Card.Link>{" "}
                     </Card.Body>
                   </Card>
-                ))}
+                )) : "No Plants."}
               </Col>
             </Row>
           </form>

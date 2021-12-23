@@ -23,7 +23,7 @@ const Footer = () => {
             <div className="footer_parttwo">
                 <h5 className="footer_title">Follow along:</h5>
                 <ul className="list_styles">
-                <li><TwitterLogo size={24} />plantiful_plants</li>
+                <li><TwitterLogo size={24} />Plantiful_</li>
                 <li><InstagramLogo size={24} />Plantiful_</li>
                 <li><FacebookLogo size={24} />Plantiful</li>
                 </ul>

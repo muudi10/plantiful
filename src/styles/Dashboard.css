@@ -5,7 +5,7 @@
     background-color: #F9F5F1;
 }
 .dashboard_wrapper {
-    box-sizing: border-box;
+    height: 100vh;
     background-color: #F9F5F1;
    
 
@@ -31,28 +31,28 @@
     border: #013606;
 }
 .pause_btn {
-    border-radius: 5px;
-    color: #FFFFFF;
-    padding: 9px;
-    margin: 10px;
-    background-color: #013606;
-    border: #013606;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none!important;
+    border: none;
+    color: #013606;
+}
+
+.pause_btn:hover {
+    color: #3F7740;
 }
 
 .dashboard_btn:hover {
     background-color: #68BF69;
 }
 
-.pause_btn:hover {
-    background-color: #274F27;
-}
 
 .remove_btn {
     text-decoration: underline;
   cursor: pointer;
   background: none!important;
   border: none;
-  padding: 0!important;
+  color: #013606;
 }
 
 .remove_btn:hover {
@@ -89,6 +89,10 @@ font-size: 16px;
 
 .plantcard_button {
     color: #FFFFFF;
+}
+
+.button:active {
+    background-color: #3F7740!important;
 }
 
 
