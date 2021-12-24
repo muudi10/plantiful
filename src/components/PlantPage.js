@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Container, Button } from "react-bootstrap";
 import axios from "axios";
-import { Plus } from "phosphor-react";
 import { useParams } from "react-router-dom";
 import dummyPlant from "../assets/dummyPlant.png";
 import Slider from "react-slick";
