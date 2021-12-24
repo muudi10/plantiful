@@ -143,7 +143,7 @@ console.log(user)
                         {" "}
                         <Card.Link> Pause Notification </Card.Link>{" "}
                       </Link>
-                      <Card.Link href="#"> Remove Plant </Card.Link>{" "}
+                      <Button href="#" onClick={removePlant} className="remove_btn"> Remove Plant </Button>{" "}
                     </Card.Body>
                   </Card>
                 )) : "No Plants."}
