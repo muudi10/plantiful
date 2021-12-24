@@ -1,4 +1,6 @@
-body{margin-top:20px;}
+
+body{margin-top:20px;
+  }
 
 
 
@@ -121,9 +123,9 @@ body{margin-top:20px;}
 .btn-primary[disabled],
 .btn-primary.disabled.active,
 .btn-primary.active[disabled]{
-    background-color: #010303;
+    background-color: #013606;
     border-color: #030707;
-    color: #000000;
+    color: #013606;
 }
 
 
@@ -145,7 +147,7 @@ body{margin-top:20px;}
     color: #FFFFFF;
 }
 
-.btn-warning {
+ .btn-warning {
     background-color: #f1c500;
     border-color: #f1c500;
     color: #FFFFFF;

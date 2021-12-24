@@ -23,6 +23,7 @@ const LoginForm = () => {
 							controlId='floatingInput'
 							label='Email address'
 							className='mb-3'
+							style={{color: "#565956"}}
 						>
 							<Form.Control
 							    className="w-50"
@@ -40,6 +41,7 @@ const LoginForm = () => {
 							controlId='floatingInput'
 							label='Password'
 							className='mb-3'
+							style={{color: "#565956"}}
 						>
 							<Form.Control
 								type='password'
@@ -53,17 +55,20 @@ const LoginForm = () => {
 							/>
 						</FloatingLabel>
 					</Form.Group>
+					<div className="button_and_membertext_login">
 					<Button
 						type='submit'
 						id="submit"
-						className='button-primary'
+						className='login_button'
 						value={loading ? "Loading..." : "Log in"}
 						data-testid='submitbutton'
 						style={{ backgroundColor: "#55A356", border: "#013606"}}
 					>
 						Log in<ArrowRight size={20} />
 					</Button>
-					<p className="member_text">Not a member?<a href="/registerform" className="signup_link"> Sign up now</a></p>
+				
+				<p className="login_member_text">Not a member?<a href="/registerform" className="signup_link"> Sign up now</a></p>
+				</div>
 				<Alert message={alert.message} success={alert.isSuccess} />
 			</Form>
 			</div>
