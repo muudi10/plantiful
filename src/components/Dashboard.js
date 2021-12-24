@@ -44,6 +44,8 @@ console.log(userGlobalState)
     setFrequency(e.target.value);
   };
 const user =JSON.parse(localStorage.getItem("userId"))
+const email =JSON.parse(localStorage.getItem("userEmail"))
+
 console.log(user)
   const pureData = plantData.map((plant) => {
     return {
@@ -55,7 +57,7 @@ console.log(user)
 
     const handleSubmit = (event) => {
     event.preventDefault();
-    ApiCalls.CreateNotification(notificationInfo, user)
+    ApiCalls.CreateNotification(notificationInfo, user, email)
 
   };
 

@@ -14,8 +14,8 @@ const Navigationbar = () => {
 
 				<Nav className="ml-auto" >
 					<Nav.Link href='/plants' className="nav_link" style={{color: "#3F7740", fontWeight: "600", fontSize: "20px"}}>Plants</Nav.Link>
-					<Nav.Link href='/registerform' className="nav_link" style={{color: "#3F7740", fontWeight: "600", fontSize: "20px"}}>Register</Nav.Link>
-					<Nav.Link href='/loginform' className="nav_link" style={{color: "#3F7740", fontWeight: "600", fontSize: "20px"}}>Log in</Nav.Link>
+					<Nav.Link href='/auth/register' className="nav_link" style={{color: "#3F7740", fontWeight: "600", fontSize: "20px"}}>Register</Nav.Link>
+					<Nav.Link href='/auth/login' className="nav_link" style={{color: "#3F7740", fontWeight: "600", fontSize: "20px"}}>Log in</Nav.Link>
 				</Nav>
 			</Container>
 		</Navbar>

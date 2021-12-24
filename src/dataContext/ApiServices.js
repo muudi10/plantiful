@@ -1,10 +1,10 @@
 import axios from "axios";
 
+        const baseURL = `https://api.eastberry.io`
 
 const ApiCalls = {
 
     getAllPlants: async (setPlants) => {
-        const baseURL = `https://api.eastberry.io`
 
         let endpoint = '/plants';
         const response = await axios.get(baseURL+endpoint)
@@ -34,13 +34,13 @@ const ApiCalls = {
     },
     userRegister: async (fields, setMessage) => {
         try {
-            const response = await axios.post("/auth/register", {
+            const response = await axios.post(`/auth/register`, {
                 name: fields.name,
                 email: fields.email,
                 password: fields.password,
 
             })
-            response.data && window.location.replace("/loginForm");
+            response.data && window.location.replace("/auth/register");
 
 
 
@@ -58,8 +58,8 @@ const ApiCalls = {
     userLogin: async (loginField, setUser, setIsLoggedIn, userGlobalState,
         setUserGlobalState) => {
         try {
-
-            const response = await axios.post('/auth/login', {
+            let endpoint = `/auth/login`
+            const response = await axios.post(endpoint, {
                 email: loginField.email,
                 password: loginField.password
             }, )
@@ -67,6 +67,9 @@ const ApiCalls = {
             response && localStorage.setItem("token", JSON.stringify(response.data.token))
             response && localStorage.setItem("plants", JSON.stringify(response.data.others.userPlants))
             response && localStorage.setItem("userId", JSON.stringify(response.data.others._id))
+             response && localStorage.setItem("userId", JSON.stringify(response.data.others._id))
+             response && localStorage.setItem("userEmail", JSON.stringify(response.data.others.email))
+
             console.log(response.data.others.email)
             response && setIsLoggedIn(true)
             await setUserGlobalState({

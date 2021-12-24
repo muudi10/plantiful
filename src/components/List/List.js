@@ -26,6 +26,9 @@ const [user, setUser] = useState("")
     setPlantMatch(matchedPlant)
    
   };
+  const [plantDetails, setPlantDetails] = useState({
+    
+  })
 
 
 
@@ -106,7 +109,9 @@ const rendering =  (PlantMatch.length > 0 )? PlantMatch:plants
                         </span>{" "}
                       </td>{" "}
                       <td>
+                        <form > 
                         <Heart size={30} weight="bold" className="m-4" />
+                        </form>
                       </td>{" "}
                       <td>
                         <Plus size={20} weight="bold" />

@@ -142,7 +142,7 @@ const Home = () => {
 						<Col>
                                 <div className="signup_btn">
 								<Button
-									href='/registerform'
+									href='/auth/register'
 									type='submit'
 									id='submit'
 									style={{ backgroundColor: "#55A356", border: "#013606"}}

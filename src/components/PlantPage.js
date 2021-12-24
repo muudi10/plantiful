@@ -52,32 +52,10 @@ const watering = plantByName.watering
 			})
 			.catch((error) => console.log(error));
 	}, [latinname]);
-
-function addPlant (plant) {
-
-	let existingPlants = localStorage.getItem("userPlants");
-	let existingPlantsActual = existingPlants ? JSON.parse(existingPlants) : [];
-	// const currentPlantSaved = existingPlants.find((x) => x.id === plant.id)
-	// 	if (currentPlantSaved) {
-	// 		const filteredPlantList = existingPlants.filter(
-	// 			(x) => x.id !== plant.id
-	// 		)
-existingPlantsActual.push(familyName)
-setUser(localStorage.setItem(
-	"userPlants", JSON.stringify(existingPlantsActual),
-	setAlert({
-          message: 'Plant added to dashboard!',
-          isSuccess: true,
-        })
-))}
-
-// else {
-
-// existingPlants.push(familyName)
-// setUser(localStorage.setItem(
-// 	"userPlants", JSON.stringify(existingPlants)))
-// }}
-
+const loggedInUSerId =JSON.parse(localStorage.getItem("userId"))
+const email =JSON.parse(localStorage.getItem("userEmail"))
+const [plantDetails, setPlantDetails] = useState("")
+console.log(plantDetails)
 	return (
 		<>
 		<div className='wrapper'>
@@ -120,7 +98,11 @@ setUser(localStorage.setItem(
 						type='submit'
 						id='submit'
                         className="add_button"
-						onClick={addPlant}
+						onClick={() =>
+							setPlantDetails(
+							  plantByName._id,
+							)
+						  }
 						style={{
 							backgroundColor: "#55A356",
 							border: "#013606",

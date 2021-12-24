@@ -79,8 +79,8 @@ function App() {
             <Navigationbar fluid className={"no-gutters mx-0 px-0"}/>
             <Routes>
               <Route path="/" element={<Home />}></Route>{" "}
-              <Route path="/registerform" element={<RegisterForm />}></Route>{" "}
-              <Route path="/loginform" element={<LoginForm />}></Route>{" "}
+              <Route path="/auth/register" element={<RegisterForm />}></Route>{" "}
+              <Route path="/auth/login" element={<LoginForm />}></Route>{" "}
               <Route path="/plants" element={<PlantsList />}></Route>
               <Route path="/plants/plantname/:latinname" element={<PlantPage />}></Route>{" "}
 
