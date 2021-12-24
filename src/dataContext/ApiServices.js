@@ -4,10 +4,10 @@ import axios from "axios";
 const ApiCalls = {
 
     getAllPlants: async (setPlants) => {
-        const baseURL = `https://api.eastberry.io`
+        // const baseURL = `/`
 
         let endpoint = '/plants';
-        const response = await axios.get(baseURL+endpoint)
+        const response = await axios.get(endpoint)
         const data = await response.data
         setPlants(data)
 
@@ -40,7 +40,7 @@ const ApiCalls = {
                 password: fields.password,
 
             })
-            response.data && window.location.replace("/loginForm");
+            response.data && window.location.replace("/auth/login");
 
 
 
