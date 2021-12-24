@@ -142,37 +142,3 @@ Add to dashboard
 export default PlantPage;
 
 
-
-// //function to add plant
-// // function addPlant(plant) {
-// // 		const currentPlantSaved = plantList.find((x) => x.id === plant.id)
-// // 		if (currentPlantSaved) {
-// // 			const filteredPlantList = plantList.filter(
-// // 				(x) => x.id !== plant.id
-// // 			)
-// // 			setPlantList([
-// // 				...filteredPlantList,
-// // 				{ plantFamilyName: familyName, plantWatering: watering}
-// // 			])
-// // 		} else {
-// // 			setPlantList([...plantList, { plantFamilyName: familyName, plantWatering: watering }])
-// // 		}
-// // 	}
-// //function to add plant using API
-//   const addPlantTest = async (plant) => {
-// 	  const currentPlantSaved = plantList.find((x) => x.id === plant.id)
-// 		if (currentPlantSaved) {
-// 			const filteredPlantList = plantList.filter(
-// 				(x) => x.id !== plant.id
-// 			)
-// 			const res = await axios.post(`userplants/${user}`) 
-// 			setPlantList([
-// 				...filteredPlantList,
-// 				{ plantFamilyName: familyName, plantWatering: watering}
-// 			])
-// 		} else {
-// 			setPlantList([...plantList, { plantFamilyName: familyName, plantWatering: watering }])
-// 		}
-  
-//   };
-// console.log(plantList)

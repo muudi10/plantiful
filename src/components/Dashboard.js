@@ -32,17 +32,23 @@ const Dashboard = () => {
   const [notificationInfo, setNotificationInfo] = useState({
     plantName: null,
     plantId: null,
-    frequncey: null,
+    frequency: null,
   });
-  const [frequncey, setFrequency] = useState();
-  const handleFrequecny = (e) => {
+  const [frequency, setFrequency] = useState();
+  const handleFrequency = (e) => {
     setFrequency(e.target.value);
   };
 console.log(userGlobalState)
 
-  const hanldePlantInfo = (e) => {
+  const handlePlantInfo = (e) => {
     setFrequency(e.target.value);
   };
+  function removePlant() {
+    let entries = JSON.parse(localStorage.getItem('userPlants'))
+    entries.splice(1,1)
+    localStorage.setItem('userPlants',JSON.stringify(entries))
+    setPlantData(entries)
+    }
 const user =JSON.parse(localStorage.getItem("userId"))
 console.log(user)
   const pureData = plantData.map((plant) => {
@@ -79,7 +85,7 @@ console.log(user)
             <Row xs={2} md={4} className="g-4">
               <Col>
                 {" "}
-                {pureData.map((plant) => (
+                {pureData !== null ? pureData.map((plant) => (
                   <Card
                     key={plant.plantId}
                     Card
@@ -108,8 +114,8 @@ console.log(user)
                         Schedule notification:{" "}
                       </ListGroupItem>{" "}
                       <Form.Select
-                        value={frequncey}
-                        onChange={handleFrequecny}
+                        value={frequency}
+                        onChange={handleFrequency}
                         size="sm"
                       >
                         <option> Weekly </option>{" "}
@@ -123,7 +129,7 @@ console.log(user)
                           setNotificationInfo({
                             plantName: plant.plantName,
                             plantId: plant.plantId,
-                            frequncey: frequncey,
+                            frequency: frequency,
                           })
                         }
                         type="submit"
@@ -140,7 +146,7 @@ console.log(user)
                       <Card.Link href="#"> Remove Plant </Card.Link>{" "}
                     </Card.Body>
                   </Card>
-                ))}
+                )) : "No Plants."}
               </Col>
             </Row>
           </form>
