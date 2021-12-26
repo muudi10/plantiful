@@ -70,12 +70,6 @@ const Dashboard = () => {
   }, [userId]);
   console.log(userPlants)
 
-const alertMessage = () => {
-setAlert({
-  message: "You will stop receiving notifications for this plant. ",
- isSuccess: true
-})
-}
  
   console.log(user)
 
@@ -91,7 +85,10 @@ setAlert({
   const handleSubmit = (event) => {
     event.preventDefault();
     ApiCalls.CreateNotification(notificationInfo, user, email)
-
+    setAlert({
+      message: "Notification created. Keep an eye on your inbox!📩",
+     isSuccess: true
+    })
   };
 
   return (
@@ -165,7 +162,7 @@ setAlert({
                             plantName: plant.familyName,
                             plantId: plant._id,
                             frequency: frequency,
-                            alertMessage: alertMessage
+                          
                           })
                         }
                         type="submit"
@@ -177,24 +174,34 @@ setAlert({
                     <Card.Body>
                       <Link to={`${plant._id}`}>
                         {" "}
-                        <Button onClick={() => {
-                          ApiCalls.PauseNotification(user, plant._id) 
+                  
+                      </Link>
+                      <Button onClick={() => {
+                          ApiCalls.PauseNotification(user, plant._id);  setAlert({
+                            message: "Settings updated. You will stop receiving notifications for this plant.",
+                           isSuccess: true
+                          })
                         }} className="remove_btn"><PauseCircle size={18} /> Mute Notification </Button>{" "}
 
-                      </Link>
                       <Button href="#" onClick={()=>{
                         ApiCalls.removePlant(user, plant._id)
                       }} className="remove_btn"><XCircle size={18} /> Remove Plant </Button>{" "}
                       <Button href="#" onClick={()=>{
-                        ApiCalls.watered(user, plant._id, setAlert)
+                        ApiCalls.watered(user, plant._id); setAlert({
+                          message: "Thanks for watering your plant! 🌱",
+                         isSuccess: true
+                        })
                       }} className="remove_btn"> <CheckCircle size={18} /> Plant Watered </Button>{" "}
+           
                     </Card.Body>
                   </Card>
                   )) : "No Plants."}
-                
+             
               </Col>
             </Row>
+           
           </form>
+     
         </div>
       </Container>
     </div>

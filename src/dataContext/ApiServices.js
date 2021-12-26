@@ -110,7 +110,7 @@ const ApiCalls = {
         }
     },
 
-    CreateNotification: async (notificationInfo, user, alertMessage) => {
+    CreateNotification: async (notificationInfo, user) => {
 
 
         try {
@@ -122,7 +122,7 @@ const ApiCalls = {
                 userEmail: "jeilani@gmail.com"
             })
 
-           response && alertMessage()
+         
 
         } catch (error) {
             console.log(error)
@@ -130,17 +130,13 @@ const ApiCalls = {
         }
 
     },
-    PauseNotification: async (user, plantId, setAlert) => {
+    PauseNotification: async (user, plantId) => {
         try {
             const response = await axios.put('/notification/status/update', {
                 userId: user,
                 plantId: plantId,
 
 
-            })
-            response && setAlert({
-                message: "You will stop receiving notifications for this plant. ",
-                isSuccess: true
             })
 
         } catch (error) {
