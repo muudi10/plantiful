@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Form, FloatingLabel, Button } from "react-bootstrap";
 import { ArrowRight } from "phosphor-react";
+import grass from "../assets/grass.png"
 import Alert from "./Alert";
 import "../styles/LoginForm.css"
 import {UserContext} from '../dataContext/UserContext'
@@ -67,6 +68,8 @@ const LoginForm = () => {
 				</div>
 				<Alert message={alert.message} success={alert.isSuccess} />
 			</Form>
+			<img src={grass} alt="" style={{width:"50%"}} className="grass_one"/>
+				<img src={grass} alt="" style={{width:"50%"}} className="grass_two"/>
 			</div>
 		</div>
 	);
