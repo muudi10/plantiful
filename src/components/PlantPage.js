@@ -1,15 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Container, Button } from "react-bootstrap";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import dummyPlant from "../assets/dummyPlant.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/PlantPage.css";
 import Alert from "./Alert";
-import getPlantByName from '../dataContext/plantbyname'
-import ApiCalls from "../dataContext/ApiServices";
 import { PlantContext } from "../dataContext/PlantConetx";
 
 
@@ -24,13 +21,7 @@ const initialState = {
 	}
 }
 const [plantById, setPlantById] = useState("");
-const [user, setUser] = useState("")
-  const [alert, setAlert] = useState(initialState.alert)
-// useEffect(()=> {
-
-// setUser(localStorage.getItem("userDetails"))
-
-// })
+const [alert, setAlert] = useState(initialState.alert)
 
 	const settings = {
 		dots: true,
@@ -42,8 +33,7 @@ const [user, setUser] = useState("")
 		initialSlide: 2,
 	};
 const plantId = window.location.pathname.split("/")[2] 
-console.log(plantById)
-const [loading, setLoading ]= useState(false)
+
 const [familyName, setFamilyName]=useState()
 
 useEffect(() => {
@@ -55,12 +45,10 @@ useEffect(() => {
     getSinglePlant();
   }, [plantId]);
  
-const plant_id= window.location.pathname.split("/")[2]
 
 const loggedInUSerId =JSON.parse(localStorage.getItem("userId"))
-const email =JSON.parse(localStorage.getItem("userEmail"))
-console.log(typeof loggedInUSerId)
-console.log(`logged in user is ${loggedInUSerId} and plant id is ${plantId}`)
+
+
  const handleSumbit= async()=>{
 	const res = await axios.post('/users/user/addplant',{
 		plantId: plantId,

@@ -55,10 +55,7 @@ export const DataContextProvider = (props) => {
       };
       const handleInputChange = (event) => setSearchTerm(event.target.value);
  
-  // const handlePlantSearch = () => {
-  //   getForecast(searchText, setSelectedDate, setForecasts, setLocation);
-  //   setSearchText("");
-  // };
+
  const { latinname } = useParams();
 
 useEffect(()=>{

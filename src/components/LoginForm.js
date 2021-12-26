@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Form, FloatingLabel, Button } from "react-bootstrap";
 import { ArrowRight } from "phosphor-react";
-// import { useNavigate } from "react-router-dom";
 import Alert from "./Alert";
 import "../styles/LoginForm.css"
 import {UserContext} from '../dataContext/UserContext'
@@ -9,10 +8,7 @@ import {UserContext} from '../dataContext/UserContext'
 
 const LoginForm = () => {
  const { loginField, handleLogin, handleLoginInputChange,alert, loading, user, isLoggedIn } = useContext(UserContext)
- console.log(loginField)
-	// let navigate = useNavigate()
-	console.log(user)
-	console.log(isLoggedIn)
+
 	return (
 		<div className="form_wrapper">
 				<h2 className="signin_header">Sign in to Plantiful</h2>

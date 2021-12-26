@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, createContext } from "react";
 import ApiServices from "./ApiServices";
 export const PlantContext = createContext();
 
