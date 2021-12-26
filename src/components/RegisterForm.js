@@ -104,7 +104,7 @@ const RegisterForm = () => {
 					>
 						Create account <ArrowRight size={20} />
 					</Button>
-					<p className="member_text">Already a member?<a href="/loginform" className="signin_link"> Sign in </a></p>
+					<p className="member_text">Already a member?<a href="/auth/login" className="signin_link"> Sign in </a></p>
 				 </div>
 				  <p> {message && message} </p>
 

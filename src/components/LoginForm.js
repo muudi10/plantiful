@@ -64,7 +64,7 @@ const LoginForm = () => {
 						Log in<ArrowRight size={20} />
 					</Button>
 				
-				<p className="login_member_text">Not a member?<a href="/registerform" className="signup_link"> Sign up now</a></p>
+				<p className="login_member_text">Not a member?<a href="/auth/register" className="signup_link"> Sign up now</a></p>
 				</div>
 				<Alert message={alert.message} success={alert.isSuccess} />
 			</Form>
