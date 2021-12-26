@@ -15,7 +15,6 @@ import { PlantContext } from "../dataContext/PlantConetx";
 
 const PlantPage = () => {
 const {singlePlant} = useContext(PlantContext)
-const location = useLocation();
 
 console.log(singlePlant)
 const initialState = {
@@ -42,9 +41,8 @@ const [user, setUser] = useState("")
 		slidesToScroll: 1,
 		initialSlide: 2,
 	};
-const plantId = location.pathname.split("/")[2] 
+const plantId = window.location.pathname.split("/")[2] 
 console.log(plantById)
-console.log(location.pathname)
 const [loading, setLoading ]= useState(false)
 const [familyName, setFamilyName]=useState()
 

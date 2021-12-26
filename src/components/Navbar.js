@@ -24,7 +24,7 @@ const Navigationbar = () => {
 				<Nav className="ml-auto" >
 					<Nav.Link href='/plants' className="nav_link" style={{color: "#3F7740", fontWeight: "600", fontSize: "20px", paddingLeft: "24px"}}>Plants</Nav.Link>
 					{token ? (
-					<><Nav.Link href="dashboard" className="nav_link" style={{ color: "#3F7740", fontWeight: "600", fontSize: "20px", paddingLeft: "24px"}}>Dashboard</Nav.Link><Nav.Link href="/auth/login" className="nav_link" style={{ color: "#3F7740", fontWeight: "600", fontSize: "20px", paddingLeft: "24px" }} onClick={() => logout()}>Log Out</Nav.Link></>
+					<><Nav.Link href={`users/${loggedInUSerId}`} className="nav_link" style={{ color: "#3F7740", fontWeight: "600", fontSize: "20px", paddingLeft: "24px"}}>Dashboard</Nav.Link><Nav.Link href="/auth/login" className="nav_link" style={{ color: "#3F7740", fontWeight: "600", fontSize: "20px", paddingLeft: "24px" }} onClick={() => logout()}>Log Out</Nav.Link></>
 					) : (
 					<><Nav.Link href='/auth/register' className="nav_link" style={{ color: "#3F7740", fontWeight: "600", fontSize: "20px", paddingLeft: "24px" }}>Register</Nav.Link><Nav.Link href='/auth/login' className="nav_link" style={{ color: "#3F7740", fontWeight: "600", fontSize: "20px", paddingLeft: "24px" }}>Log in</Nav.Link></>)}
 				</Nav>
