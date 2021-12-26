@@ -27,9 +27,6 @@ const Dashboard = () => {
       isSuccess: false,
     }
   }
-  const [plantData, setPlantData] = useState(
-    JSON.parse(localStorage.getItem("plants")) || []
-  );
   const [alert, setAlert] = useState(initialState.alert)
   const {
     userGlobalState,
@@ -47,11 +44,7 @@ const Dashboard = () => {
   const handleFrequency = (e) => {
     setFrequency(e.target.value);
   };
-  console.log(userGlobalState)
 
-  const handlePlantInfo = (e) => {
-    setFrequency(e.target.value);
-  };
 
   const user = JSON.parse(localStorage.getItem("userId"))
   const email = JSON.parse(localStorage.getItem("userEmail"))

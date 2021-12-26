@@ -11,7 +11,6 @@ function List() {
   const { plants, PlantMatch, setPlantMatch } =
     useContext(UserContext);
   const [search, setSearch] = useState("");
-const [user, setUser] = useState("")
   const handleLoginInputChange = (event) => {
     event.preventDefault();
     setSearch(event.target.value);
@@ -19,7 +18,6 @@ const [user, setUser] = useState("")
   };
   const {setSinglePlant} = useContext(PlantContext)
   const plantId = window.location.pathname.split("/")[2] 
-  const [loading, setLoading] = useState()
 
 const getSinglePlant = async () => {
       const res = await axios.get("/plants/" + plantId);
@@ -41,9 +39,6 @@ const getSinglePlant = async () => {
     setPlantMatch(matchedPlant)
    
   };
-  const [plantDetails, setPlantDetails] = useState({
-
-  })
 
 
 

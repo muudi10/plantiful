@@ -8,7 +8,7 @@ import {UserContext} from '../dataContext/UserContext'
 
 
 const LoginForm = () => {
- const { loginField, handleLogin, handleLoginInputChange,alert, loading, user, isLoggedIn } = useContext(UserContext)
+ const { loginField, handleLogin, handleLoginInputChange,alert, loading } = useContext(UserContext)
 
 	return (
 		<div className="form_wrapper">
