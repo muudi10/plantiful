@@ -21,6 +21,7 @@ const RegisterForm = () => {
 							controlId='floatingInput'
 							label='Enter your name'
 							className='mb-3'
+							style={{color: "#565956"}}
 						>
 							<Form.Control
 							    className="w-50"
@@ -39,6 +40,7 @@ const RegisterForm = () => {
 							controlId='floatingInput'
 							label='Enter your email address'
 							className='mb-3'
+							style={{color: "#565956"}}
 						>
 							<Form.Control
 								type='email'
@@ -59,6 +61,7 @@ const RegisterForm = () => {
 							controlId='floatingInput'
 							label='Create Password'
 							className='mb-3'
+							style={{color: "#565956"}}
 						>
 							<Form.Control
 								type='password'
@@ -77,6 +80,7 @@ const RegisterForm = () => {
 							controlId='floatingInput'
 							label='Confirm Password'
 							className='mb-3'
+							style={{color: "#565956"}}
 						>
 							<Form.Control
 								type='password'
@@ -90,16 +94,18 @@ const RegisterForm = () => {
 							/>
 						</FloatingLabel>
 					</Form.Group>
+					<div className="button_and_membertext">
 					<Button
 						type='submit'
 						id="submit"
-						className='button-primary'
+						className='signup_button'
 						data-testid='submitbutton'
 						style={{ backgroundColor: "#55A356", border: "#013606"}}
 					>
 						Create account <ArrowRight size={20} />
 					</Button>
 					<p className="member_text">Already a member?<a href="/loginform" className="signin_link"> Sign in </a></p>
+				 </div>
 				  <p> {message && message} </p>
 				</Form>
 				</div>

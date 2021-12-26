@@ -24,7 +24,7 @@
 	font-style: normal;
 	font-weight: bold;
 	line-height: 110px;
-	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	text-shadow: 0px 2px 4px rgba(70, 69, 69, 0.25);
 }
 .hero_description {
 	color: #ffffff;
@@ -53,7 +53,7 @@
 .landingpage_parttwo {
 	max-width: 100%;
 	background-color: #f9f5f1;
-	height: 180vh;
+	height: 190vh;
 	box-sizing: border-box;
 }
 .landingpage_parttwo_start {
@@ -105,7 +105,7 @@
 	position: absolute;
 	width: 172px;
 	height: 182px;
-	left: 971px;
+	left: 1021px;
 	top: 120px;
 }
 
@@ -125,6 +125,7 @@
 	width: 872px;
 	height: 274px;
 	left: 410px;
+	margin-top: 40px;
 	top: 300px;
 	border-color: #3f7740;
 	border-style: solid;
@@ -139,8 +140,8 @@
 	position: absolute;
 	width: 200px;
 	height: 187px;
-	left: 180px;
-	top: 384px;
+	right: 980px;
+	top: 450px;
 	transform: matrix(-1, 0, 0, 1, 0, 0);
 }
 
@@ -150,6 +151,7 @@
 	height: 274px;
 	left: 98px;
 	top: 596px;
+	margin-top: 90px;
 	border-color: #3f7740;
 	border-style: solid;
 	border-width: 2px 16px 16px 2px;
@@ -161,6 +163,7 @@
 	height: 298px;
 	left: 410px;
 	top: 900px;
+	margin-top: 130px;
 	border-color: #3f7740;
 	border-style: solid;
 	border-width: 2px 16px 16px 2px;
@@ -170,8 +173,8 @@
 	position: absolute;
 	width: 113px;
 	height: 182px;
-	left: 987px;
-	top: 700px;
+	right: 180px;
+	top: 800px;
 }
 
 .box_title {
@@ -183,8 +186,10 @@
 	position: absolute;
 	width: 220px;
 	height: 44px;
-	left: 723px;
-	top: 1246px;
+	left: 1187px;
+	top: 1376px;
+	margin-top: 20px;
+	
 }
 
 .box_description {

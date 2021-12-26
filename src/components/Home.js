@@ -145,6 +145,7 @@ const Home = () => {
 						<Col>
                                 <div className="signup_btn">
 								<Button
+								
 									href='/auth/register'
 									type='submit'
 									id='submit'
