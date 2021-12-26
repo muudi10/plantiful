@@ -23,13 +23,14 @@ const Home = () => {
 							<div className="landingpage_partone_text">
 							<h1 className='hero_header'>
 								Have <span className='brandname'>Plantiful</span> Plants{" "}
-								<FlowerLotus size={38} style={{color: "#3F7740" }}/>
+								<FlowerLotus size={38} style={{color: "#3F7740" }} className="flower_lotus"/>
 							</h1>
 							<p className='hero_description'>
 								We help you keep your plants alive by sending helpful reminders
 								straight to your inbox.
 							</p>
 							<Button
+								className="findout_btn"
 								href='#findoutmore'
 								style={{ backgroundColor: "#55A356", border: "none" }}
 							>
@@ -58,7 +59,7 @@ const Home = () => {
 						<Col>
 							<div className="box_one">
 								 <div className='box_one_image'>
-                                 <img src={MagnifyingGlass} alt=""/>
+                                 <img src={MagnifyingGlass} alt="" className="box_one_image_responsive"/>
                                  </div>
 								 <div className="box_all_text">
 									<p className='box_title'>
@@ -81,7 +82,7 @@ const Home = () => {
 						<Col>
 							<div className='box_two'>
 							<div className='box_two_image'>
-                                 <img src={PlantShelf} alt=""/>
+                                 <img src={PlantShelf} alt="" className="box_two_image_responsive"/>
                                  </div>
 								 <div className="box_all_text">
 									<p className='box_title'>
@@ -102,7 +103,7 @@ const Home = () => {
 						<Col>
 							<div className='box_three'>
 							<div className='box_three_image'>
-                                 <img src={PlantBook} alt=""/>
+                                 <img src={PlantBook} alt="" className="box_three_image_responsive"/>
                                  </div>
 								<div className='box_all_text'>
 									<p className='box_title'>
@@ -123,17 +124,19 @@ const Home = () => {
 						<Col>
 							<div className='box_four'>
 							<div className='box_four_image'>
-                                 <img src={PlantLightbulb} alt=""/>
+                                 <img src={PlantLightbulb} alt="" className="box_four_image_responsive"/>
                                  </div>
 								<div className='box_all_text'>
 									<p className='box_title'>
 										<span className="numbers">4</span>
 										LEARN
 									</p>
+									<div className="box_description_responsive">
 									<p className="box_description">
 										Learn handy tips and tricks to help best care for your
 										plants.
 									</p>
+									</div>
 								</div>
 							</div>
 						</Col>

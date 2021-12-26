@@ -6,7 +6,8 @@ import { UserContext } from "../../dataContext/UserContext";
 import { Link } from "react-router-dom";
 import Pagination from "../Pagination/Pagination";
 import ApiCalls from "../../dataContext/ApiServices";
-
+import {PlantContext} from '../../dataContext/PlantConetx'
+import axios from 'axios'
 function List() {
   const { plants, PlantMatch, setPlantMatch } =
     useContext(UserContext);
@@ -17,6 +18,22 @@ const [user, setUser] = useState("")
     setSearch(event.target.value);
     plantSearch(search);
   };
+  const {setSinglePlant} = useContext(PlantContext)
+  const plantId = window.location.pathname.split("/")[2] 
+  const [loading, setLoading] = useState()
+
+const getSinglePlant = async () => {
+      const res = await axios.get("/plants/" + plantId);
+      setSinglePlant(res.data);
+    //   setTitle(res.data.title);
+    //   setDesc(res.data.desc);
+    };
+
+
+  useEffect(() => {
+    
+    getSinglePlant();
+  }, [plantId]);
 
   const plantSearch = (search) => {
     let matchedPlant = plants.filter((plant) => {
@@ -27,7 +44,7 @@ const [user, setUser] = useState("")
    
   };
   const [plantDetails, setPlantDetails] = useState({
-    
+
   })
 
 
@@ -85,8 +102,8 @@ const rendering =  (PlantMatch.length > 0 )? PlantMatch:plants
                   <>
                     <div className="user"> </div>{" "}
                     <tr>
-                      <td className="p-name">
-                        <Link to={`plantname/${plant.latinName}`}>
+                      <td className="p-name" onClick={getSinglePlant}>
+                        <Link to={`${plant._id}`}>
                           {" "}
                           {plant.familyName}{" "}
                         </Link>

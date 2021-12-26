@@ -71,7 +71,6 @@ export const UserContextProvider = (props) => {
 
     userGlobalState,
 
-    userGlobalState,
     setUserGlobalState,
     plants,
     setPlants,
