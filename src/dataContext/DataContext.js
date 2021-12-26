@@ -30,7 +30,7 @@ export const DataContextProvider = (props) => {
       const [fields, setFields] = useState(initialState.fields);
     const somevalue = `15`
  
-    // const [plants, setPlants] = useState()
+ 
     const [plantByName, setPlantByName] = useState([]);
     const [searchTerm, setSearchTerm] = useState()
     
@@ -50,7 +50,7 @@ export const DataContextProvider = (props) => {
 
       const handleEnter = (event) => {
         if (event.key === "Enter") {
-          // return handlePlantSearch();
+         
         }
       };
       const handleInputChange = (event) => setSearchTerm(event.target.value);
@@ -73,8 +73,6 @@ useEffect(()=>{
         setMessage,
         handleFieldChange,
         handleSubmit,
-        // plants,
-        // setPlants,
         plantByName,
         setPlantByName,
         searchTerm,
@@ -85,11 +83,9 @@ useEffect(()=>{
         plantiful,
         handleInputChange,
         ApiServices,
-        // loginField, 
-        // setLoginField,
 somevalue,
         alert
-        // handlePlantSearch
+       
       };
    
 

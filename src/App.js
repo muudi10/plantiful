@@ -16,12 +16,9 @@ import { DataContextProvider } from "./dataContext/DataContext";
 import { UserRegContextProvider } from "./dataContext/userRegistration";
 import { UserContextProvider } from "./dataContext/UserContext";
 import { PlantContextProvider } from "./dataContext/PlantConetx";
-
 import { UserContext } from "./dataContext/UserContext";
-import { useContext, useEffect } from "react";
-import jwt from "jsonwebtoken";
-import { DataContext } from "./dataContext/DataContext";
-import ApiCalls from "./dataContext/ApiServices";
+import { useContext } from "react";
+
 function App() {
 	const loggedInUSerId= JSON.parse(localStorage.getItem('userId'))
 
