@@ -11,19 +11,27 @@ import {
 } from "react-bootstrap";
 import Emoji from "a11y-react-emoji";
 import dummyPlant from "../assets/dummyPlant.png";
-import { FlowerLotus } from "phosphor-react";
+import { XCircle, CheckCircle, PauseCircle } from "phosphor-react";
 import { UserContext } from "../dataContext/UserContext";
 import { useParams } from "react-router-dom";
 import "../styles/Dashboard.css";
 import { Link } from "react-router-dom";
+import Alert from "./Alert";
 import ApiCalls from '../dataContext/ApiServices';
 import axios from 'axios'
 
 
 const Dashboard = () => {
+  const initialState = {
+    alert: {
+      message: "",
+      isSuccess: false,
+    }
+  }
   const [plantData, setPlantData] = useState(
     JSON.parse(localStorage.getItem("plants")) || []
   );
+  const [alert, setAlert] = useState(initialState.alert)
   const {
     userGlobalState,
     setPlantMatch,
@@ -62,7 +70,12 @@ const Dashboard = () => {
   }, [userId]);
   console.log(userPlants)
 
-
+const alertMessage = () => {
+setAlert({
+  message: "You will stop receiving notifications for this plant. ",
+ isSuccess: true
+})
+}
  
   console.log(user)
 
@@ -96,18 +109,23 @@ const Dashboard = () => {
           Welcome to your <span className="brandname"> Plantiful </span>{" "}
           dashboard. Here you can set and amend notifications for your plants.
         </p>
+        <Alert message={alert.message} success={alert.isSuccess} />
         <div className="dashboard_section">
           <form onSubmit={handleSubmit}>
-            <Row xs={2} md={4} className="g-4">
-              <Col>
+            <Row xs={2} md={4} className="g-4" >
+            
+              <Col style={{display: "flex", flexDirection: "row"}}>
                 {" "}
                 {userPlants !== null ? userPlants.map((plant) => (
                   <Card
                     key={plant._id}
                     Card
                     style={{
-                      width: "18rem",
+                      width: "80rem",
                       border: "1px solid #013606",
+                      flex: 1,
+                      padding: "10px",
+                      margin: "10px"
                     }}
                   >
                     <Card.Img variant="top" src={dummyPlant} />{" "}
@@ -134,6 +152,7 @@ const Dashboard = () => {
                         onChange={handleFrequency}
                         size="sm"
                       >
+                        <option> Select Frequency </option>{" "}
                         <option> Weekly </option>{" "}
                         <option> Twice Weekly </option>{" "}
                         <option> Monthly </option>{" "}
@@ -146,6 +165,7 @@ const Dashboard = () => {
                             plantName: plant.familyName,
                             plantId: plant._id,
                             frequency: frequency,
+                            alertMessage: alertMessage
                           })
                         }
                         type="submit"
@@ -158,19 +178,20 @@ const Dashboard = () => {
                       <Link to={`${plant._id}`}>
                         {" "}
                         <Button onClick={() => {
-                          ApiCalls.PauseNotification(user, plant._id)
-                        }} className="remove_btn">Mute Notification </Button>{" "}
+                          ApiCalls.PauseNotification(user, plant._id) 
+                        }} className="remove_btn"><PauseCircle size={18} /> Mute Notification </Button>{" "}
 
                       </Link>
                       <Button href="#" onClick={()=>{
                         ApiCalls.removePlant(user, plant._id)
-                      }} className="remove_btn"> Remove Plant </Button>{" "}
+                      }} className="remove_btn"><XCircle size={18} /> Remove Plant </Button>{" "}
                       <Button href="#" onClick={()=>{
-                        ApiCalls.watered(user, plant._id)
-                      }} className="remove_btn"> Watered </Button>{" "}
+                        ApiCalls.watered(user, plant._id, setAlert)
+                      }} className="remove_btn"> <CheckCircle size={18} /> Plant Watered </Button>{" "}
                     </Card.Body>
                   </Card>
-                )) : "No Plants."}
+                  )) : "No Plants."}
+                
               </Col>
             </Row>
           </form>

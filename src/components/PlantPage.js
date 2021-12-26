@@ -61,15 +61,16 @@ const loggedInUSerId =JSON.parse(localStorage.getItem("userId"))
 const email =JSON.parse(localStorage.getItem("userEmail"))
 console.log(typeof loggedInUSerId)
 console.log(`logged in user is ${loggedInUSerId} and plant id is ${plantId}`)
-const [success, setSuccess]= useState(false)
  const handleSumbit= async()=>{
 	const res = await axios.post('/users/user/addplant',{
 		plantId: plantId,
 		userId: loggedInUSerId
 	 }) 
 if(res) {
-	setSuccess(true)
-	alert('Notification Created Succefully')
+	setAlert({
+		message: "Plant added to Dashboard!",
+		isSuccess: true
+	})
 }	
 
  }
@@ -134,7 +135,6 @@ Add to dashboard
 				</div>
 			</Container>
 		</div>
-		&rbrace;
 		</>
 	);
 };
