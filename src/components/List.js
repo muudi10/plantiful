@@ -1,18 +1,16 @@
 import { Plus, Heart, ArrowRight } from "phosphor-react";
 import React, { useEffect, useContext, useState } from "react";
 import { Button, Container } from "react-bootstrap";
-import "./list.css";
-import { UserContext } from "../../dataContext/UserContext";
+import "../styles/list.css";
+import { UserContext } from "../dataContext/UserContext";
 import { Link } from "react-router-dom";
-import Pagination from "../Pagination/Pagination";
-import ApiCalls from "../../dataContext/ApiServices";
-import {PlantContext} from '../../dataContext/PlantConetx'
+import Pagination from "./Pagination";
+import {PlantContext} from '../dataContext/PlantConetx'
 import axios from 'axios'
 function List() {
   const { plants, PlantMatch, setPlantMatch } =
     useContext(UserContext);
   const [search, setSearch] = useState("");
-const [user, setUser] = useState("")
   const handleLoginInputChange = (event) => {
     event.preventDefault();
     setSearch(event.target.value);
@@ -20,13 +18,11 @@ const [user, setUser] = useState("")
   };
   const {setSinglePlant} = useContext(PlantContext)
   const plantId = window.location.pathname.split("/")[2] 
-  const [loading, setLoading] = useState()
 
 const getSinglePlant = async () => {
       const res = await axios.get("/plants/" + plantId);
       setSinglePlant(res.data);
-    //   setTitle(res.data.title);
-    //   setDesc(res.data.desc);
+
     };
 
 
@@ -43,9 +39,6 @@ const getSinglePlant = async () => {
     setPlantMatch(matchedPlant)
    
   };
-  const [plantDetails, setPlantDetails] = useState({
-
-  })
 
 
 

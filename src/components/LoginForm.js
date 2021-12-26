@@ -1,18 +1,15 @@
 import React, { useContext } from "react";
 import { Form, FloatingLabel, Button } from "react-bootstrap";
 import { ArrowRight } from "phosphor-react";
-// import { useNavigate } from "react-router-dom";
+import grass from "../assets/grass.png"
 import Alert from "./Alert";
 import "../styles/LoginForm.css"
 import {UserContext} from '../dataContext/UserContext'
 
 
 const LoginForm = () => {
- const { loginField, handleLogin, handleLoginInputChange,alert, loading, user, isLoggedIn } = useContext(UserContext)
- console.log(loginField)
-	// let navigate = useNavigate()
-	console.log(user)
-	console.log(isLoggedIn)
+ const { loginField, handleLogin, handleLoginInputChange,alert, loading } = useContext(UserContext)
+
 	return (
 		<div className="form_wrapper">
 				<h2 className="signin_header">Sign in to Plantiful</h2>
@@ -67,10 +64,12 @@ const LoginForm = () => {
 						Log in<ArrowRight size={20} />
 					</Button>
 				
-				<p className="login_member_text">Not a member?<a href="/registerform" className="signup_link"> Sign up now</a></p>
+				<p className="login_member_text">Not a member?<a href="/auth/register" className="signup_link"> Sign up now</a></p>
 				</div>
 				<Alert message={alert.message} success={alert.isSuccess} />
 			</Form>
+			<img src={grass} alt="" style={{width:"50%"}} className="grass_one"/>
+				<img src={grass} alt="" style={{width:"50%"}} className="grass_two"/>
 			</div>
 		</div>
 	);

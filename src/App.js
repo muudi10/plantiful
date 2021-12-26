@@ -1,6 +1,6 @@
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
-import PlantsList from "./components/List/List";
+import PlantsList from "./components/List";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigationbar from "./components/Navbar";
 import PlantPage from "./components/PlantPage";
@@ -16,17 +16,14 @@ import { DataContextProvider } from "./dataContext/DataContext";
 import { UserRegContextProvider } from "./dataContext/userRegistration";
 import { UserContextProvider } from "./dataContext/UserContext";
 import { PlantContextProvider } from "./dataContext/PlantConetx";
-
 import { UserContext } from "./dataContext/UserContext";
-import { useContext, useEffect } from "react";
-import jwt from "jsonwebtoken";
-import { DataContext } from "./dataContext/DataContext";
-import ApiCalls from "./dataContext/ApiServices";
+import { useContext } from "react";
+
 function App() {
 	const loggedInUSerId= JSON.parse(localStorage.getItem('userId'))
 
 	const Secret = process.env.REACT_APP_JWT_SECRET;
-	console.log(Secret);
+
 	const {
 		userGlobalState,
 		setPlantMatch,
@@ -35,45 +32,6 @@ function App() {
 		setUserGlobalState,
 	} = useContext(UserContext);
 
-	// console.log(plants)
-	//   useEffect(() => {
-	//     setPlantMatch(plants)
-	//    const token = JSON.parse(window.localStorage.getItem("token"));
-
-	//     const decodedUser = jwt.verify(token, "secret");
-	//       if (token) {
-	//       setUserGlobalState({
-	//         ...decodedUser,
-
-	//       });
-	//     };
-	//      console.log(userGlobalState)
-	//   }, []);
-
-	//   // const {   userGlobalState,   setUserGlobalState}= useContext(UserContext)
-	// console.log(userGlobalState)
-	//   // useEffect (()=>{
-	//   const token= JSON.parse(window.localStorage.getItem("token"))
-	//   if (token) {
-	//     setUserGlobalState ({
-	//       ...userGlobalState,
-	//       token:token,
-	//     })}
-
-	// //     if (!token) {
-	// //  setUserGlobalState({
-	// //       ...userGlobalState
-
-	// //     })
-
-	//   else {
-	//   const decodedUser = jwt.verify(token, "secret");
-	//   setUserGlobalState({
-	//     ...decodedUser
-	//   })
-
-	//   }
-	// }, []);
 
 	return (
 		<DataContextProvider>

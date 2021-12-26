@@ -9,10 +9,8 @@ export default function Pagination() {
         nextLabel={"next"}
         breakLabel={"..."}
         pageCount={25}
-        // pageCount={pageCount}
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
-        // onPageChange={handlePageClick}
         containerClassName={"pagination justify-content-center"}
         pageClassName={"page-item"}
         pageLinkClassName={"page-link"}

@@ -13,7 +13,6 @@ import Emoji from "a11y-react-emoji";
 import dummyPlant from "../assets/dummyPlant.png";
 import { XCircle, CheckCircle, PauseCircle } from "phosphor-react";
 import { UserContext } from "../dataContext/UserContext";
-import { useParams } from "react-router-dom";
 import "../styles/Dashboard.css";
 import { Link } from "react-router-dom";
 import Alert from "./Alert";
@@ -28,9 +27,6 @@ const Dashboard = () => {
       isSuccess: false,
     }
   }
-  const [plantData, setPlantData] = useState(
-    JSON.parse(localStorage.getItem("plants")) || []
-  );
   const [alert, setAlert] = useState(initialState.alert)
   const {
     userGlobalState,
@@ -48,16 +44,12 @@ const Dashboard = () => {
   const handleFrequency = (e) => {
     setFrequency(e.target.value);
   };
-  console.log(userGlobalState)
 
-  const handlePlantInfo = (e) => {
-    setFrequency(e.target.value);
-  };
 
   const user = JSON.parse(localStorage.getItem("userId"))
   const email = JSON.parse(localStorage.getItem("userEmail"))
 
-  console.log(user)
+
   const [userPlants, setUserPlants] = useState([])
   const userId = window.location.pathname.split("/")[2]
   useEffect(() => {
@@ -68,19 +60,7 @@ const Dashboard = () => {
     };
     getUserPlants();
   }, [userId]);
-  console.log(userPlants)
 
- 
-  console.log(user)
-
-
-  // const pureData = userPlants && plantData.map((plant) => {
-  //   return {
-  //     plantId: plant._id,
-  //     plantName: plant.familyName,
-  //     watering: plant.watering,
-  //   };
-  // });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -152,6 +132,7 @@ const Dashboard = () => {
                         <option> Select Frequency </option>{" "}
                         <option> Weekly </option>{" "}
                         <option> Twice Weekly </option>{" "}
+                        <option> Thrice Weekly </option>
                         <option> Monthly </option>{" "}
                       </Form.Select>{" "}
                       <Button

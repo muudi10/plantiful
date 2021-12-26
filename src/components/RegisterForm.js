@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
-import axios from "axios";
+import React, { useContext } from "react";
 import { Form, FloatingLabel, Button } from "react-bootstrap";
 import { ArrowRight } from "phosphor-react";
 import {UserRegistration} from '../dataContext/userRegistration'
+import grass from "../assets/grass.png";
 import "../styles/RegisterForm.css";
 
 
@@ -10,7 +10,7 @@ const RegisterForm = () => {
 	const {handleFieldChange, message, fields, handleSubmit} = useContext(UserRegistration)
 
 	return (
-		<div className="form_wrapper">
+		<div className="form_wrapper_">
 			<div>
 				<h2 className='signup_header'>Sign up to Plantiful</h2>
 			</div>
@@ -104,10 +104,14 @@ const RegisterForm = () => {
 					>
 						Create account <ArrowRight size={20} />
 					</Button>
-					<p className="member_text">Already a member?<a href="/loginform" className="signin_link"> Sign in </a></p>
+					<p className="member_text">Already a member?<a href="/auth/login" className="signin_link"> Sign in </a></p>
 				 </div>
 				  <p> {message && message} </p>
+
 				</Form>
+				<img src={grass} alt="" style={{width:"50%"}} className="grass_one"/>
+				<img src={grass} alt="" style={{width:"50%"}} className="grass_two"/>
+
 				</div>
 		</div>
 	);
