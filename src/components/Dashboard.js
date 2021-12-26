@@ -17,6 +17,8 @@ import { useParams } from "react-router-dom";
 import "../styles/Dashboard.css";
 import { Link } from "react-router-dom";
 import ApiCalls from '../dataContext/ApiServices';
+import axios from 'axios'
+
 
 const Dashboard = () => {
   const [plantData, setPlantData] = useState(
@@ -38,30 +40,44 @@ const Dashboard = () => {
   const handleFrequency = (e) => {
     setFrequency(e.target.value);
   };
-console.log(userGlobalState)
+  console.log(userGlobalState)
 
   const handlePlantInfo = (e) => {
     setFrequency(e.target.value);
   };
-  function removePlant() {
-    let entries = JSON.parse(localStorage.getItem('userPlants'))
-    entries.splice(1,1)
-    localStorage.setItem('userPlants',JSON.stringify(entries))
-    setPlantData(entries)
-    }
-const user =JSON.parse(localStorage.getItem("userId"))
-console.log(user)
-  const pureData = plantData.map((plant) => {
-    return {
-      plantId: plant._id,
-      plantName: plant.familyName,
-      watering: plant.watering,
-    };
-  });
 
-    const handleSubmit = (event) => {
+  const user = JSON.parse(localStorage.getItem("userId"))
+  const email = JSON.parse(localStorage.getItem("userEmail"))
+
+  console.log(user)
+  const [userPlants, setUserPlants] = useState([])
+  const userId = window.location.pathname.split("/")[2]
+  useEffect(() => {
+    const getUserPlants = async () => {
+      const res = await axios.get("/users/" + userId);
+      setUserPlants(res.data.userPlants)
+
+    };
+    getUserPlants();
+  }, [userId]);
+  console.log(userPlants)
+
+
+ 
+  console.log(user)
+
+
+  // const pureData = userPlants && plantData.map((plant) => {
+  //   return {
+  //     plantId: plant._id,
+  //     plantName: plant.familyName,
+  //     watering: plant.watering,
+  //   };
+  // });
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    ApiCalls.CreateNotification(notificationInfo, user)
+    ApiCalls.CreateNotification(notificationInfo, user, email)
 
   };
 
@@ -85,9 +101,9 @@ console.log(user)
             <Row xs={2} md={4} className="g-4">
               <Col>
                 {" "}
-                {pureData !== null ? pureData.map((plant) => (
+                {userPlants !== null ? userPlants.map((plant) => (
                   <Card
-                    key={plant.plantId}
+                    key={plant._id}
                     Card
                     style={{
                       width: "18rem",
@@ -98,7 +114,7 @@ console.log(user)
                     <Card.Body>
                       <Card.Title className="plantcard_title">
                         {" "}
-                        {plant.plantName}{" "}
+                        {plant.familyName}{" "}
                       </Card.Title>
                       <Card.Text className="plantcard_text">
                         I like to be watered{" "}
@@ -127,8 +143,8 @@ console.log(user)
                         variant="success"
                         onClick={() =>
                           setNotificationInfo({
-                            plantName: plant.plantName,
-                            plantId: plant.plantId,
+                            plantName: plant.familyName,
+                            plantId: plant._id,
                             frequency: frequency,
                           })
                         }
@@ -139,11 +155,19 @@ console.log(user)
                       </Button>{" "}
                     </ListGroup>{" "}
                     <Card.Body>
-                      <Link to={`${plant.plantId}`}>
+                      <Link to={`${plant._id}`}>
                         {" "}
-                        <Card.Link> Pause Notification </Card.Link>{" "}
+                        <Button onClick={() => {
+                          ApiCalls.PauseNotification(user, plant._id)
+                        }} className="remove_btn">Mute Notification </Button>{" "}
+
                       </Link>
-                      <Button href="#" onClick={removePlant} className="remove_btn"> Remove Plant </Button>{" "}
+                      <Button href="#" onClick={()=>{
+                        ApiCalls.removePlant(user, plant._id)
+                      }} className="remove_btn"> Remove Plant </Button>{" "}
+                      <Button href="#" onClick={()=>{
+                        ApiCalls.watered(user, plant._id)
+                      }} className="remove_btn"> Watered </Button>{" "}
                     </Card.Body>
                   </Card>
                 )) : "No Plants."}

@@ -15,12 +15,16 @@ import { Container } from "react-bootstrap";
 import { DataContextProvider } from "./dataContext/DataContext";
 import { UserRegContextProvider } from "./dataContext/userRegistration";
 import { UserContextProvider } from "./dataContext/UserContext";
+import { PlantContextProvider } from "./dataContext/PlantConetx";
+
 import { UserContext } from "./dataContext/UserContext";
 import { useContext, useEffect } from "react";
 import jwt from "jsonwebtoken";
 import { DataContext } from "./dataContext/DataContext";
 import ApiCalls from "./dataContext/ApiServices";
 function App() {
+	const loggedInUSerId= JSON.parse(localStorage.getItem('userId'))
+
 	const Secret = process.env.REACT_APP_JWT_SECRET;
 	console.log(Secret);
 	const {
@@ -75,6 +79,7 @@ function App() {
 		<DataContextProvider>
 			<UserRegContextProvider>
 				<UserContextProvider>
+					<PlantContextProvider > 
 					<div className='App'>
 						<Container fluid='true' className={"no-gutters mx-0 px-0"}>
 							<Router>
@@ -88,12 +93,12 @@ function App() {
 									<Route path='/auth/login' element={<LoginForm />}></Route>{" "}
 									<Route path='/plants' element={<PlantsList />}></Route>
 									<Route
-										path='/plants/plantname/:latinname'
+										path='/plants/:id'
 										element={<PlantPage />}
 									></Route>{" "}
 
 									<Route
-										path='/dashboard'
+										path={`/users/${loggedInUSerId}`}
 										element={
 										<PrivateRoute>
 												<Dashboard />
@@ -110,6 +115,7 @@ function App() {
 							</div>
 						</Container>{" "}
 					</div>{" "}
+					</PlantContextProvider>
 				</UserContextProvider>
 			</UserRegContextProvider>
 		</DataContextProvider>
