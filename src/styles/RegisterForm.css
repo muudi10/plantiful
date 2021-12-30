@@ -2,16 +2,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: #013606;
     padding: 15px 10px;
     font-weight: 700;
 }
 
-.form_wrapper {
-    height: 85vh;
+.form_wrapper_ {
+    height: 103vh;
     padding: 20px;
     background-color: #F9F5F1;
     width: 1470px;
+    position: relative;
 }
 
 .form_container {
@@ -20,7 +21,30 @@
 
 .member_text {
     padding: 12px 7px;
+    position: absolute;
+    left: 535px;
+    margin-top: 50px;
 }
 .signin_link {
     color: #3F7740;
+}
+.signup_button {
+    position: absolute;
+    left: 575px;
+    margin-top: 10px;
+
+}
+
+.grass_one {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+
+}
+
+.grass_two {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+  
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, createContext } from "react";
 import ApiServices from "./ApiServices";
 export const PlantContext = createContext();
 
@@ -14,14 +14,27 @@ export const PlantContextProvider = (props) => {
     setPlantMatch(matchedPlant);
   };
 
+const [singlePlant, setSinglePlant] = useState()
+
+const handleSingleplant=(e, plantId, setSinglePlant)=>{
+  e.preventDefault()
+  ApiServices.getPlantById(plantId, setSinglePlant)
+
+}
+
+
   const values = {
+    handleSingleplant,
     plantSearch,
     PlantMatch,
     setPlants,
     plants,
     setPlantMatch,
+    singlePlant, 
+    setSinglePlant
     
   };
+
 
   return (
     <PlantContext.Provider value={values}>

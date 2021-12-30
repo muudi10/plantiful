@@ -10,10 +10,10 @@
 }
 
 .title_border {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    width: 50%;
     border-color: #013606;
     border-style: solid;
     border-width: 2px 16px 16px 2px;
@@ -28,7 +28,8 @@
 .plant_info_title {
     color: #013606;
     text-transform: uppercase;
-    font-weight: 550;
+    font-weight: 600;
+    line-height: 40px;
     letter-spacing: 0.1rem;
 }
 .plant_information_latinname {
@@ -55,7 +56,7 @@
 .plant_information_temperature {
     position: absolute;
     bottom: 230px;
-    left:804px;
+    left:800px;
     padding: 20px 10px;
     line-height: 30px;
 }
@@ -70,11 +71,13 @@
   }
   .slick-prev:before, .slick-next:before {
     color: #013606; 
+    font-size: 30px;
   }
  
 .add_button {
     position: absolute;
     bottom: 150px;
-    left: 890px;
+    left: 803px;
     padding: 10px 10px;
 }
+

@@ -1,33 +1,27 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Container, Button } from "react-bootstrap";
 import axios from "axios";
-import { Plus } from "phosphor-react";
-import { useParams } from "react-router-dom";
 import dummyPlant from "../assets/dummyPlant.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/PlantPage.css";
 import Alert from "./Alert";
-import getPlantByName from '../dataContext/plantbyname'
-const { DataContext } = require("../dataContext/DataContext")
+import { PlantContext } from "../dataContext/PlantConetx";
 
 
 const PlantPage = () => {
+const {singlePlant} = useContext(PlantContext)
+
+console.log(singlePlant)
 const initialState = {
 	alert: {
 		message: "",
 		isSuccess: false,
 	}
 }
-const [plantByName, setPlantByName] = useState([]);
-const [user, setUser] = useState("")
-  const [alert, setAlert] = useState(initialState.alert)
-// useEffect(()=> {
-
-// setUser(localStorage.getItem("userDetails"))
-
-// })
+const [plantById, setPlantById] = useState("");
+const [alert, setAlert] = useState(initialState.alert)
 
 	const settings = {
 		dots: true,
@@ -38,54 +32,46 @@ const [user, setUser] = useState("")
 		slidesToScroll: 1,
 		initialSlide: 2,
 	};
+const plantId = window.location.pathname.split("/")[2] 
 
-	const { latinname } = useParams();
+const [familyName, setFamilyName]=useState()
 
-const familyName = plantByName.familyName
-const watering = plantByName.watering
-	useEffect(() => {
-		axios
-			.get(`/plants/plantname/${latinname}`)
+useEffect(() => {
+    const getSinglePlant = async () => {
+      const res = await axios.get("/plants/" + plantId);
+      setFamilyName(res.data.familyName);
+	  setPlantById(res.data)
+    };
+    getSinglePlant();
+  }, [plantId]);
+ 
 
-			.then((response) => {
-				setPlantByName(response.data[0]);
-			})
-			.catch((error) => console.log(error));
-	}, [latinname]);
+const loggedInUSerId =JSON.parse(localStorage.getItem("userId"))
 
-function addPlant (plant) {
 
-	let existingPlants = localStorage.getItem("userPlants");
-	let existingPlantsActual = existingPlants ? JSON.parse(existingPlants) : [];
-	// const currentPlantSaved = existingPlants.find((x) => x.id === plant.id)
-	// 	if (currentPlantSaved) {
-	// 		const filteredPlantList = existingPlants.filter(
-	// 			(x) => x.id !== plant.id
-	// 		)
-existingPlantsActual.push(familyName)
-setUser(localStorage.setItem(
-	"userPlants", JSON.stringify(existingPlantsActual),
+ const handleSumbit= async()=>{
+	const res = await axios.post('/users/user/addplant',{
+		plantId: plantId,
+		userId: loggedInUSerId
+	 }) 
+if(res) {
 	setAlert({
-          message: 'Plant added to dashboard!',
-          isSuccess: true,
-        })
-))}
+		message: "Plant added to Dashboard!",
+		isSuccess: true
+	})
+}	
 
-// else {
-
-// existingPlants.push(familyName)
-// setUser(localStorage.setItem(
-// 	"userPlants", JSON.stringify(existingPlants)))
-// }}
-
+ }
 	return (
 		<>
 		<div className='wrapper'>
-
+  
 			<Container >
-			<div className="title_border">
-				<h2 className='plant_title'> {plantByName.familyName} </h2>
+
+			{plantById  &&  <div className="title_border">
+				<h2 className='plant_title'> {familyName && familyName} </h2>
 				</div>
+}
 				<Slider {...settings}>
 					<div>
 						<img src={dummyPlant} alt='' width='40%' />
@@ -100,27 +86,28 @@ setUser(localStorage.setItem(
 						<img src={dummyPlant} alt='' width='40%' />
 					</div>
 				</Slider>
-
+				{}
 				<div className='plant_info'>
 						<p className='plant_information_latinname'>
-                    <span className="plant_info_title">Latin name:</span> {plantByName.latinName}
+                    <span className="plant_info_title">Latin name:</span> {plantById.latinName}
 					</p>
 					<p className='plant_information_origin'>
-						<span className="plant_info_title">Origin:</span> {plantByName.origin}
+						<span className="plant_info_title">Origin:</span> {plantById.origin}
 
 					</p>
 					<p className='plant_information_wateringneeds'>
-					<span className="plant_info_title">	Watering Needs:</span> {plantByName.watering}
+					<span className="plant_info_title">	Watering Needs:</span> {plantById.watering}
 					</p>
 					<p className='plant_information_temperature'>
-                    <span className="plant_info_title">Temperature:</span> {plantByName.temperature}&deg;<sup>c</sup>
+                    <span className="plant_info_title">Temperature:</span> {plantById.temperature}&deg;<sup>c</sup>
 					</p>
-				
+			
+
 					<Button
 						type='submit'
 						id='submit'
                         className="add_button"
-						onClick={addPlant}
+						onClick={handleSumbit}
 						style={{
 							backgroundColor: "#55A356",
 							border: "#013606",
@@ -131,6 +118,7 @@ setUser(localStorage.setItem(
 Add to dashboard
 
 					</Button>
+
 					 <Alert message={alert.message} success={alert.isSuccess} />
 				</div>
 			</Container>
@@ -142,37 +130,3 @@ Add to dashboard
 export default PlantPage;
 
 
-
-// //function to add plant
-// // function addPlant(plant) {
-// // 		const currentPlantSaved = plantList.find((x) => x.id === plant.id)
-// // 		if (currentPlantSaved) {
-// // 			const filteredPlantList = plantList.filter(
-// // 				(x) => x.id !== plant.id
-// // 			)
-// // 			setPlantList([
-// // 				...filteredPlantList,
-// // 				{ plantFamilyName: familyName, plantWatering: watering}
-// // 			])
-// // 		} else {
-// // 			setPlantList([...plantList, { plantFamilyName: familyName, plantWatering: watering }])
-// // 		}
-// // 	}
-// //function to add plant using API
-//   const addPlantTest = async (plant) => {
-// 	  const currentPlantSaved = plantList.find((x) => x.id === plant.id)
-// 		if (currentPlantSaved) {
-// 			const filteredPlantList = plantList.filter(
-// 				(x) => x.id !== plant.id
-// 			)
-// 			const res = await axios.post(`userplants/${user}`) 
-// 			setPlantList([
-// 				...filteredPlantList,
-// 				{ plantFamilyName: familyName, plantWatering: watering}
-// 			])
-// 		} else {
-// 			setPlantList([...plantList, { plantFamilyName: familyName, plantWatering: watering }])
-// 		}
-  
-//   };
-// console.log(plantList)

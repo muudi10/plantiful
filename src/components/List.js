@@ -1,22 +1,35 @@
 import { Plus, Heart, ArrowRight } from "phosphor-react";
 import React, { useEffect, useContext, useState } from "react";
 import { Button, Container } from "react-bootstrap";
-import "./list.css";
-import { UserContext } from "../../dataContext/UserContext";
+import "../styles/list.css";
+import { UserContext } from "../dataContext/UserContext";
 import { Link } from "react-router-dom";
-import Pagination from "../Pagination/Pagination";
-import ApiCalls from "../../dataContext/ApiServices";
-
+import Pagination from "./Pagination";
+import {PlantContext} from '../dataContext/PlantConetx'
+import axios from 'axios'
 function List() {
   const { plants, PlantMatch, setPlantMatch } =
     useContext(UserContext);
   const [search, setSearch] = useState("");
-const [user, setUser] = useState("")
   const handleLoginInputChange = (event) => {
     event.preventDefault();
     setSearch(event.target.value);
     plantSearch(search);
   };
+  const {setSinglePlant} = useContext(PlantContext)
+  const plantId = window.location.pathname.split("/")[2] 
+
+const getSinglePlant = async () => {
+      const res = await axios.get("/plants/" + plantId);
+      setSinglePlant(res.data);
+
+    };
+
+
+  useEffect(() => {
+    
+    getSinglePlant();
+  }, [plantId]);
 
   const plantSearch = (search) => {
     let matchedPlant = plants.filter((plant) => {
@@ -82,8 +95,8 @@ const rendering =  (PlantMatch.length > 0 )? PlantMatch:plants
                   <>
                     <div className="user"> </div>{" "}
                     <tr>
-                      <td className="p-name">
-                        <Link to={`plantname/${plant.latinName}`}>
+                      <td className="p-name" onClick={getSinglePlant}>
+                        <Link to={`${plant._id}`}>
                           {" "}
                           {plant.familyName}{" "}
                         </Link>
@@ -106,7 +119,9 @@ const rendering =  (PlantMatch.length > 0 )? PlantMatch:plants
                         </span>{" "}
                       </td>{" "}
                       <td>
+                        <form > 
                         <Heart size={30} weight="bold" className="m-4" />
+                        </form>
                       </td>{" "}
                       <td>
                         <Plus size={20} weight="bold" />
