@@ -17,7 +17,7 @@ import "../styles/Dashboard.css";
 import { Link } from "react-router-dom";
 import Alert from "./Alert";
 import ApiCalls from '../dataContext/ApiServices';
-import axios from 'axios'
+import {instance} from '../config'
 
 
 const Dashboard = () => {
@@ -54,7 +54,7 @@ const Dashboard = () => {
   const userId = window.location.pathname.split("/")[2]
   useEffect(() => {
     const getUserPlants = async () => {
-      const res = await axios.get("/users/" + userId);
+      const res = await instance.get("/users/" + userId);
       setUserPlants(res.data.userPlants)
 
     };

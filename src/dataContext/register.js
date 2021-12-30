@@ -1,4 +1,4 @@
-import axios from 'axios';
+import {instance} from '../config';
 const urlEndPoint = process.env.REACT_APP_APIENDPOINT
 console.log(urlEndPoint)
 
@@ -8,7 +8,7 @@ console.log(fields.name);
 
 
 try {
-     const response = await axios.post("/auth/register",{
+     const response = await instance.post("/auth/register",{
       name: fields.name,
       email: fields.email,
       password: fields.password,

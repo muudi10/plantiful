@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Container, Button } from "react-bootstrap";
-import axios from "axios";
+import {instance} from "../config";
 import dummyPlant from "../assets/dummyPlant.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -38,7 +38,7 @@ const [familyName, setFamilyName]=useState()
 
 useEffect(() => {
     const getSinglePlant = async () => {
-      const res = await axios.get("/plants/" + plantId);
+      const res = await instance.get("/plants/" + plantId);
       setFamilyName(res.data.familyName);
 	  setPlantById(res.data)
     };
@@ -50,7 +50,7 @@ const loggedInUSerId =JSON.parse(localStorage.getItem("userId"))
 
 
  const handleSumbit= async()=>{
-	const res = await axios.post('/users/user/addplant',{
+	const res = await instance.post('/users/user/addplant',{
 		plantId: plantId,
 		userId: loggedInUSerId
 	 }) 

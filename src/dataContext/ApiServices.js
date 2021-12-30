@@ -1,14 +1,11 @@
-import axios from "axios";
-
-const baseURL = `https://api.eastberry.io`
-
+import {instance} from '../config'
 const ApiCalls = {
 
     getAllPlants: async (setPlants) => {
         // const baseURL = `/`
 
         let endpoint = '/plants';
-        const response = await axios.get(endpoint)
+        const response = await instance.get(endpoint)
         const data = await response.data
         setPlants(data)
 
@@ -16,7 +13,7 @@ const ApiCalls = {
     },
     getPlantById: async (plantId, setSinglePlant) => {
         let endpoint = `/plants/${plantId}`
-        const response = await axios.get(endpoint)
+        const response = await instance.get(endpoint)
         const data = await response.data
         setSinglePlant(data)
 
@@ -29,7 +26,7 @@ const ApiCalls = {
                 searchTerm
             }
         }
-        const response = await axios.get(endpoint)
+        const response = await instance.get(endpoint)
         const data = await response.data
 
     },
@@ -37,7 +34,7 @@ const ApiCalls = {
     addPlant: async (loggedInUSerId, plantId) => {
 
         try {
-            const response = await axios.post(`/users/user/addplant`, {
+            const response = await instance.post(`/users/user/addplant`, {
                 userid: loggedInUSerId,
                 plantid: plantId
 
@@ -52,7 +49,7 @@ const ApiCalls = {
     },
     userRegister: async (fields, setMessage) => {
         try {
-            const response = await axios.post(`/auth/register`, {
+            const response = await instance.post(`/auth/register`, {
                 name: fields.name,
                 email: fields.email,
                 password: fields.password,
@@ -77,7 +74,7 @@ const ApiCalls = {
         setUserGlobalState) => {
         try {
             let endpoint = `/auth/login`
-            const response = await axios.post(endpoint, {
+            const response = await instance.post(endpoint, {
                 email: loginField.email,
                 password: loginField.password
             })
@@ -114,7 +111,7 @@ const ApiCalls = {
 
 
         try {
-            const response = await axios.post('/notification', {
+            const response = await instance.post('/notification', {
                 userId: user,
                 plantId: notificationInfo.plantId,
                 frequency: notificationInfo.frequency,
@@ -132,7 +129,7 @@ const ApiCalls = {
     },
     PauseNotification: async (user, plantId) => {
         try {
-            const response = await axios.put('/notification/status/update', {
+            const response = await instance.put('/notification/status/update', {
                 userId: user,
                 plantId: plantId,
 
@@ -147,7 +144,7 @@ const ApiCalls = {
     },
     removePlant: async (user, plantId) => {
         try {
-            const response = await axios.put('/plants/delete/', {
+            const response = await instance.put('/plants/delete/', {
                 userId: user,
                 plantId: plantId,
 
@@ -164,7 +161,7 @@ const ApiCalls = {
     },
     watered: async (user, plantId) => {
         try {
-            const response = await axios.put('/notification/watered/', {
+            const response = await instance.put('/notification/watered/', {
                 userId: user,
                 plantId: plantId,
             })

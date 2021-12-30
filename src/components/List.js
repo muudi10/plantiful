@@ -6,7 +6,7 @@ import { UserContext } from "../dataContext/UserContext";
 import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
 import {PlantContext} from '../dataContext/PlantConetx'
-import axios from 'axios'
+import {instance} from '../config'
 function List() {
   const { plants, PlantMatch, setPlantMatch } =
     useContext(UserContext);
@@ -20,7 +20,7 @@ function List() {
   const plantId = window.location.pathname.split("/")[2] 
 
 const getSinglePlant = async () => {
-      const res = await axios.get("/plants/" + plantId);
+      const res = await instance.get("/plants/" + plantId);
       setSinglePlant(res.data);
 
     };
